@@ -2,7 +2,7 @@
   <div>
     <table>
       <tr>
-        <td>
+        <td class="outer">
           <h2>Apps</h2>
           <table>
             <thead>
@@ -22,7 +22,7 @@
             </tbody>
           </table>
         </td>
-        <td>
+        <td class="outer">
           <h2>Keeps</h2>
           <table>
             <thead>
@@ -69,8 +69,13 @@ export default {
 </script>
 
 <style lang="scss">
+  h2, th {
+    color: #000;
+  }
+  td.outer {
+    vertical-align: top;
+  }
   table {
-    width: 80%;
     margin: 0 auto;
   }
   td {
