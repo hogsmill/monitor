@@ -50,6 +50,14 @@ function saveProcesses(data) {
   })
 }
 
+function saveKeeps(data) {
+  MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
+    if (err) throw err;
+    var db = client.db('db');
+    dbStore.saveKeeps(err, client, db, io, data, debugOn)
+  })
+}
+
 io.on("connection", (socket) => {
   connections = connections + 1
   if (connections > maxConnections) {
