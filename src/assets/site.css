@@ -1,0 +1,85 @@
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+body {
+  margin: 0;
+}
+
+div {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  border: 0px solid #000;
+}
+
+button { margin: 2px; }
+
+/* navbar css */
+
+.navbar {
+  color: #ffffff;
+  background-color: #f4511e;
+  padding: 0;
+  line-height: 1.42857143 !important;
+  letter-spacing: 4px;
+}
+
+/* navbar */
+
+.navbar-light .navbar-nav .nav-link {
+  color: #ffffff;
+  padding: 14px;
+}
+
+.navbar-nav li a:hover,
+.navbar-nav li.active a {
+  color: #f4511e !important;
+  background-color: #fff !important;
+  padding: 14px;
+}
+
+.game-name {
+  padding-right: 2px;
+}
+.set-game-name-modal {
+  height: 120px;
+}
+
+#game-name {
+  display: inline-block;
+  width: 30%;
+}
+
+.btn-info {
+  color: #fff;
+  background-color: #f4511e;
+  border-color: #f4511e;
+}
+
+.btn-info:hover {
+  color: #f4511e;
+  background-color: #ffffff;
+  border-color: #f4511e;
+}
+
+.btn-info:disabled {
+  background-color: #ddd;
+  border-color: #aaa;
+}
+
+.btn-info:hover:disabled {
+  color: #fff;
+}
+
+.red { background-color: red; }
+.blue { background-color: blue; }
+.green { background-color: green; }
+.yellow { background-color: yellow; }
+.orange { background-color: orange; }
+.purple { background-color: purple; }
+
+.empty { background-color: #eee; border: 1px solid #aaa; }
