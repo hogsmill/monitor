@@ -17,6 +17,14 @@ function state() {
   }
 }
 
+function keepApps() {
+  return {
+    3000: {port: 3000, app: 'coin-game', running: false},
+    3007: {port: 3007, app: 'no-estimates', running: false},
+    3012: {port: 3012, app: 'monitor', running: false}
+  }
+}
+
 function parseProcesses(data) {
   let processes = state()
   const splitData = data.split("\n")
@@ -30,6 +38,19 @@ function parseProcesses(data) {
   return processes
 }
 
+function parseKeeps(data) {
+  let keeps = keepApps()
+  const splitData = data.split("\n")
+  for (let i = 0; i < splitData.length; i++) {
+    if (splitData[i].match(/keep.sh/)) {
+      const fields = splitData[i].split(/keep.sh/)[1]
+      const port = fields.substr(1, 4)
+      keeps[port].running = true
+    }
+  }
+  return keeps
+}
+
 module.exports = {
 
   saveProcesses: function(err, client, db, io, data, debugOn) {
@@ -38,6 +59,17 @@ module.exports = {
 
     const processes = parseProcesses(data)
     io.emit('updateProcesses', processes)
+    //db.collection('monitor').insertOne({gameName: data.gameName}, function(err, res) {
+    //  if (err) throw err;
+    //})
+  },
+
+  saveKeeps: function(err, client, db, io, data, debugOn) {
+
+    if (debugOn) { console.log('saveKeeps') }
+
+    const keeps = parseKeeps(data)
+    io.emit('updateKeeps', keeps)
     //db.collection('monitor').insertOne({gameName: data.gameName}, function(err, res) {
     //  if (err) throw err;
     //})

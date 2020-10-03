@@ -36,6 +36,10 @@ export default {
     this.socket.on("updateProcesses", (data) => {
       this.$store.dispatch("updateProcesses", data)
     })
+
+    this.socket.on("updateKeeps", (data) => {
+      this.$store.dispatch("updateKeeps", data)
+    })
   }
 }
 </script>

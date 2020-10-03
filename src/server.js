@@ -68,6 +68,9 @@ io.on("connection", (socket) => {
     exec('ps -ef | grep node', function(error, stdout, stderr) {
       saveProcesses(stdout)
     })
+    exec('ps -ef | grep keep', function(error, stdout, stderr) {
+      saveKeeps(stdout)
+    })
   }, 5000)
 
 });

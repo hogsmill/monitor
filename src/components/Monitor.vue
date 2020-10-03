@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2>Apps</h2>
     <table>
       <thead>
         <th>Port</th>
@@ -17,7 +18,24 @@
         </tr>
       </tbody>
     </table>
-    {{ processes }}
+    <h2>Keeps</h2>
+    <table>
+      <thead>
+        <th>Port</th>
+        <th>App</th>
+        <th>Running</th>
+      </thead>
+      <tbody>
+        <tr v-for="(app, index) in keeps" :key="index">
+          <td :class="status(app)">{{ app.port }}</td>
+          <td :class="status(app)">{{ app.app }}</td>
+          <td :class="status(app)">
+          <span v-if="app.running">TRUE</span>
+          <span v-if="!app.running">FALSE</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -30,6 +48,9 @@ export default {
     processes() {
       return this.$store.getters.getProcesses
     },
+    keeps() {
+      return this.$store.getters.getKeeps
+    }
   },
   methods: {
     status(app) {
