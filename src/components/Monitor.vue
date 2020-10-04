@@ -76,7 +76,11 @@ export default {
     padding: 6px;
   }
   .logs {
-    background-color: #eee;
-    color: #000;
+    tbody {
+      td {
+        background-color: #eee;
+        color: #000;
+      }
+    }
   }
 </style>

@@ -36,9 +36,10 @@ export default {
 }
 </script>
 
-<style lang="scss"> 
+<style lang="scss">
   .not-applicable {
     background-color: #ccc;
+    color: #444;
   }
   .running {
     background-color: green;
