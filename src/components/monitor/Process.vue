@@ -22,6 +22,11 @@
 export default {
   props: [
     'processes'
-  ]
+  ],
+  methods: {
+    status(app) {
+      return app.running ? 'running' : 'not-running'
+    }
+  }
 }
 </script>
