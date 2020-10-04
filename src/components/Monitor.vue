@@ -12,14 +12,17 @@
         </td>
         <td class="outer">
           <h2>Logs</h2>
-          {{ logs }}
           <table>
             <thead>
-              <th>App</th>
+            <th>App</th>
+            <th>Date</th>
+            <th>Size</th>
             </thead>
             <tbody>
               <tr v-for="(log, index) in logs" :key="index">
-                <td class="running">{{ log }}</td>
+              <td class="running">{{ log.app }}</td>
+              <td class="running">{{ log.date }}</td>
+              <td class="running">{{ log.size }}</td>
               </tr>
             </tbody>
           </table>
