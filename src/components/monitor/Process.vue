@@ -21,12 +21,29 @@
 <script>
 export default {
   props: [
-    'processes'
+    'processes',
+    'scope'
   ],
   methods: {
     status(app) {
-      return app.running ? 'running' : 'not-running'
+      if (this.scope == 'keep' && !app.keep) {
+        return 'not-applicable'
+      } else {
+        return app.running ? 'running' : 'not-running'
+      }
     }
   }
 }
 </script>
+
+<style lang="scss"> 
+  .not-applicable {
+    background-color: #ccc;
+  }
+  .running {
+    background-color: green;
+  }
+  .not-running {
+    background-color: red;
+  }
+</style>

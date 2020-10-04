@@ -4,15 +4,15 @@
       <tr>
         <td class="outer">
           <h2>Apps</h2>
-          <Process :processes="processes" />
+          <Process :processes="processes" :scope="'app'" />
         </td>
         <td class="outer">
           <h2>Keeps</h2>
-          <Process :processes="keeps" />
+          <Process :processes="keeps" :scope="'keep'" />
         </td>
         <td class="outer">
           <h2>Logs</h2>
-          <table>
+          <table class="logs">
             <thead>
             <th>App</th>
             <th>Date</th>
@@ -20,9 +20,9 @@
             </thead>
             <tbody>
               <tr v-for="(log, index) in logs" :key="index">
-              <td class="running">{{ log.app }}</td>
-              <td class="running">{{ log.date }}</td>
-              <td class="running">{{ log.size }}</td>
+                <td>{{ log.app }}</td>
+                <td>{{ log.date }}</td>
+                <td>{{ log.size }}</td>
               </tr>
             </tbody>
           </table>
@@ -75,10 +75,8 @@ export default {
     color: #fff;
     padding: 6px;
   }
-  .running {
-    background-color: green;
-  }
-  .not-running {
-    background-color: red;
+  .logs {
+    background-color: #eee;
+    color: #000;
   }
 </style>

@@ -1,19 +1,19 @@
 
 function state() {
   return {
-    3000: {port: 3000, app: 'coin-game', running: false},
-    3001: {port: 3001, app: 'do-others-work-first-js', running: false},
-    3002: {port: 3002, app: 'pairing', running: false},
-    3003: {port: 3003, app: 'context-switching', running: false},
-    3004: {port: 3004, app: 'lego-flow', running: false},
-    3005: {port: 3005, app: 'mastermind', running: false},
-    3006: {port: 3006, app: 'health-check', running: false},
-    3007: {port: 3007, app: 'no-estimates', running: false},
-    3008: {port: 3008, app: 'battleships', running: false},
-    3009: {port: 3009, app: 'change-management-game', running: false},
-    3010: {port: 3010, app: 'pig-racing', running: false},
-    3011: {port: 3011, app: 'survival', running: false},
-    3012: {port: 3012, app: 'monitor', running: false}
+    3000: {port: 3000, app: 'coin-game', running: false, keep: true},
+    3001: {port: 3001, app: 'do-others-work-first-js', running: false, keep: false},
+    3002: {port: 3002, app: 'pairing', running: false, keep: false},
+    3003: {port: 3003, app: 'context-switching', running: false, keep: true},
+    3004: {port: 3004, app: 'lego-flow', running: false, keep: false},
+    3005: {port: 3005, app: 'mastermind', running: false, keep: false},
+    3006: {port: 3006, app: 'health-check', running: false, keep: false},
+    3007: {port: 3007, app: 'no-estimates', running: false, keep: true},
+    3008: {port: 3008, app: 'battleships', running: false, keep: true},
+    3009: {port: 3009, app: 'change-management-game', running: false, keep: false},
+    3010: {port: 3010, app: 'pig-racing', running: false, keep: false},
+    3011: {port: 3011, app: 'survival', running: false, keep: true},
+    3012: {port: 3012, app: 'monitor', running: false, keep: false}
   }
 }
 
