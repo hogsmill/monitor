@@ -13,7 +13,7 @@ function state() {
     3009: {port: 3009, app: 'change-management-game', running: false, keep: false},
     3010: {port: 3010, app: 'pig-racing', running: false, keep: false},
     3011: {port: 3011, app: 'survival', running: false, keep: true},
-    3012: {port: 3012, app: 'monitor', running: false, keep: false}
+    3012: {port: 3012, app: 'monitor', running: false, keep: true}
   }
 }
 
