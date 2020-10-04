@@ -58,6 +58,14 @@ function saveKeeps(data) {
   })
 }
 
+function saveLogs(data) {
+  MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
+    if (err) throw err;
+    var db = client.db('db');
+    dbStore.saveLogs(err, client, db, io, data, debugOn)
+  })
+}
+
 io.on("connection", (socket) => {
   connections = connections + 1
   if (connections > maxConnections) {
@@ -78,6 +86,9 @@ io.on("connection", (socket) => {
     })
     exec('ps -ef | grep keep', function(error, stdout, stderr) {
       saveKeeps(stdout)
+    })
+    exec('ls ../*/server.log', function(error, stdout, stderr) {
+      saveLogs(stdout)
     })
   }, 5000)
 

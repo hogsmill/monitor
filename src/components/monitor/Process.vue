@@ -1,0 +1,27 @@
+<template>
+  <table>
+    <thead>
+      <th>Port</th>
+      <th>App</th>
+      <th>Running</th>
+    </thead>
+    <tbody>
+      <tr v-for="(app, index) in processes" :key="index">
+        <td :class="status(app)">{{ app.port }}</td>
+        <td :class="status(app)">{{ app.app }}</td>
+        <td :class="status(app)">
+          <span v-if="app.running">TRUE</span>
+          <span v-if="!app.running">FALSE</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</template>
+
+<script>
+export default {
+  props: [
+    'processes'
+  ]
+}
+</script>

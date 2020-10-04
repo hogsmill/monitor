@@ -6,7 +6,8 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     processes: [],
-    keeps: []
+    keeps: [],
+    logs: []
   },
   getters: {
     getProcesses: (state) => {
@@ -14,6 +15,9 @@ export const store = new Vuex.Store({
     },
     getKeeps: (state) => {
       return state.keeps;
+    },
+    getLogs: (state) => {
+      return state.logs;
     }
   },
   mutations: {
@@ -22,6 +26,9 @@ export const store = new Vuex.Store({
     },
     updateKeeps: (state, payload) => {
       state.keeps = payload;
+    },
+    updateLogs: (state, payload) => {
+      state.logs = payload;
     }
   },
   actions: {
@@ -30,6 +37,9 @@ export const store = new Vuex.Store({
     },
     updateKeeps: ({ commit }, payload) => {
       commit("updateKeeps", payload);
+    },
+    updateLogs: ({ commit }, payload) => {
+      commit("updateLogs", payload);
     }
   }
 });

@@ -40,6 +40,10 @@ export default {
     this.socket.on("updateKeeps", (data) => {
       this.$store.dispatch("updateKeeps", data)
     })
+
+    this.socket.on("updateLogs", (data) => {
+      this.$store.dispatch("updateLogs", data)
+    })
   }
 }
 </script>

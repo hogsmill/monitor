@@ -51,6 +51,10 @@ function parseKeeps(data) {
   return keeps
 }
 
+function parseLogs(data) {
+  return splitData = data.split("\n")
+}
+
 module.exports = {
 
   saveProcesses: function(err, client, db, io, data, debugOn) {
@@ -70,6 +74,17 @@ module.exports = {
 
     const keeps = parseKeeps(data)
     io.emit('updateKeeps', keeps)
+    //db.collection('monitor').insertOne({gameName: data.gameName}, function(err, res) {
+    //  if (err) throw err;
+    //})
+  },
+
+  saveLogs: function(err, client, db, io, data, debugOn) {
+
+    if (debugOn) { console.log('saveLogs') }
+
+    const keeps = parseLogss(data)
+    io.emit('updateLogs', keeps)
     //db.collection('monitor').insertOne({gameName: data.gameName}, function(err, res) {
     //  if (err) throw err;
     //})

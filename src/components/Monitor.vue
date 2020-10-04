@@ -4,42 +4,18 @@
       <tr>
         <td class="outer">
           <h2>Apps</h2>
-          <table>
-            <thead>
-              <th>Port</th>
-              <th>App</th>
-              <th>Running</th>
-            </thead>
-            <tbody>
-              <tr v-for="(app, index) in processes" :key="index">
-                <td :class="status(app)">{{ app.port }}</td>
-                <td :class="status(app)">{{ app.app }}</td>
-                <td :class="status(app)">
-                  <span v-if="app.running">TRUE</span>
-                  <span v-if="!app.running">FALSE</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <Process :processes="processes" />
         </td>
         <td class="outer">
           <h2>Keeps</h2>
+          <Process :processes="keeps" />
+        </td>
+        <td class="outer">
+          <h2>Logs</h2>
           <table>
-            <thead>
-              <th>Port</th>
-              <th>App</th>
-              <th>Running</th>
-            </thead>
-            <tbody>
-              <tr v-for="(app, index) in keeps" :key="index">
-                <td :class="status(app)">{{ app.port }}</td>
-                <td :class="status(app)">{{ app.app }}</td>
-                <td :class="status(app)">
-                  <span v-if="app.running">TRUE</span>
-                  <span v-if="!app.running">FALSE</span>
-                </td>
-              </tr>
-            </tbody>
+            <tr v-for="(log, index) in logs" :key="index">
+              <td>{{ log }}</td>
+            </tr>
           </table>
         </td>
       </tr>
@@ -48,16 +24,24 @@
 </template>
 
 <script>
+import Process from "./monitor/Process.vue";
+
 export default {
   props: [
     'socket'
   ],
+  components: {
+    Process
+  },
   computed: {
     processes() {
       return this.$store.getters.getProcesses
     },
     keeps() {
       return this.$store.getters.getKeeps
+    },
+    logs() {
+      return this.$store.getters.getLogs
     }
   },
   methods: {
