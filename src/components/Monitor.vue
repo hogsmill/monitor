@@ -13,9 +13,14 @@
         <td class="outer">
           <h2>Logs</h2>
           <table>
-            <tr v-for="(log, index) in logs" :key="index">
-              <td>{{ log }}</td>
-            </tr>
+            <thead>
+              <th>App</th>
+            </thead>
+            <tbody>
+              <tr v-for="(log, index) in logs" :key="index">
+                <td class="running">{{ log }}</td>
+              </tr>
+            </tbody>
           </table>
         </td>
       </tr>
