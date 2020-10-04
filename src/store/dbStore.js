@@ -17,14 +17,6 @@ function state() {
   }
 }
 
-function keepApps() {
-  return {
-    3000: {port: 3000, app: 'coin-game', running: false},
-    3007: {port: 3007, app: 'no-estimates', running: false},
-    3012: {port: 3012, app: 'monitor', running: false}
-  }
-}
-
 function parseProcesses(data) {
   let processes = state()
   const splitData = data.split("\n")
@@ -39,7 +31,7 @@ function parseProcesses(data) {
 }
 
 function parseKeeps(data) {
-  let keeps = keepApps()
+  let keeps = state()
   const splitData = data.split("\n")
   for (let i = 0; i < splitData.length; i++) {
     if (splitData[i].match(/keep.sh/)) {

@@ -87,7 +87,7 @@ io.on("connection", (socket) => {
     exec('ps -ef | grep keep', function(error, stdout, stderr) {
       saveKeeps(stdout)
     })
-    exec('ls ../*/server.log', function(error, stdout, stderr) {
+    exec('ls -l ../*/server.log', function(error, stdout, stderr) {
       saveLogs(stdout)
     })
   }, 5000)
