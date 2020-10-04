@@ -39,7 +39,7 @@ export default {
 <style lang="scss">
   .not-applicable {
     background-color: #ccc;
-    color: #444;
+    color: #666;
   }
   .running {
     background-color: green;

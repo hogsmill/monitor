@@ -78,7 +78,7 @@ export default {
   .logs {
     tbody {
       td {
-        background-color: #eee;
+        background-color: #ccc;
         color: #000;
       }
     }
