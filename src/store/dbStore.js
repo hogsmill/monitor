@@ -83,7 +83,7 @@ module.exports = {
 
     if (debugOn) { console.log('saveLogs') }
 
-    const keeps = parseLogss(data)
+    const keeps = parseLogs(data)
     io.emit('updateLogs', keeps)
     //db.collection('monitor').insertOne({gameName: data.gameName}, function(err, res) {
     //  if (err) throw err;
