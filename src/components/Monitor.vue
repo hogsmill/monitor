@@ -12,6 +12,7 @@
         </td>
         <td class="outer">
           <h2>Logs</h2>
+          {{ logs }}
           <table>
             <thead>
               <th>App</th>

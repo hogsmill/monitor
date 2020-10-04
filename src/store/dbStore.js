@@ -43,8 +43,21 @@ function parseKeeps(data) {
   return keeps
 }
 
+-rw-r--r-- 1 root root 901 Oct 2 10:05 ../coin-game/server.log
+
 function parseLogs(data) {
-  return splitData = data.split("\n")
+  let logs = []
+  const splitData = data.split("\n")
+  for (let i = 0; i < splitData.length; i++) {
+    let log = {}
+    const fields = splitData[i].split (' ')
+    log.size = fields[4]
+    log.date = fields[5] + ' ' + fields[6] + ' ' + fields[7]
+    let app = fields[8].split('/')
+    log.app = app[1]
+    logs.push(log)
+  }
+  return logs
 }
 
 module.exports = {
