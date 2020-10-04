@@ -24,6 +24,9 @@ function parseProcesses(data) {
     if (splitData[i].match(/server.js/)) {
       const fields = splitData[i].split(/server.js/)[1]
       const port = fields.substr(1, 4)
+      if (!processes[port]) {
+        processes[port] = {}
+      }
       processes[port].running = true
     }
   }
@@ -37,6 +40,9 @@ function parseKeeps(data) {
     if (splitData[i].match(/keep.sh/)) {
       const fields = splitData[i].split(/keep.sh/)[1]
       const port = fields.substr(1, 4)
+      if (!keeps[port]) {
+        keeps[port] = {}
+      }
       keeps[port].running = true
     }
   }
