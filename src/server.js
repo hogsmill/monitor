@@ -90,7 +90,7 @@ io.on("connection", (socket) => {
     exec('ls -l ../*/server.log', function(error, stdout, stderr) {
       saveLogs(stdout)
     })
-    socket.emit('lastUpdated', new Date().toISOString())
+    emit('lastUpdated', new Date().toISOString())
   }, 5000)
 
 });
