@@ -3,7 +3,7 @@
     <appHeader></appHeader>
 
     <h1>Monitor</h1>
-    <div class="right">Last Updated: {{ lastUpdated }}
+    <div class="right">Last Updated: {{ lastUpdated }}</div>
     <div class="container">
       <div class="row">
         <Monitor v-bind:socket="socket" />
