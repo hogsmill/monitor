@@ -50,10 +50,16 @@ export default {
     this.socket.on("updateLogs", (data) => {
       this.$store.dispatch("updateLogs", data)
     })
+
+    this.socket.on("lastUpdated", (data) => {
+      this.$store.dispatch("lastUpdated", data)
+    })
   }
 }
 </script>
 
 <style lang="scss">
-
+  .right {
+    text-align: right;
+  }
 </style>
