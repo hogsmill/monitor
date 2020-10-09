@@ -5,11 +5,15 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
+    lastUpdated: '',
     processes: [],
     keeps: [],
     logs: []
   },
   getters: {
+    getLastUpdated: (state) => {
+      return state.lastUpdated;
+    },
     getProcesses: (state) => {
       return state.processes;
     },
@@ -21,6 +25,9 @@ export const store = new Vuex.Store({
     }
   },
   mutations: {
+    updateLastUpdated: (state, payload) => {
+      state.lastUpdated = payload;
+    },
     updateProcesses: (state, payload) => {
       state.processes = payload;
     },
@@ -32,6 +39,9 @@ export const store = new Vuex.Store({
     }
   },
   actions: {
+    updateLastUpdated: ({ commit }, payload) => {
+      commit("updateLastUpdated", payload);
+    },
     updateProcesses: ({ commit }, payload) => {
       commit("updateProcesses", payload);
     },

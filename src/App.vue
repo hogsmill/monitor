@@ -3,6 +3,7 @@
     <appHeader></appHeader>
 
     <h1>Monitor</h1>
+    <div class="right">Last Updated: {{ lastUpdated }}
     <div class="container">
       <div class="row">
         <Monitor v-bind:socket="socket" />
@@ -23,6 +24,11 @@ export default {
   components: {
     appHeader: Header,
     Monitor
+  },
+  computed: {
+    lastUpdated() {
+      return this.$store.getters.getLastUpdated
+    }
   },
   created() {
     var host = "77.68.122.69"
