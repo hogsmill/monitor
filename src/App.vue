@@ -51,8 +51,8 @@ export default {
       this.$store.dispatch("updateLogs", data)
     })
 
-    this.socket.on("lastUpdated", (data) => {
-      this.$store.dispatch("lastUpdated", data)
+    this.socket.on("updateLastUpdated", (data) => {
+      this.$store.dispatch("updateLastUpdated", data)
     })
   }
 }
