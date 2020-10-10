@@ -53,7 +53,7 @@ function parseLogs(data) {
   let logs = []
   const splitData = data.split("\n")
   for (let i = 0; i < splitData.length; i++) {
-    if (splitData[i].match(/server.log/)) {
+    if (splitData[i].match(/root root/) && splitData[i].match(/server.log/)) {
       let log = {}
       const fields = splitData[i].split (' ')
       log.size = fields[4]
