@@ -57,8 +57,8 @@ function parseLogs(data) {
       let log = {}
       const fields = splitData[i].split (' ')
       log.size = fields[4]
-      log.date = fields[5] + ' ' + fields[7] + ' ' + fields[8]
-      let app = fields[9].split('/')
+      log.date = fields[5] + ' ' + fields[6] + ' ' + fields[7]
+      let app = fields[8].split('/')
       log.app = app[1]
       logs.push(log)
     }
