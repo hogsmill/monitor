@@ -104,7 +104,7 @@ io.on("connection", (socket) => {
     console.log(data)
     saveData(data)
     emit('updateLastUpdated', new Date().toGMTString())
-  }, 5000)
+  }, 10000)
 
 });
 
