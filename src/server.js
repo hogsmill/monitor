@@ -17,6 +17,7 @@ const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 const os = require('os')
 const exec = require('child_process').exec;
+const execSync = require('child_process').execSync;
 
 var dbStore = require('./store/dbStore.js')
 
@@ -38,10 +39,15 @@ function emit(event, data) {
   io.emit(event, data)
 }
 
-function execute(command, callback){
-    exec(command, function(error, stdout, stderr) { callback(stdout); });
-};
+function saveData(data) {
+  MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
+    if (err) throw err;
+    var db = client.db('db');
+    dbStore.saveData(err, client, db, io, data, debugOn)
+  })
+}
 
+/*
 function saveProcesses(data) {
   MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
     if (err) throw err;
@@ -65,6 +71,7 @@ function saveLogs(data) {
     dbStore.saveLogs(err, client, db, io, data, debugOn)
   })
 }
+*/
 
 io.on("connection", (socket) => {
   connections = connections + 1
@@ -81,15 +88,21 @@ io.on("connection", (socket) => {
   })
 
   setInterval(function() {
-    exec('ps -ef | grep node', function(error, stdout, stderr) {
-      saveProcesses(stdout)
+    let data = {}
+    execSync('ps -ef | grep node', function(error, stdout, stderr) {
+      data.node = stdout
+      //saveProcesses(stdout)
     })
-    exec('ps -ef | grep keep', function(error, stdout, stderr) {
-      saveKeeps(stdout)
+    execSync('ps -ef | grep keep', function(error, stdout, stderr) {
+      data.keeps = stdout
+      //saveKeeps(stdout)
     })
-    exec('ls -l ../*/server.log', function(error, stdout, stderr) {
-      saveLogs(stdout)
+    execSync('ls -l ../*/server.log', function(error, stdout, stderr) {
+      data.logs = stdout
+      //saveLogs(stdout)
     })
+    console.log(data)
+    saveData(data)
     emit('updateLastUpdated', new Date().toGMTString())
   }, 5000)
 
