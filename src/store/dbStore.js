@@ -74,11 +74,11 @@ module.exports = {
 
     const nodes = parseProcesses(data.node)
     const keeps = parseKeeps(data.keeps)
-    //const logs = parseLogs(data.logs)
+    const logs = parseLogs(data.logs)
 
     io.emit('updateProcesses', nodes)
     io.emit('updateKeeps', keeps)
-    //io.emit('updateLogs', logs)
+    io.emit('updateLogs', logs)
 
     //db.collection('monitor').insertOne({gameName: data.gameName}, function(err, res) {
     //  if (err) throw err;

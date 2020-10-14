@@ -65,7 +65,7 @@ io.on("connection", (socket) => {
     let data = {}
     data.node = execSync(`ps -ef | grep node`).toString()
     data.keeps = execSync(`ps -ef | grep keep`).toString()
-    //data.logs = execSync(`ls -l "/usr/apps/*/server.log"`).toString()
+    data.logs = execSync("ls -l /usr/apps/\*/server.log").toString()
     saveData(data)
     emit('updateLastUpdated', new Date().toGMTString())
   }, 10000)
