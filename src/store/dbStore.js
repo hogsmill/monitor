@@ -70,13 +70,11 @@ module.exports = {
 
   saveData: function(err, client, db, io, data, debugOn) {
 
-    if (debugOn || true) { console.log('saveData', data) }
+    if (debugOn) { console.log('saveData', data) }
 
     const nodes = parseProcesses(data.node)
     const keeps = parseKeeps(data.keeps)
     //const logs = parseLogs(data.logs)
-
-    console.log(nodes, keeps)
 
     io.emit('updateProcesses', nodes)
     io.emit('updateKeeps', keeps)
