@@ -89,18 +89,20 @@ io.on("connection", (socket) => {
 
   setInterval(function() {
     let data = {}
-    execSync('ps -ef | grep node', function(error, stdout, stderr) {
-      data.node = stdout
+    data.node = execSync(`ps -ef | grep node`)
+    data.keeps = execSync(`ps -ef | grep keep`)
+    data.logs = execSync(`ls -l ../*/server.log`)
+
       //saveProcesses(stdout)
-    })
-    execSync('ps -ef | grep keep', function(error, stdout, stderr) {
-      data.keeps = stdout
+    //})
+    //execSync('ps -ef | grep keep', function(error, stdout, stderr) {
+    //  data.keeps = stdout
       //saveKeeps(stdout)
-    })
-    execSync('ls -l ../*/server.log', function(error, stdout, stderr) {
-      data.logs = stdout
+    //})
+    //execSync('ls -l ../*/server.log', function(error, stdout, stderr) {
+  //    data.logs = stdout
       //saveLogs(stdout)
-    })
+  //  })
     console.log(data)
     saveData(data)
     emit('updateLastUpdated', new Date().toGMTString())
