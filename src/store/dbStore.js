@@ -70,17 +70,17 @@ module.exports = {
 
   saveData: function(err, client, db, io, data, debugOn) {
 
-    if (debugOn) { console.log('saveData') }
+    if (debugOn || true) { console.log('saveData', data) }
 
     const processes = parseProcesses(data.processes)
     const keeps = parseKeeps(data.keeps)
-    const logs = parseLogs(data.logs)
+    //const logs = parseLogs(data.logs)
 
-    console.log(processes, keeps, logs)
-    
+    console.log(processes, keeps)
+
     io.emit('updateProcesses', processes)
     io.emit('updateKeeps', keeps)
-    io.emit('updateLogs', logs)
+    //io.emit('updateLogs', logs)
 
     //db.collection('monitor').insertOne({gameName: data.gameName}, function(err, res) {
     //  if (err) throw err;
