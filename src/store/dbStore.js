@@ -85,39 +85,6 @@ module.exports = {
     //db.collection('monitor').insertOne({gameName: data.gameName}, function(err, res) {
     //  if (err) throw err;
     //})
-  },
-
-  saveProcesses: function(err, client, db, io, data, debugOn) {
-
-    if (debugOn) { console.log('saveProcesses') }
-
-    const processes = parseProcesses(data)
-    io.emit('updateProcesses', processes)
-    //db.collection('monitor').insertOne({gameName: data.gameName}, function(err, res) {
-    //  if (err) throw err;
-    //})
-  },
-
-  saveKeeps: function(err, client, db, io, data, debugOn) {
-
-    if (debugOn) { console.log('saveKeeps') }
-
-    const keeps = parseKeeps(data)
-    io.emit('updateKeeps', keeps)
-    //db.collection('monitor').insertOne({gameName: data.gameName}, function(err, res) {
-    //  if (err) throw err;
-    //})
-  },
-
-  saveLogs: function(err, client, db, io, data, debugOn) {
-
-    if (debugOn) { console.log('saveLogs') }
-
-    const keeps = parseLogs(data)
-    io.emit('updateLogs', keeps)
-    //db.collection('monitor').insertOne({gameName: data.gameName}, function(err, res) {
-    //  if (err) throw err;
-    //})
   }
 
 }
