@@ -89,9 +89,9 @@ io.on("connection", (socket) => {
 
   setInterval(function() {
     let data = {}
-    data.node = execSync(`ps -ef | grep node`)
-    data.keeps = execSync(`ps -ef | grep keep`)
-    data.logs = execSync(`ls -l ../*/server.log`)
+    data.node = execSync(`ps -ef | grep node`).toString()
+    data.keeps = execSync(`ps -ef | grep keep`).toString()
+    data.logs = execSync(`ls -l ../*/server.log`).toString()
 
       //saveProcesses(stdout)
     //})
