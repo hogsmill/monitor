@@ -76,6 +76,8 @@ module.exports = {
     const keeps = parseKeeps(data.keeps)
     const logs = parseLogs(data.logs)
 
+    console.log(processes, keeps, logs)
+    
     io.emit('updateProcesses', processes)
     io.emit('updateKeeps', keeps)
     io.emit('updateLogs', logs)

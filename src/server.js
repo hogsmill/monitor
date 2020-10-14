@@ -92,18 +92,6 @@ io.on("connection", (socket) => {
     data.node = execSync(`ps -ef | grep node`).toString()
     data.keeps = execSync(`ps -ef | grep keep`).toString()
     data.logs = execSync(`ls -l ../*/server.log`).toString()
-
-      //saveProcesses(stdout)
-    //})
-    //execSync('ps -ef | grep keep', function(error, stdout, stderr) {
-    //  data.keeps = stdout
-      //saveKeeps(stdout)
-    //})
-    //execSync('ls -l ../*/server.log', function(error, stdout, stderr) {
-  //    data.logs = stdout
-      //saveLogs(stdout)
-  //  })
-    console.log(data)
     saveData(data)
     emit('updateLastUpdated', new Date().toGMTString())
   }, 10000)
