@@ -48,7 +48,7 @@ io.on("connection", (socket) => {
     connectDebugOff || console.log(`User with socket id ${socket.id} has disconnected. (${connections} connections)`)
   })
 
-  socket.on('load', () => { dbStore.saveData(debugOn) })
+  socket.on('load', () => { dbStore.saveData(debugOn, io) })
 });
 
 var port = process.argv[2] || 3012
