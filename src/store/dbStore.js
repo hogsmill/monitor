@@ -73,7 +73,7 @@ function parseLogs(data) {
 
 module.exports = {
 
-  saveData: function() {
+  saveData: function(debugOn) {
 
     const nodes = execSync(`ps -ef | grep node`).toString()
     const keeps = execSync(`ps -ef | grep keep`).toString()
