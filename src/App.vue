@@ -39,6 +39,12 @@ export default {
     console.log("Connecting to: " + connStr)
     this.socket = io(connStr)
 
+    const self = this
+    setInterval(function() {
+      self.socket.emit('load')
+      self.$store.dispatch("updateLastUpdated", new Date().toGMTString())
+    }, 5000)
+
     this.socket.on("updateProcesses", (data) => {
       this.$store.dispatch("updateProcesses", data)
     })
@@ -49,10 +55,6 @@ export default {
 
     this.socket.on("updateLogs", (data) => {
       this.$store.dispatch("updateLogs", data)
-    })
-
-    this.socket.on("updateLastUpdated", (data) => {
-      this.$store.dispatch("updateLastUpdated", data)
     })
   }
 }

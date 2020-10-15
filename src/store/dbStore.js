@@ -1,4 +1,6 @@
 
+const execSync = require('child_process').execSync;
+
 function state() {
   return {
     3000: {port: 3000, app: 'coin-game', running: false, keep: true},
@@ -71,21 +73,21 @@ function parseLogs(data) {
 
 module.exports = {
 
-  saveData: function(err, client, db, io, data, debugOn) {
+  saveData: function() {
 
-    if (debugOn) { console.log('saveData', data) }
+    const nodes = execSync(`ps -ef | grep node`).toString()
+    const keeps = execSync(`ps -ef | grep keep`).toString()
+    const logs = execSync("ls -l /usr/apps/\*/server.log").toString()
 
-    const nodes = parseProcesses(data.node)
-    const keeps = parseKeeps(data.keeps)
-    const logs = parseLogs(data.logs)
+    if (debugOn) { console.log('saveData', node, keeps, logs) }
+
+    nodes = parseProcesses(node)
+    keeps = parseKeeps(keeps)
+    logs = parseLogs(logs)
 
     io.emit('updateProcesses', nodes)
     io.emit('updateKeeps', keeps)
     io.emit('updateLogs', logs)
-
-    //db.collection('monitor').insertOne({gameName: data.gameName}, function(err, res) {
-    //  if (err) throw err;
-    //})
   }
 
 }
