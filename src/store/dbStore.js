@@ -75,9 +75,9 @@ module.exports = {
 
   saveData: function(debugOn) {
 
-    const nodes = execSync(`ps -ef | grep node`).toString()
-    const keeps = execSync(`ps -ef | grep keep`).toString()
-    const logs = execSync("ls -l /usr/apps/\*/server.log").toString()
+    let nodes = execSync(`ps -ef | grep node`).toString()
+    let keeps = execSync(`ps -ef | grep keep`).toString()
+    let logs = execSync("ls -l /usr/apps/\*/server.log").toString()
 
     if (debugOn) { console.log('saveData', nodes, keeps, logs) }
 
