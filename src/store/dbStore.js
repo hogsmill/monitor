@@ -79,9 +79,9 @@ module.exports = {
     const keeps = execSync(`ps -ef | grep keep`).toString()
     const logs = execSync("ls -l /usr/apps/\*/server.log").toString()
 
-    if (debugOn) { console.log('saveData', node, keeps, logs) }
+    if (debugOn) { console.log('saveData', nodes, keeps, logs) }
 
-    nodes = parseProcesses(node)
+    nodes = parseProcesses(nodes)
     keeps = parseKeeps(keeps)
     logs = parseLogs(logs)
 
