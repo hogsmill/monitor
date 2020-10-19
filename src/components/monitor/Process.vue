@@ -8,7 +8,7 @@
     <tbody>
       <tr v-for="(app, index) in processes" :key="index">
         <td :class="status(app)">{{ app.port }}</td>
-        <td :class="status(app)">{{ app.app }}</td>
+        <td :class="status(app)">{{ app.name }}</td>
         <td :class="status(app)">
           <span v-if="app.running">TRUE</span>
           <span v-if="!app.running">FALSE</span>
