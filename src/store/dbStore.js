@@ -1,7 +1,23 @@
 
 const execSync = require('child_process').execSync;
+const fs = require('fs')
 
 function state() {
+
+  let apps = {}
+  const data = fs.readFileSync('/usr/keep/apps.txt', 'utf8').split("\n")
+  for (let i = 0; i < data.lengthl i++) {
+    const fields = data[i].split(",")
+    apps[fields[0]] = {
+      port: fields[0],
+      app: fields[1],
+      name: fields[2]
+    }
+  }
+
+  return apps
+
+  /*
   return {
     3000: {port: 3000, app: 'coin-game', running: false, keep: true},
     3001: {port: 3001, app: 'do-others-work-first-js', running: false, keep: false},
@@ -17,6 +33,7 @@ function state() {
     3011: {port: 3011, app: 'survival', running: false, keep: true},
     3012: {port: 3012, app: 'monitor', running: false, keep: true}
   }
+  */
 }
 
 function parseProcesses(data) {
@@ -33,22 +50,6 @@ function parseProcesses(data) {
     }
   }
   return processes
-}
-
-function parseKeeps(data) {
-  let keeps = state()
-  const splitData = data.split("\n")
-  for (let i = 0; i < splitData.length; i++) {
-    if (splitData[i].match(/keep.sh/)) {
-      const fields = splitData[i].split(/keep.sh/)[1]
-      const port = fields.substr(1, 4)
-      if (!keeps[port]) {
-        keeps[port] = {}
-      }
-      keeps[port].running = true
-    }
-  }
-  return keeps
 }
 
 function parseLogs(data) {
@@ -75,18 +76,20 @@ module.exports = {
 
   saveData: function(debugOn, io) {
 
-    let nodes = execSync(`ps -ef | grep node`).toString()
-    let keeps = execSync(`ps -ef | grep keep`).toString()
+    let nodes = execSync(`ps -ef | grep node | grep -v grep`).toString()
+    let keep = execSync(`ps -ef | grep keep | grep -v grep`).toString()
+    let node = execSync(`ps -ef | grep keep | grep -v grep`).toString()
+    let logs = execSync("ls -l /usr/apps/\*/server.log").toString()
     let logs = execSync("ls -l /usr/apps/\*/server.log").toString()
 
     if (debugOn) { console.log('saveData', nodes, keeps, logs) }
 
     nodes = parseProcesses(nodes)
-    keeps = parseKeeps(keeps)
     logs = parseLogs(logs)
 
     io.emit('updateProcesses', nodes)
-    io.emit('updateKeeps', keeps)
+    io.emit('updateKeep', keep)
+    io.emit('updateMongo', mongo)
     io.emit('updateLogs', logs)
   }
 

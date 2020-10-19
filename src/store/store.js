@@ -7,7 +7,8 @@ export const store = new Vuex.Store({
   state: {
     lastUpdated: '',
     processes: [],
-    keeps: [],
+    keep: false,
+    mongo: false,
     logs: []
   },
   getters: {
@@ -17,8 +18,11 @@ export const store = new Vuex.Store({
     getProcesses: (state) => {
       return state.processes;
     },
-    getKeeps: (state) => {
-      return state.keeps;
+    getKeep: (state) => {
+      return state.keep;
+    },
+    getMongo: (state) => {
+      return state.mongo;
     },
     getLogs: (state) => {
       return state.logs;
@@ -31,8 +35,11 @@ export const store = new Vuex.Store({
     updateProcesses: (state, payload) => {
       state.processes = payload;
     },
-    updateKeeps: (state, payload) => {
-      state.keeps = payload;
+    updateKeep: (state, payload) => {
+      state.keep = !!payload;
+    },
+    updateMongo: (state, payload) => {
+      state.mongo = !!payload;
     },
     updateLogs: (state, payload) => {
       state.logs = payload;
@@ -45,8 +52,11 @@ export const store = new Vuex.Store({
     updateProcesses: ({ commit }, payload) => {
       commit("updateProcesses", payload);
     },
-    updateKeeps: ({ commit }, payload) => {
-      commit("updateKeeps", payload);
+    updateKeep: ({ commit }, payload) => {
+      commit("updateKeep", payload);
+    },
+    updateMongo: ({ commit }, payload) => {
+      commit("updateMongo", payload);
     },
     updateLogs: ({ commit }, payload) => {
       commit("updateLogs", payload);

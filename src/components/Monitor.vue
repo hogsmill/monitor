@@ -7,8 +7,20 @@
           <Process :processes="processes" :scope="'app'" />
         </td>
         <td class="outer">
-          <h2>Keeps</h2>
-          <Process :processes="keeps" :scope="'keep'" />
+          <h2>Procs</h2>
+          <table>
+            <tr>
+              <td>
+                <input type="checkbox" :value="keep" />
+              </td>
+              <td>Keep</td>
+            </tr>
+            <td>
+              <input type="checkbox" :value="mongo" />
+            </td>
+            <td>Mongo</td>
+          </tr>
+          </table>
         </td>
         <td class="outer">
           <h2>Logs</h2>
@@ -46,16 +58,14 @@ export default {
     processes() {
       return this.$store.getters.getProcesses
     },
-    keeps() {
-      return this.$store.getters.getKeeps
+    keep() {
+      return this.$store.getters.getKeep
+    },
+    mongo() {
+      return this.$store.getters.getMongo
     },
     logs() {
       return this.$store.getters.getLogs
-    }
-  },
-  methods: {
-    status(app) {
-      return app.running ? 'running' : 'not-running'
     }
   }
 }
