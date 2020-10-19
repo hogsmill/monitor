@@ -78,8 +78,7 @@ module.exports = {
 
     let nodes = execSync(`ps -ef | grep node | grep -v grep`).toString()
     let keep = execSync(`ps -ef | grep keep | grep -v grep`).toString()
-    let node = execSync(`ps -ef | grep keep | grep -v grep`).toString()
-    let logs = execSync("ls -l /usr/apps/\*/server.log").toString()
+    let mongo = execSync(`ps -ef | grep mongo | grep -v grep`).toString()
     let logs = execSync("ls -l /usr/apps/\*/server.log").toString()
 
     if (debugOn) { console.log('saveData', nodes, keeps, logs) }
