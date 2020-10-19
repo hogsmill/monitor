@@ -77,9 +77,21 @@ module.exports = {
   saveData: function(debugOn, io) {
 
     let nodes = execSync(`ps -ef | grep node | grep -v grep`).toString()
-    let keep = execSync(`ps -ef | grep keep | grep -v grep`).toString()
-    let mongo = execSync(`ps -ef | grep mongo | grep -v grep`).toString()
     let logs = execSync("ls -l /usr/apps/\*/server.log").toString()
+
+    let keep, mongo
+    try {
+      execSync(`ps -ef | grep keep | grep -v grep`).toString()
+      keep = true
+    } catch(e) {
+      keep = false
+    }
+    try {
+      execSync(`ps -ef | grep mongo | grep -v grep`).toString()
+      mongo = true
+    } catch(e) {
+      mongo = false
+    }
 
     if (debugOn) { console.log('saveData', nodes, keeps, logs) }
 
