@@ -83,6 +83,7 @@ export default {
 <style lang="scss">
   h2, th {
     color: #000;
+    padding: 2px 20px;
   }
   td.outer {
     vertical-align: top;
