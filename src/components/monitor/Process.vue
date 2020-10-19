@@ -26,21 +26,13 @@ export default {
   ],
   methods: {
     status(app) {
-      if (this.scope == 'keep' && !app.keep) {
-        return 'not-applicable'
-      } else {
-        return app.running ? 'running' : 'not-running'
-      }
+      return app.running ? 'running' : 'not-running'
     }
   }
 }
 </script>
 
 <style lang="scss">
-  .not-applicable {
-    background-color: #ccc;
-    color: #666;
-  }
   .running {
     background-color: green;
   }

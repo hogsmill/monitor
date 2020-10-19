@@ -17,16 +17,16 @@
             </thead>
             <tbody>
               <tr>
-                <td>
-                  <input type="checkbox" :value="keep" /> {{keep}}
+                <td :class="status(keep)">
+                  <input type="checkbox" :checked="keep" />
                 </td>
-                <td>Keep</td>
+                <td :class="status(keep)">Keep</td>
               </tr>
               <tr>
-                <td>
-                  <input type="checkbox" :value="mongo" /> {{mongo}}
+                <td :class="status(mongo)">
+                  <input type="checkbox" :checked="mongo" />
                 </td>
-                <td>Mongo</td>
+                <td :class="status(mongo)">Mongo</td>
               </tr>
             </tbody>
           </table>
@@ -76,6 +76,11 @@ export default {
     logs() {
       return this.$store.getters.getLogs
     }
+  },
+  methods: {
+    status(proc) {
+      return proc ? 'running' : 'not-running'
+    }
   }
 }
 </script>
@@ -101,5 +106,11 @@ export default {
         color: #000;
       }
     }
+  }
+  .running {
+    background-color: green;
+  }
+  .not-running {
+    background-color: red;
   }
 </style>
