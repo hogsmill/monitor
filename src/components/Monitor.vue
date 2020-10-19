@@ -11,20 +11,20 @@
           <table class="logs">
             <thead>
               <tr>
-                <td>Status</td>
-                <td>Process</td>
+                <th>Status</th>
+                <th>Process</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>
-                  <input type="checkbox" :value="keep" />
+                  <input type="checkbox" :value="keep" /> {{keep}}
                 </td>
                 <td>Keep</td>
               </tr>
               <tr>
                 <td>
-                  <input type="checkbox" :value="mongo" />
+                  <input type="checkbox" :value="mongo" /> {{mongo}}
                 </td>
                 <td>Mongo</td>
               </tr>
@@ -35,9 +35,9 @@
           <h2>Logs</h2>
           <table class="logs">
             <thead>
-            <th>App</th>
-            <th>Date</th>
-            <th>Size</th>
+              <th>App</th>
+              <th>Date</th>
+              <th>Size</th>
             </thead>
             <tbody>
               <tr v-for="(log, index) in logs" :key="index">
