@@ -15,11 +15,12 @@
               </td>
               <td>Keep</td>
             </tr>
-            <td>
-              <input type="checkbox" :value="mongo" />
-            </td>
-            <td>Mongo</td>
-          </tr>
+            <tr>
+              <td>
+                <input type="checkbox" :value="mongo" />
+              </td>
+              <td>Mongo</td>
+            </tr>
           </table>
         </td>
         <td class="outer">
