@@ -9,18 +9,26 @@
         <td class="outer">
           <h2>Procs</h2>
           <table class="logs">
-            <tr>
-              <td>
-                <input type="checkbox" :value="keep" />
-              </td>
-              <td>Keep</td>
-            </tr>
-            <tr>
-              <td>
-                <input type="checkbox" :value="mongo" />
-              </td>
-              <td>Mongo</td>
-            </tr>
+            <thead>
+              <tr>
+                <td>Status</td>
+                <td>Process</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input type="checkbox" :value="keep" />
+                </td>
+                <td>Keep</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" :value="mongo" />
+                </td>
+                <td>Mongo</td>
+              </tr>
+            </tbody>
           </table>
         </td>
         <td class="outer">
