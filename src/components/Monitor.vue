@@ -8,7 +8,7 @@
         </td>
         <td class="outer">
           <h2>Procs</h2>
-          <table>
+          <table class="logs">
             <tr>
               <td>
                 <input type="checkbox" :value="keep" />
