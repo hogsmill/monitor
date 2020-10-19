@@ -23,5 +23,3 @@ if [ -f "src/server.js" ]; then
     kill -9 $SERVER
   fi
 fi
-
-ps -ef | grep node
