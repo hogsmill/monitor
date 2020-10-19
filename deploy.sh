@@ -22,7 +22,6 @@ if [ -f "src/server.js" ]; then
   if [ "$SERVER" != "" ]; then
     kill -9 $SERVER
   fi
-  node src/server.js $PORT 'Monitor' &
 fi
 
 ps -ef | grep node
