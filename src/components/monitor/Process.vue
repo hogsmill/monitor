@@ -10,7 +10,7 @@
         <td :class="status(app)">{{ app.port }}</td>
         <td :class="status(app)">{{ app.name }}</td>
         <td :class="status(app)">
-          <span v-if="app.running">TRUE</span>
+          <span v-if="app.running">{{ app.time }}</span>
           <span v-if="!app.running">FALSE</span>
         </td>
       </tr>

@@ -23,13 +23,17 @@ function parseProcesses(data) {
   let processes = state()
   const splitData = data.split("\n")
   for (let i = 0; i < splitData.length; i++) {
+
+    // Format: root      69680  67829  0 13:28 pts/1    00:00:00 node /usr/apps/coin-game/src/server.js 3000 Coin Game
+
     if (splitData[i].match(/server.js/)) {
-      const fields = splitData[i].split(/server.js/)[1]
-      const port = fields.substr(1, 4)
+      const fields = splitData[i].split(/\s+/)
+      const port = fields[9]
       if (!processes[port]) {
         processes[port] = {}
       }
       processes[port].running = true
+      processes[port].time = fields[4]
     }
   }
   return processes
