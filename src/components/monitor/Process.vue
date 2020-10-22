@@ -26,13 +26,22 @@ export default {
   ],
   methods: {
     status(app) {
-      return app.running ? 'running' : 'not-running'
+      if (! app.running) {
+        return 'not-running'
+      } else if (app.time.match(/^[0-9])) {
+        return 'today'
+      } else {
+        return 'running'
+      }
     }
   }
 }
 </script>
 
 <style lang="scss">
+  .today {
+    background-color: lightgreen;
+  }
   .running {
     background-color: green;
   }
