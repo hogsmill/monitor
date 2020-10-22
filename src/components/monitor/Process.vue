@@ -40,7 +40,7 @@ export default {
 
 <style lang="scss">
   .today {
-    background-color: lightgreen;
+    background-color: #32CD32;
   }
   .running {
     background-color: green;
