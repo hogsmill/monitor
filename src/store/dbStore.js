@@ -43,7 +43,7 @@ function parseLogs(data) {
   let logs = []
   const splitData = data.split("\n")
   for (let i = 0; i < splitData.length; i++) {
-    if (splitData[i].match(/root root/) && splitData[i].match(/server.log/)) {
+    if (splitData[i].match(/root root/) && splitData[i].match(/.log/)) {
       let log = {}
 
       // Format: -rw-r--r-- 1 root root 71 Oct 24 10:12 monitor.log
