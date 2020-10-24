@@ -20,6 +20,6 @@ cp -R dist/* /var/www/html/$APP
 if [ -f "src/server.js" ]; then
   SERVER=`ps -ef | grep server.js | grep $PORT | awk {'print $2'}`
   if [ "$SERVER" != "" ]; then
-    kill -9 $SERVER
+    kill $SERVER
   fi
 fi
