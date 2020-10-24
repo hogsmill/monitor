@@ -46,12 +46,12 @@ function parseLogs(data) {
     if (splitData[i].match(/root root/) && splitData[i].match(/server.log/)) {
       let log = {}
 
-      // Format: -rw-r--r-- 1 root root  47 Oct 14 11:07 /usr/apps/battleships/server.log
+      // Format: -rw-r--r-- 1 root root 71 Oct 24 10:12 monitor.log
 
       const fields = splitData[i].split (/\s+/)
       log.size = fields[4]
       log.date = fields[5] + ' ' + fields[6] + ' ' + fields[7]
-      let app = fields[8].split('/')
+      let app = fields[8]
       log.app = app[3]
       logs.push(log)
     }
