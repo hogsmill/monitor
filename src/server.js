@@ -1,12 +1,13 @@
 const fs = require('fs')
 const ON_DEATH = require('death')({uncaughtException: true})
+const logFile = process.argv[3]
 
 ON_DEATH(function(signal, err) {
   let logStr = new Date() + ' ' + signal + '\n'
   if (err && err.stack) {
     logStr = logStr + '  ' + err.stack + '\n'
   }
-  fs.appendFile('server.log', logStr, function (err) {
+  fs.appendFile(logFile, logStr, function (err) {
     if (err) console.log(err)
     process.exit()
   })
