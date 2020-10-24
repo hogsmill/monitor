@@ -1,6 +1,6 @@
 const fs = require('fs')
 const ON_DEATH = require('death')({uncaughtException: true})
-const logFile = process.argv[3]
+const logFile = process.argv[4]
 
 ON_DEATH(function(signal, err) {
   let logStr = new Date() + ' ' + signal + '\n'
