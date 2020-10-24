@@ -64,15 +64,9 @@ module.exports = {
   saveData: function(debugOn, io) {
 
     let nodes = execSync(`ps -ef | grep node | grep -v grep`).toString()
-    let logs = execSync("ls -l /usr/apps/\*/server.log").toString()
+    let logs = execSync("ls -l /usr/apps/logs").toString()
 
-    let keep, mongo
-    try {
-      execSync(`ps -ef | grep keep | grep -v grep`).toString()
-      keep = true
-    } catch(e) {
-      keep = false
-    }
+    let mongo
     try {
       execSync(`ps -ef | grep mongo | grep -v grep`).toString()
       mongo = true
@@ -80,13 +74,12 @@ module.exports = {
       mongo = false
     }
 
-    if (debugOn) { console.log('saveData', nodes, keeps, logs) }
+    if (debugOn) { console.log('saveData', nodes, logs, mongo) }
 
     nodes = parseProcesses(nodes)
     logs = parseLogs(logs)
 
     io.emit('updateProcesses', nodes)
-    io.emit('updateKeep', keep)
     io.emit('updateMongo', mongo)
     io.emit('updateLogs', logs)
   }

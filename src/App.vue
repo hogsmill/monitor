@@ -49,10 +49,6 @@ export default {
       this.$store.dispatch("updateProcesses", data)
     })
 
-    this.socket.on("updateKeep", (data) => {
-      this.$store.dispatch("updateKeep", data)
-    })
-
     this.socket.on("updateMongo", (data) => {
       this.$store.dispatch("updateMongo", data)
     })

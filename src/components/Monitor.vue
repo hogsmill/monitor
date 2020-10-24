@@ -18,12 +18,6 @@
             <tbody>
               <tr>
                 <td>
-                  <input type="checkbox" :checked="keep" />
-                </td>
-                <td>Keep</td>
-              </tr>
-              <tr>
-                <td>
                   <input type="checkbox" :checked="mongo" />
                 </td>
                 <td>Mongo</td>
