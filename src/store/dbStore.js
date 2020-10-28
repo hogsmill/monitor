@@ -85,8 +85,9 @@ module.exports = {
 
   getLog: function(debug, io, data) {
 
-    fs.readFile('/usr/apps/logs/' + data.log, 'utf8', function(err, data) {
+    fs.readFile('/usr/apps/logs/' + data.app, 'utf8', function(err, data) {
       if (err) throw err;
+      data.log = data
       io.emit('getLog', data)
     })
 

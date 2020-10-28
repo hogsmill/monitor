@@ -39,16 +39,18 @@
                 <td>{{ log.date }}</td>
                 <td>{{ log.size }}</td>
               </tr>
+              <tr v-if="log.app == currentLog.app">
+                <td colspan="3" class="log-div">
+                  <div>
+                    <button @click="clearLog()">Done</button>
+                  </div>
+                  <div>
+                    {{ currentLog.log }}
+                  </div>
+                </td>
+              </tr>
             </tbody>
           </table>
-          <div v-if="log" class="log-div">
-            <div>
-              <button @click="clearLog()">Done</button>
-            </div>
-            <div>
-              {{ log }}
-            </div>
-          </div>
         </td>
       </tr>
     </table>
@@ -78,16 +80,16 @@ export default {
     logs() {
       return this.$store.getters.getLogs
     },
-    log() {
+    currentLog() {
       return this.$store.getters.getLog
     }
   },
   methods: {
     getLog(log) {
-      this.socket.emit('getLog', {log: log.app})
+      this.socket.emit('getLog', {app: log.app})
     },
     clearLog() {
-      this.$store.dispatch("updateLog", '')
+      this.$store.dispatch("updateLog", {app: '', log: ''})
     }
   }
 }

@@ -9,7 +9,7 @@ export const store = new Vuex.Store({
     processes: [],
     mongo: false,
     logs: [],
-    log: ''
+    log: {app: '', data: ''}
   },
   getters: {
     getLastUpdated: (state) => {
@@ -42,7 +42,8 @@ export const store = new Vuex.Store({
       state.logs = payload;
     },
     updateLog: (state, payload) => {
-      state.log = payload;
+      state.log.app = payload.app
+      state.log.log = payload.log;
     }
   },
   actions: {
