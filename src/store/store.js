@@ -9,7 +9,7 @@ export const store = new Vuex.Store({
     processes: [],
     mongo: false,
     logs: [],
-    log: {app: '', data: ''}
+    log: {app: '', log: ''}
   },
   getters: {
     getLastUpdated: (state) => {
