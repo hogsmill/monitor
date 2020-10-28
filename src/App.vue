@@ -59,7 +59,7 @@ export default {
 
     this.socket.on("getLog", (data) => {
       console.log(data)
-      //this.$store.dispatch("getLog", data)
+      this.$store.dispatch("updateLog", data)
     })
   }
 }

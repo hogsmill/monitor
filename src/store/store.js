@@ -8,7 +8,8 @@ export const store = new Vuex.Store({
     lastUpdated: '',
     processes: [],
     mongo: false,
-    logs: []
+    logs: [],
+    log: ''
   },
   getters: {
     getLastUpdated: (state) => {
@@ -22,6 +23,9 @@ export const store = new Vuex.Store({
     },
     getLogs: (state) => {
       return state.logs;
+    },
+    getLog: (state) => {
+      return state.log;
     }
   },
   mutations: {
@@ -36,6 +40,9 @@ export const store = new Vuex.Store({
     },
     updateLogs: (state, payload) => {
       state.logs = payload;
+    },
+    updateLog: (state, payload) => {
+      state.log = payload;
     }
   },
   actions: {
@@ -50,6 +57,9 @@ export const store = new Vuex.Store({
     },
     updateLogs: ({ commit }, payload) => {
       commit("updateLogs", payload);
+    },
+    updateLog: ({ commit }, payload) => {
+      commit("updateLog", payload);
     }
   }
 });

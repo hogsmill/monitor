@@ -27,7 +27,7 @@
         </td>
         <td class="outer">
           <h2>Logs</h2>
-          <table class="logs">
+          <table v-if="!log" class="logs">
             <thead>
               <th>App</th>
               <th>Date</th>
@@ -41,6 +41,14 @@
               </tr>
             </tbody>
           </table>
+          <div v-if="log">
+            <div>
+              <button @click="clearLog()">Done</button>
+            </div>
+            <div>
+              {{ log }}
+            </div>
+          </div>
         </td>
       </tr>
     </table>
@@ -69,11 +77,17 @@ export default {
     },
     logs() {
       return this.$store.getters.getLogs
+    },
+    log() {
+      return this.$store.getters.getLog
     }
   },
   methods: {
     getLog(log) {
       this.socket.emit('getLog', {log: log.app})
+    },
+    clearLog() {
+      this.$store.dispatch("updateLog", '')
     }
   }
 }
