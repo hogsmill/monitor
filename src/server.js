@@ -51,7 +51,7 @@ io.on("connection", (socket) => {
 
   socket.on('load', () => { dbStore.saveData(debugOn, io) })
 
-  socket.on('getLog', () => { dbStore.getLog(debugOn, io) })
+  socket.on('getLog', (data) => { dbStore.getLog(debugOn, io, data) })
 });
 
 var port = process.argv[2] || 3012
