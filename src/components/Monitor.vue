@@ -35,7 +35,7 @@
             </thead>
             <tbody>
               <tr v-for="(log, index) in logs" :key="index">
-                <td>{{ log.app }}</td>
+                <td class="link" @click="getLog(log)">{{ log.app }}</td>
                 <td>{{ log.date }}</td>
                 <td>{{ log.size }}</td>
               </tr>
@@ -70,6 +70,11 @@ export default {
     logs() {
       return this.$store.getters.getLogs
     }
+  },
+  methods: {
+    getLog(log) {
+      this.socket.emit('getLog', {log: log.app})
+    }
   }
 }
 </script>
@@ -96,5 +101,9 @@ export default {
         color: #000;
       }
     }
+  }
+  .link:hover {
+    color: #888;
+    text-decoration: underline;
   }
 </style>

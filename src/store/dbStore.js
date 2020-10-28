@@ -81,6 +81,12 @@ module.exports = {
     io.emit('updateProcesses', nodes)
     io.emit('updateMongo', mongo)
     io.emit('updateLogs', logs)
+  },
+
+  getLog: function(debug, io, data) {
+
+    console.log(data)
+
   }
 
 }
