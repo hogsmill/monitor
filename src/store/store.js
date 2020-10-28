@@ -44,7 +44,6 @@ export const store = new Vuex.Store({
     updateLog: (state, payload) => {
       state.log.app = payload.app
       state.log.log = payload.log;
-      console.log(state, payload)
     }
   },
   actions: {

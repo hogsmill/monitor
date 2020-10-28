@@ -27,7 +27,6 @@
         </td>
         <td class="outer logs">
           <h2>Logs</h2>
-          <p>CurrentLog: '{{ currentLog }}'</p>
           <table v-if="!log" class="logs">
             <thead>
               <th>App</th>
@@ -36,7 +35,7 @@
             </thead>
             <tbody>
               <tr v-for="(log, index) in logs" :key="index">
-                <td v-if="log.app != currentLog.app" class="link" @click="getLog(log)">{{ log.app }} - {{ currentLog.app }}</td>
+                <td v-if="log.app != currentLog.app" class="link" @click="getLog(log)">{{ log.app }}</td>
                 <td v-if="log.app != currentLog.app">{{ log.date }}</td>
                 <td v-if="log.app != currentLog.app">{{ log.size }}</td>
                 <td v-if="log.app == currentLog.app" colspan="3" class="log-div">
@@ -44,7 +43,7 @@
                     <button @click="clearLog()">Done</button>
                   </div>
                   <div>
-                    {{ currentLog.log }}
+                    <pre>{{ currentLog.log }}</pre>
                   </div>
                 </td>
               </tr>
