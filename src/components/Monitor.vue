@@ -27,6 +27,7 @@
         </td>
         <td class="outer logs">
           <h2>Logs</h2>
+          {{ currentLog }}
           <table v-if="!log" class="logs">
             <thead>
               <th>App</th>
