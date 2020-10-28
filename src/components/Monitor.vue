@@ -35,12 +35,10 @@
             </thead>
             <tbody>
               <tr v-for="(log, index) in logs" :key="index">
-                <td class="link" @click="getLog(log)">{{ log.app }}</td>
-                <td>{{ log.date }}</td>
-                <td>{{ log.size }}</td>
-              </tr>
-              <tr v-if="log.app == currentLog.app">
-                <td colspan="3" class="log-div">
+                <td v-if="log.app != currentLog.app"class="link" @click="getLog(log)">{{ log.app }}</td>
+                <td v-if="log.app != currentLog.app">{{ log.date }}</td>
+                <td v-if="log.app != currentLog.app">{{ log.size }}</td>
+                <td v-if="log.app == currentLog.app" colspan="3" class="log-div">
                   <div>
                     <button @click="clearLog()">Done</button>
                   </div>
