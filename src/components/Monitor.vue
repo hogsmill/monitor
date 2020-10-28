@@ -122,7 +122,7 @@ export default {
   }
   .log-div {
     text-align: left;
-    color: 000;
+    color: #000;
   }
   .link:hover {
     color: #888;
