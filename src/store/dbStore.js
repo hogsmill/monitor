@@ -90,7 +90,11 @@ module.exports = {
       data.log = log
       io.emit('getLog', data)
     })
+  },
 
+  deleteLog: function(debug, io, data) {
+
+    execSync("rm /usr/apps/logs/" + data.app)
   }
 
 }
