@@ -36,7 +36,7 @@
             </thead>
             <tbody>
               <tr v-for="(log, index) in logs" :key="index">
-                <td v-if="log.app != currentLog.app" class="link" @click="getLog(log)">{{ log.app }}</td>
+                <td v-if="log.app != currentLog.app" class="link" @click="getLog(log)">{{ log.app }} - {{ currentLog.app }}</td>
                 <td v-if="log.app != currentLog.app">{{ log.date }}</td>
                 <td v-if="log.app != currentLog.app">{{ log.size }}</td>
                 <td v-if="log.app == currentLog.app" colspan="3" class="log-div">
