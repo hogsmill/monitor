@@ -25,7 +25,7 @@
             </tbody>
           </table>
         </td>
-        <td class="outer">
+        <td class="outer logs">
           <h2>Logs</h2>
           <table v-if="!log" class="logs">
             <thead>
@@ -41,7 +41,7 @@
               </tr>
             </tbody>
           </table>
-          <div v-if="log">
+          <div v-if="log" class="log-div">
             <div>
               <button @click="clearLog()">Done</button>
             </div>
@@ -100,6 +100,10 @@ export default {
   }
   td.outer {
     vertical-align: top;
+
+    &.logs {
+      width: 400px;
+    }
   }
   table {
     margin: 0 auto;
@@ -115,6 +119,10 @@ export default {
         color: #000;
       }
     }
+  }
+  .log-div {
+    text-align: left;
+    color: 000;
   }
   .link:hover {
     color: #888;
