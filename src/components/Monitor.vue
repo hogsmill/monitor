@@ -88,7 +88,9 @@ export default {
       this.socket.emit('getLog', {app: log.app})
     },
     deleteLog(log) {
-      this.socket.emit('deleteLog', {app: log.app})
+      if (confirm('Delete ' + log.app + '?')) {
+        this.socket.emit('deleteLog', {app: log.app})
+      }
     },
     clearLog() {
       this.$store.dispatch("updateLog", {app: '', log: ''})
