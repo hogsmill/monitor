@@ -38,7 +38,7 @@
                 <td v-if="log.app != currentLog.app" class="link" @click="getLog(log)">{{ log.app }}</td>
                 <td v-if="log.app != currentLog.app">{{ log.date }}</td>
                 <td v-if="log.app != currentLog.app">{{ log.size }}</td>
-                <td v-if="log.app != currentLog.app"><button class="btn btn-sm btn-secondary smaller-font" @click="deleteLog(log.app)">Delete</button></td>
+                <td v-if="log.app != currentLog.app"><button class="btn btn-sm btn-secondary smaller-font" @click="deleteLog(log)">Delete</button></td>
                 <td v-if="log.app == currentLog.app" colspan="4" class="log-div">
                   <div>
                     <button class="btn btn-sm btn-secondary smaller-font" @click="clearLog()">Done</button> {{ log.app}}
