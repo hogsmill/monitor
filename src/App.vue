@@ -56,6 +56,11 @@ export default {
     this.socket.on("updateLogs", (data) => {
       this.$store.dispatch("updateLogs", data)
     })
+
+    this.socket.on("getLog", (data) => {
+      console.log(data)
+      //this.$store.dispatch("getLog", data)
+    })
   }
 }
 </script>

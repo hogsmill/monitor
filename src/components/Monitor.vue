@@ -73,7 +73,6 @@ export default {
   },
   methods: {
     getLog(log) {
-      console.log(log)
       this.socket.emit('getLog', {log: log.app})
     }
   }
