@@ -9,6 +9,14 @@
         <Monitor v-bind:socket="socket" />
       </div>
     </div>
+
+    <h1>Local Utils</h1>
+    <div class="container">
+      <div class="row">
+        <Utils />
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -18,12 +26,14 @@ import io from "socket.io-client";
 import Header from "./components/Header.vue";
 
 import Monitor from "./components/Monitor.vue";
+import Utils from "./components/Utils.vue";
 
 export default {
   name: 'App',
   components: {
     appHeader: Header,
-    Monitor
+    Monitor,
+    Utils
   },
   computed: {
     lastUpdated() {
