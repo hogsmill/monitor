@@ -60,7 +60,7 @@ export default {
     }, 60000)
 
     self.socket.emit('load')
-    self.socket.emit('loadGames')
+    self.socket.emit('getGames')
 
     this.socket.on("updateProcesses", (data) => {
       this.$store.dispatch("updateProcesses", data)
