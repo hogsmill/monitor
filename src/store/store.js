@@ -18,6 +18,9 @@ export const store = new Vuex.Store({
     getProcesses: (state) => {
       return state.processes;
     },
+    getGames: (state) => {
+      return state.games;
+    },
     getMongo: (state) => {
       return state.mongo;
     },
@@ -36,16 +39,7 @@ export const store = new Vuex.Store({
       state.processes = payload;
     },
     updateGames: (state, payload) => {
-      const keys = Object.keys(state.processes)
-      for (let i = 0; i < keys.length; i++) {
-        const proc = state.processes[keys[i]]
-        for (let j = 0; j < payload.length; j++) {
-          if (proc.name == payload[j].name) {
-            proc.games = payload[j].games
-          }
-        }
-      }
-      console.log(state)
+      state.games = payload
     },
     updateMongo: (state, payload) => {
       state.mongo = !!payload;

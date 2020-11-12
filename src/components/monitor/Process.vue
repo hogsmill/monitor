@@ -14,7 +14,7 @@
           <span v-if="app.running">{{ app.time }}</span>
           <span v-if="!app.running">FALSE</span>
         </td>
-        <td :class="status(app)"><span v-if="app.games">{{ app.games }}</span></td>
+        <td :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].games }}</span></td>
       </tr>
     </tbody>
   </table>
@@ -26,6 +26,11 @@ export default {
     'processes',
     'scope'
   ],
+  computed: {
+    games() {
+      return this.$store.getters.getGames
+    }
+  }
   methods: {
     status(app) {
       if (! app.running) {
