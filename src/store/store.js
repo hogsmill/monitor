@@ -7,6 +7,7 @@ export const store = new Vuex.Store({
   state: {
     lastUpdated: '',
     processes: [],
+    games: {},
     mongo: false,
     logs: [],
     log: {app: '', log: ''}

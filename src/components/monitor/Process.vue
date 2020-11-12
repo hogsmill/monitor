@@ -28,6 +28,7 @@ export default {
   ],
   computed: {
     games() {
+      console.log(this.$store.getters.getGames)
       return this.$store.getters.getGames
     }
   },
