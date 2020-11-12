@@ -36,6 +36,7 @@ export const store = new Vuex.Store({
       state.processes = payload;
     },
     updateGames: (state, payload) => {
+      console.log(payload)
       for (let i = 0; i < state.processes.length; i++) {
         for (let j = 0; j < payload.apps.length; j++) {
           if (state.processes[i].name == payload.apps[j].name) {
@@ -43,6 +44,7 @@ export const store = new Vuex.Store({
           }
         }
       }
+      console.log(state)
     },
     updateMongo: (state, payload) => {
       state.mongo = !!payload;

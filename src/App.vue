@@ -57,7 +57,7 @@ export default {
 
     setInterval(function() {
       self.socket.emit('getGames')
-    }, 6000)
+    }, 60000)
 
     self.socket.emit('load')
     self.socket.emit('loadGames')
@@ -71,7 +71,6 @@ export default {
     })
 
     this.socket.on("updateGames", (data) => {
-      console.log(data)
       this.$store.dispatch("updateGames", data)
     })
 
