@@ -14,7 +14,7 @@
           <span v-if="app.running">{{ app.time }}</span>
           <span v-if="!app.running">FALSE</span>
         </td>
-        <td :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].games }}</span></td>
+        <td :class="status(app)"><span v-if="games[app.name]">{{ games[app.name] }}</span></td>
       </tr>
     </tbody>
   </table>
@@ -28,7 +28,6 @@ export default {
   ],
   computed: {
     games() {
-      console.log(this.$store.getters.getGames)
       return this.$store.getters.getGames
     }
   },
