@@ -30,7 +30,7 @@ export default {
     games() {
       return this.$store.getters.getGames
     }
-  }
+  },
   methods: {
     status(app) {
       if (! app.running) {
