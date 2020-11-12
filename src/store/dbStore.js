@@ -88,7 +88,7 @@ module.exports = {
       { name: 'Coin Game', games: 10},
       { name: 'No Estimates', games: 20}
     ]
-    io.emit('updateGames', logs)
+    io.emit('updateGames', data)
   },
 
   getLog: function(debug, io, data) {
