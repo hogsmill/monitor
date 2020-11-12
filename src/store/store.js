@@ -36,11 +36,12 @@ export const store = new Vuex.Store({
       state.processes = payload;
     },
     updateGames: (state, payload) => {
-      console.log(payload)
-      for (let i = 0; i < state.processes.length; i++) {
+      const keys = Object.keys(state.processes)
+      for (let i = 0; i < keys.length; i++) {
+        const proc = state.processes[keys[i]]
         for (let j = 0; j < payload.apps.length; j++) {
-          if (state.processes[i].name == payload.apps[j].name) {
-            state.processes[i].games = payload.apps[j].games
+          if (proc.name == payload.apps[j].name) {
+            proc.games = payload.apps[j].games
           }
         }
       }
