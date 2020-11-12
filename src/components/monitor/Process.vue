@@ -4,6 +4,7 @@
       <th>Port</th>
       <th>App</th>
       <th>Running</th>
+      <th>Games/Orgs.</th>
     </thead>
     <tbody>
       <tr v-for="(app, index) in processes" :key="index">
@@ -13,6 +14,7 @@
           <span v-if="app.running">{{ app.time }}</span>
           <span v-if="!app.running">FALSE</span>
         </td>
+        <td><span v-if="app.games">{{ app.games }}</span></td>
       </tr>
     </tbody>
   </table>

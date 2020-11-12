@@ -35,6 +35,15 @@ export const store = new Vuex.Store({
     updateProcesses: (state, payload) => {
       state.processes = payload;
     },
+    updateGames: (state, payload) => {
+      for (let i = 0; i < state.processes.length; i++) {
+        for (let j = 0; j < payload.apps.length; j++) {
+          if (state.processes[i].name == payload.apps[j].name) {
+            state.processes[i].games = payload.apps[j].games
+          }
+        }
+      }
+    },
     updateMongo: (state, payload) => {
       state.mongo = !!payload;
     },
@@ -52,6 +61,9 @@ export const store = new Vuex.Store({
     },
     updateProcesses: ({ commit }, payload) => {
       commit("updateProcesses", payload);
+    },
+    updateGames: ({ commit }, payload) => {
+      commit("updateGames", payload);
     },
     updateMongo: ({ commit }, payload) => {
       commit("updateMongo", payload);

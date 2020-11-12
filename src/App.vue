@@ -55,12 +55,23 @@ export default {
       self.$store.dispatch("updateLastUpdated", new Date().toGMTString())
     }, 5000)
 
+    setInterval(function() {
+      self.socket.emit('loadGames')
+    }, 6000)
+
+    self.socket.emit('load')
+    self.socket.emit('loadGames')
+
     this.socket.on("updateProcesses", (data) => {
       this.$store.dispatch("updateProcesses", data)
     })
 
     this.socket.on("updateMongo", (data) => {
       this.$store.dispatch("updateMongo", data)
+    })
+
+    this.socket.on("updateGames", (data) => {
+      this.$store.dispatch("updateGames", data)
     })
 
     this.socket.on("updateLogs", (data) => {

@@ -83,6 +83,13 @@ module.exports = {
     io.emit('updateLogs', logs)
   },
 
+  getGames: function(debug, io) {
+    let data = {
+      'Coin Game': 10,
+      'No Estimates': 20
+    }
+  },
+
   getLog: function(debug, io, data) {
 
     fs.readFile('/usr/apps/logs/' + data.app, 'utf8', function(err, log) {
