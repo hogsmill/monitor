@@ -84,10 +84,11 @@ module.exports = {
   },
 
   getGames: function(debug, io) {
-    let data = {
-      'Coin Game': 10,
-      'No Estimates': 20
-    }
+    let data = [
+      { name: 'Coin Game', games: 10},
+      { name: 'No Estimates', games: 20}
+    ]
+    io.emit('updateGamess', logs)
   },
 
   getLog: function(debug, io, data) {
