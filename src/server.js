@@ -51,7 +51,7 @@ io.on("connection", (socket) => {
 
   socket.on('load', () => { dbStore.saveData(debugOn, io) })
 
-  socket.on('loadGames', () => { dbStore.getGames(debugOn, io) })
+  socket.on('getGames', () => { dbStore.getGames(debugOn, io) })
 
   socket.on('getLog', (data) => { dbStore.getLog(debugOn, io, data) })
 
