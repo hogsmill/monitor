@@ -80,6 +80,7 @@ export default {
     })
 
     this.socket.on("updateGames", (data) => {
+    console.log('getGames', data)
       this.$store.dispatch("updateGames", data)
     })
 
