@@ -44,11 +44,11 @@ function emit(event, data) {
 
 function getGames() {
   let games = [
-    'battleships',
-    'coinGame',
-    'noEstimates',
-    'planningPokerOrganisations',
-    'survival'
+    {game: 'Agile Battleships', collection: 'battleships'},
+    {game: 'Coin Game', collection: 'coinGame'},
+    {game: 'No Estimates', collection: 'noEstimates'},
+    {game: 'Planning Poker', collection: 'planningPokerOrganisations'},
+    {game: 'Survival At Sea', collection: 'survival'}
   ]
   for (let i = 0; i < games.length; i++) {
     MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
