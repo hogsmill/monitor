@@ -71,6 +71,7 @@ export default {
     })
 
     this.socket.on("updateMongoConnections", (data) => {
+    console.log(data)
       this.$store.dispatch("updateMongoConnections", data)
     })
 

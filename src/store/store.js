@@ -51,6 +51,7 @@ export const store = new Vuex.Store({
     },
     updateMongoConnections: (state, payload) => {
       state.mongoConnections = payload;
+      console.log(state)
     },
     updateLogs: (state, payload) => {
       state.logs = payload;
