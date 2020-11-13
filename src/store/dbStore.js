@@ -88,7 +88,7 @@ module.exports = {
     db.collection(data.game).find({}, function(err, res) {
       if (err) throw err
       if (res) {
-        io.emit('updateGames', {game: data.game, games: res.length})
+        io.emit('updateGames', {game: data.game, games: res.length, x: 3})
         client.close()
       }
     })
