@@ -76,9 +76,9 @@ io.on("connection", (socket) => {
 
   socket.on('load', () => { dbStore.saveData(debugOn, io) })
 
-  socket.on('getGames', () => { dbStore.doDb(debugOn, io) })
+  socket.on('getGames', () => { doDb('getGames', debugOn, io) })
 
-  socket.on('getConnections', () => { dbStore.getConnections(debugOn, io) })
+  socket.on('getConnections', () => { doDb('getConnections', debugOn, io) })
 
   socket.on('getLog', (data) => { dbStore.getLog(debugOn, io, data) })
 
