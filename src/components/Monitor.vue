@@ -22,7 +22,7 @@
                 <td>
                   <input type="checkbox" :checked="mongo" />
                 </td>
-                <td><span v-if="mongoConnections">{{ mongoConnections }}</span></td>
+                <td><span v-if="mongoConnections">{{ mongoConnections.current }} / {{ mongoConnections.available }}</span></td>
               </tr>
             </tbody>
           </table>

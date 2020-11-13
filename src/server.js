@@ -59,18 +59,11 @@ function getGames() {
   }
 }
 
-function doDb(fun, data) {
+function getConnections(fun, data) {
   MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
     if (err) throw err
     const db = client.db('db')
-
-    switch(fun) {
-      case 'getConnections':
-        dbStore.getConnections(err, client, db, io, data, debugOn)
-        break
-      default:
-        console.log('Unknown function ', fun)
-    }
+    dbStore.getConnections(err, client, db, io, data, debugOn)
   })
 }
 
@@ -88,7 +81,7 @@ io.on("connection", (socket) => {
     connectDebugOff || console.log(`User with socket id ${socket.id} has disconnected. (${connections} connections)`)
   })
 
-  socket.on('load', () => { dbStore.saveData(debugOn, io) })
+  //socket.on('load', () => { dbStore.saveData(debugOn, io) })
 
   socket.on('getGames', () => { getGames() })
 

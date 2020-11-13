@@ -96,8 +96,12 @@ module.exports = {
   },
 
   getConnections: function(err, client, db, io, data, debugOn) {
-    io.emit('updateMongoConnections', 100)
-    client.close()
+
+    const admin = db.admin()
+    const status = admin.serverStatus(function(err, res) {
+      io.emit('updateMongoConnections', res.connections)
+      client.close()
+    })
   },
 
   getLog: function(debug, io, data) {
