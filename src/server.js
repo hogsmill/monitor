@@ -42,15 +42,29 @@ function emit(event, data) {
   io.emit(event, data)
 }
 
+function getGames() {
+  let games = [
+    'battleships',
+    'coinGame',
+    'noEstimates',
+    'planningPokerOrganisations',
+    'survival'
+  ]
+  for (let i = 0; i < games.length; i++) {
+    MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
+      if (err) throw err
+      const db = client.db('db')
+      doDb('getGames', games[i])
+    })
+  }
+}
+
 function doDb(fun, data) {
   MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
     if (err) throw err
     const db = client.db('db')
 
     switch(fun) {
-      case 'getGames':
-        dbStore.getGames(err, client, db, io, data, debugOn)
-        break
       case 'getConnections':
         dbStore.getConnections(err, client, db, io, data, debugOn)
         break
@@ -76,9 +90,9 @@ io.on("connection", (socket) => {
 
   socket.on('load', () => { dbStore.saveData(debugOn, io) })
 
-  socket.on('getGames', () => { doDb('getGames', debugOn, io) })
+  socket.on('getGames', () => { getGames() })
 
-  socket.on('getConnections', () => { doDb('getConnections', debugOn, io) })
+  socket.on('getConnections', () => { doDb('getConnections') })
 
   socket.on('getLog', (data) => { dbStore.getLog(debugOn, io, data) })
 

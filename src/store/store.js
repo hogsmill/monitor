@@ -44,7 +44,7 @@ export const store = new Vuex.Store({
       state.processes = payload;
     },
     updateGames: (state, payload) => {
-      state.games = payload
+      state.games[payload.game] = payload.games
     },
     updateMongo: (state, payload) => {
       state.mongo = !!payload;

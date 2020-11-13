@@ -84,12 +84,14 @@ module.exports = {
   },
 
   getGames: function(err, client, db, io, data, debugOn) {
-    data = {
-      'Coin Game': 10,
-      'No Estimates': 20
-    }
-    io.emit('updateGames', data)
-    client.close()
+
+    db.collection(data.game).find({}, function(err, res) {
+      if (err) throw err
+      if (res) {
+        io.emit('updateGames', {game: data.game, games: res.length})
+        client.close()
+      }
+    })
   },
 
   getConnections: function(err, client, db, io, data, debugOn) {
