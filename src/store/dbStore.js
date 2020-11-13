@@ -93,7 +93,7 @@ module.exports = {
   },
 
   getConnections: function(err, client, db, io, data, debugOn) {
-    io.emit('updateConnections', 100)
+    io.emit('updateMongoConnections', 100)
     client.close()
   },
 
