@@ -59,8 +59,13 @@ export default {
       self.socket.emit('getGames')
     }, 60000)
 
+    setInterval(function() {
+      self.socket.emit('getConnections')
+    }, 60000)
+
     self.socket.emit('load')
     self.socket.emit('getGames')
+    self.socket.emit('getConnections')
 
     this.socket.on("updateProcesses", (data) => {
       this.$store.dispatch("updateProcesses", data)
