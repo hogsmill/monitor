@@ -44,6 +44,9 @@ export const store = new Vuex.Store({
       state.processes = payload;
     },
     updateGames: (state, payload) => {
+      if (!state.games[payload.game]) {
+        state.games[payload.game] = {}
+      }
       state.games[payload.game].games = payload.games
       if (payload.newest) {
         state.games[payload.game].newest = payload.newest
