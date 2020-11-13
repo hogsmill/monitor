@@ -9,6 +9,7 @@ export const store = new Vuex.Store({
     processes: [],
     games: {},
     mongo: false,
+    mongoConnections: 0,
     logs: [],
     log: {app: '', log: ''}
   },
@@ -24,6 +25,9 @@ export const store = new Vuex.Store({
     },
     getMongo: (state) => {
       return state.mongo;
+    },
+    getMongoConnections: (state) => {
+      return state.mongoConnections;
     },
     getLogs: (state) => {
       return state.logs;
@@ -45,6 +49,9 @@ export const store = new Vuex.Store({
     updateMongo: (state, payload) => {
       state.mongo = !!payload;
     },
+    updateMongoConnections: (state, payload) => {
+      state.mongoConnections = !!payload;
+    },
     updateLogs: (state, payload) => {
       state.logs = payload;
     },
@@ -65,6 +72,9 @@ export const store = new Vuex.Store({
     },
     updateMongo: ({ commit }, payload) => {
       commit("updateMongo", payload);
+    },
+    updateMongoConnections: ({ commit }, payload) => {
+      commit("updateMongoConnections", payload);
     },
     updateLogs: ({ commit }, payload) => {
       commit("updateLogs", payload);

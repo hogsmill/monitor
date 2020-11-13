@@ -11,16 +11,18 @@
           <table class="logs">
             <thead>
               <tr>
-                <th>Status</th>
                 <th>Process</th>
+                <th>Status</th>
+                <th>Connection</th>
               </tr>
             </thead>
             <tbody>
               <tr>
+                <td>Mongo</td>
                 <td>
                   <input type="checkbox" :checked="mongo" />
                 </td>
-                <td>Mongo</td>
+                <td><span v-if="mongoConnections">{{ mongoConnections }}</span></td>
               </tr>
             </tbody>
           </table>
@@ -75,6 +77,9 @@ export default {
     },
     mongo() {
       return this.$store.getters.getMongo
+    },
+    mongoConnections() {
+      return this.$store.getters.getMongoConnections
     },
     logs() {
       return this.$store.getters.getLogs

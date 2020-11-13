@@ -70,6 +70,10 @@ export default {
       this.$store.dispatch("updateMongo", data)
     })
 
+    this.socket.on("updateMongoConnections", (data) => {
+      this.$store.dispatch("updateMongoConnections", data)
+    })
+
     this.socket.on("updateGames", (data) => {
       this.$store.dispatch("updateGames", data)
     })
