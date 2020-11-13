@@ -5,6 +5,7 @@
       <th>App</th>
       <th>Running</th>
       <th>Games/Orgs.</th>
+      <th>Newest</th>
     </thead>
     <tbody>
       <tr v-for="(app, index) in processes" :key="index">
@@ -14,7 +15,8 @@
           <span v-if="app.running">{{ app.time }}</span>
           <span v-if="!app.running">FALSE</span>
         </td>
-        <td :class="status(app)"><span v-if="games[app.name]">{{ games[app.name] }}</span></td>
+        <td :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].games }}</span></td>
+        <td :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].newest }}</span></td>
       </tr>
     </tbody>
   </table>
