@@ -50,7 +50,7 @@ export const store = new Vuex.Store({
       state.mongo = !!payload;
     },
     updateMongoConnections: (state, payload) => {
-      state.mongoConnections = !!payload;
+      state.mongoConnections = payload;
     },
     updateLogs: (state, payload) => {
       state.logs = payload;
