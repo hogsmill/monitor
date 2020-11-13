@@ -54,7 +54,7 @@ function getGames() {
     MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
       if (err) throw err
       const db = client.db('db')
-      dbStore.getGames(err, client, db, io, {game: games[i]}, debugOn)
+      dbStore.getGames(err, client, db, io, games[i], debugOn)
     })
   }
 }
