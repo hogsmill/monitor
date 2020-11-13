@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.4",
     "death": "^1.1.0",
+    "javascript-time-ago": "^2.3.3",
     "mongo": "^0.1.0",
     "sass": "^1.26.10",
     "socket.io": "^2.3.0",
