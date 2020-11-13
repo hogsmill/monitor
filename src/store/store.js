@@ -1,5 +1,9 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import TimeAgo from "javascript-time-ago"
+import en from "javascript-time-ago/locale/en"
+TimeAgo.addDefaultLocale(en)
+const timeAgo = new TimeAgo('en-GB')
 
 Vue.use(Vuex);
 
@@ -44,13 +48,13 @@ export const store = new Vuex.Store({
       state.processes = payload;
     },
     updateGames: (state, payload) => {
-      console.log(state.games, payload)
       if (!state.games[payload.game]) {
         state.games[payload.game] = {}
       }
       state.games[payload.game].games = payload.games
       if (payload.newest) {
-        state.games[payload.game].newest = payload.newest
+        const newest = timeAgo.format(new Date(payload.newest))
+        state.games[payload.game].newest = newest
       }
     },
     updateMongo: (state, payload) => {
