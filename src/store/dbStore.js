@@ -85,7 +85,7 @@ module.exports = {
 
   getGames: function(err, client, db, io, data, debugOn) {
 
-    db.collection(data.collection).find({}, function(err, res) {
+    db.collection(data.collection).find({}).toArray(function(err, res) {
       if (err) throw err
       if (res.length) {
         data.games = res.length
