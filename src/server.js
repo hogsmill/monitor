@@ -81,11 +81,11 @@ io.on("connection", (socket) => {
     connectDebugOff || console.log(`User with socket id ${socket.id} has disconnected. (${connections} connections)`)
   })
 
-  //socket.on('load', () => { dbStore.saveData(debugOn, io) })
+  socket.on('load', () => { dbStore.saveData(debugOn, io) })
 
   socket.on('getGames', () => { getGames() })
 
-  socket.on('getConnections', () => { doDb('getConnections') })
+  socket.on('getConnections', () => { getConnections() })
 
   socket.on('getLog', (data) => { dbStore.getLog(debugOn, io, data) })
 
