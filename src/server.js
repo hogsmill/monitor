@@ -1,29 +1,36 @@
 const fs = require('fs')
 const ON_DEATH = require('death')({uncaughtException: true})
-const logFile = process.argv[4]
+const os = require('os')
+
+const prod = os.hostname() == 'agilesimulations' ? true : false
+const logFile = prod ? process.argv[4] : 'server.log'
 
 ON_DEATH(function(signal, err) {
-  let logStr = new Date() + ' ' + signal + '\n'
+  let logStr = new Date()
+  if (signal) {
+    logStr = logStr + ' ' + signal + '\n'
+  }
   if (err && err.stack) {
     logStr = logStr + '  ' + err.stack + '\n'
   }
   fs.appendFile(logFile, logStr, function (err) {
-    if (err) console.log(err)
+    if (err) console.log(logStr)
     process.exit()
   })
 })
 
-const app = require("express")();
-const http = require("http").createServer(app);
-const io = require("socket.io")(http);
-const os = require('os')
+const app = require('express')()
+const http = require('http').createServer(app)
+const io = require('socket.io')(http)
 
 var dbStore = require('./store/dbStore.js')
 
-var prod = os.hostname() == "agilesimulations" ? true : false
+const MongoClient = require('mongodb').MongoClient
 
-var connectDebugOff = prod
-var debugOn = !prod
+const url = prod ?  'mongodb://127.0.0.1:27017/' : 'mongodb://localhost:27017/'
+
+const connectDebugOff = prod
+const debugOn = !prod
 
 var connections = 0
 var maxConnections = 10
@@ -33,6 +40,24 @@ function emit(event, data) {
     console.log(event, data);
   }
   io.emit(event, data)
+}
+
+function doDb(fun, data) {
+  MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
+    if (err) throw err
+    const db = client.db('db')
+
+    switch(fun) {
+      case 'getGames':
+        dbStore.getGames(err, client, db, io, data, debugOn)
+        break
+      case 'getConnections':
+        dbStore.getConnections(err, client, db, io, data, debugOn)
+        break
+      default:
+        console.log('Unknown function ', fun)
+    }
+  })
 }
 
 io.on("connection", (socket) => {
@@ -51,7 +76,9 @@ io.on("connection", (socket) => {
 
   socket.on('load', () => { dbStore.saveData(debugOn, io) })
 
-  socket.on('getGames', () => { dbStore.getGames(debugOn, io) })
+  socket.on('getGames', () => { dbStore.doDb(debugOn, io) })
+
+  socket.on('getConnections', () => { dbStore.getConnections(debugOn, io) })
 
   socket.on('getLog', (data) => { dbStore.getLog(debugOn, io, data) })
 

@@ -83,12 +83,18 @@ module.exports = {
     io.emit('updateLogs', logs)
   },
 
-  getGames: function(debug, io) {
-    let data = {
+  getGames: function(err, client, db, io, data, debugOn) {
+    data = {
       'Coin Game': 10,
       'No Estimates': 20
     }
     io.emit('updateGames', data)
+    client.close()
+  },
+
+  getConnections: function(err, client, db, io, data, debugOn) {
+    io.emit('updateConnections', 100)
+    client.close()
   },
 
   getLog: function(debug, io, data) {
