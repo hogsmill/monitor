@@ -91,8 +91,9 @@ module.exports = {
         if (res[0].created) {
           res = res.sort(function(a, b) {
             return a.created >= b.created
-        })
-        data.newest = res[0].created
+          })
+          data.newest = res[0].created
+        }
         data.games = res.length
         io.emit('updateGames', data)
         client.close()
