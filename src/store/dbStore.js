@@ -90,7 +90,7 @@ module.exports = {
       if (res.length) {
         if (res[0].created) {
           res = res.sort(function(a, b) {
-            return a.created >= b.created
+            return new Date(b.date) - new Date(a.date);
           })
           data.newest = res[0].created
         }
