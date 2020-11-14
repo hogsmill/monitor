@@ -56,6 +56,7 @@ export const store = new Vuex.Store({
       if (payload.newest) {
         const newest = timeAgo.format(new Date(payload.newest))
         state.games[payload.game].newest = newest
+        state.games[payload.game].raw = payload.newest
       }
     },
     updateMongo: (state, payload) => {

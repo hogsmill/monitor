@@ -88,12 +88,7 @@ module.exports = {
     db.collection(data.collection).find({}, {$ort : {created: -1} }).toArray(function(err, res) {
       if (err) throw err
       if (res.length) {
-        //if (res[0].created) {
-        //  const sorted = res.sort(function(a, b) {
-        //    return a.created >= b.created
-        //  })
         data.newest = res[0].created
-        //}
         data.games = res.length
         io.emit('updateGames', data)
         client.close()
