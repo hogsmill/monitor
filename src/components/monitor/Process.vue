@@ -10,7 +10,7 @@
     <tbody>
       <tr v-for="(app, index) in processes" :key="index">
         <td :class="status(app)">{{ app.port }}</td>
-        <td :class="status(app)"><a href="http://agilesimulations.co.uk/{{ app.app }}" target="blank">{{ app.name }}</a></td>
+        <td :class="status(app)"><a :href="'http://agilesimulations.co.uk/' + {{ app.app }}" target="blank">{{ app.name }}</a></td>
         <td :class="status(app)">
           <span v-if="app.running">{{ app.time }}</span>
           <span v-if="!app.running">FALSE</span>
