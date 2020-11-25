@@ -25,7 +25,6 @@ export const store = new Vuex.Store({
       return state.processes;
     },
     getGames: (state) => {
-      console.log(state.games)
       return state.games;
     },
     getMongo: (state) => {
