@@ -46,6 +46,7 @@ function getGames() {
   let games = [
     {game: 'Agile Battleships', collection: 'battleships'},
     {game: 'Coin Game', collection: 'coinGame'},
+    {game: 'Kanban', collection: 'kanbanGames'},
     {game: 'No Estimates', collection: 'noEstimatesGames'},
     {game: 'Planning Poker', collection: 'planningPokerOrganisations'},
     {game: 'Survival At Sea', collection: 'survival'}
