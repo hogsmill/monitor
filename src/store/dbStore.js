@@ -88,6 +88,18 @@ module.exports = {
     db.collection(data.collection).find().toArray(function(err, res) {
       if (err) throw err
       if (res.length) {
+        if (res[0].lastaccess) {
+          res = res.sort(function(a, b) {
+            if (a.lastaccess < b.lastaccess) {
+              return 1
+            }
+            if (a.lastaccess > b.lastaccess) {
+              return -1
+            }
+            return 0
+          })
+          data.lastaccess = res[0].lastaccess
+        }
         if (res[0].created) {
           res = res.sort(function(a, b) {
             if (a.created < b.created) {
