@@ -52,12 +52,16 @@ export const store = new Vuex.Store({
         state.games[payload.game] = {}
       }
       state.games[payload.game].games = payload.games
+      let newest = '', lastaccess = ''
       if (payload.newest) {
-        const newest = timeAgo.format(new Date(payload.newest))
-        const lastaccess = timeAgo.format(new Date(payload.lastaccess))
-        state.games[payload.game].newest = newest
-        state.games[payload.game].lastaccess = lastaccess
+        newest = timeAgo.format(new Date(payload.newest))
         state.games[payload.game].raw = payload.newest
+      }
+      if (payload.lastaccess) {
+        lastaccess = timeAgo.format(new Date(payload.lastaccess))
+      }
+      state.games[payload.game].newest = newest
+      state.games[payload.game].lastaccess = lastaccess
       }
     },
     updateMongo: (state, payload) => {
