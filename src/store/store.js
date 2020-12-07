@@ -63,7 +63,6 @@ export const store = new Vuex.Store({
       }
       state.games[payload.game].newest = newest
       state.games[payload.game].lastaccess = lastaccess
-      }
     },
     updateMongo: (state, payload) => {
       state.mongo = !!payload;
