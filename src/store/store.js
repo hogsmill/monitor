@@ -55,10 +55,11 @@ export const store = new Vuex.Store({
       let newest = '', lastaccess = ''
       if (payload.newest) {
         newest = timeAgo.format(new Date(payload.newest))
-        state.games[payload.game].raw = payload.newest
+        state.games[payload.game].newestRaw = payload.newest
       }
       if (payload.lastaccess) {
         lastaccess = timeAgo.format(new Date(payload.lastaccess))
+        state.games[payload.game].lastaccessRaw = payload.lastaccess
       }
       state.games[payload.game].newest = newest
       state.games[payload.game].lastaccess = lastaccess
