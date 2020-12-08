@@ -88,30 +88,17 @@ module.exports = {
     db.collection(data.collection).find().toArray(function(err, res) {
       if (err) throw err
       if (res.length) {
-        res = res.sort(function(a, b) {
-          a = a.lastaccess ? a.lastaccess : 0
-          b = b.lastaccess ? b.lastaccess : 0
-          if (a < b) {
-            return 1
+        let lastaccess = 0, created = 0
+        for (let i = 0; i < res.length; i++) {
+          if (res[i].lastaccess && (res[i].lastaccess > lastaccess) {
+            lastaccess = res[i].lastaccess
           }
-          if (a > b) {
-            return -1
+          if (res[i].created && (res[i].created > created) {
+            created = res[i].created
           }
-          return 0
-        })
-        data.lastaccess = res[0].lastaccess ? res[0].lastaccess : 0
-        res = res.sort(function(a, b) {
-          a = a.created ? a.created : 0
-          b = b.created ? b.created : 0
-          if (a < b) {
-              return 1
-          }
-          if (a > b) {
-            return -1
-          }
-          return 0
-        })
-        data.newest = res[0].created ? res[0].created : 0
+        }
+        data.lastaccess = lastaccess
+        data.newest = created
         data.games = res.length
         io.emit('updateGames', data)
         client.close()
