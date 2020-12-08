@@ -97,7 +97,7 @@ module.exports = {
               lastaccessGame = res[i].gameName
             } else if (res[i].lastaccess > lastaccess) {
               lastaccess = res[i].lastaccess
-              lastaccessGame = res[i].gameName
+              lastaccessGame = res[i].gameName ? res[i].gameName : res[i].name
             }
           }
           if (res[i].created) {
@@ -106,7 +106,7 @@ module.exports = {
               createdGame = res[i].gameName
             } else if (res[i].created > created) {
               created = res[i].created
-              createdGame = res[i].gameName
+              createdGame = res[i].gameName ? res[i].gameName : res[i].name
             }
           }
         }
