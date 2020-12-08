@@ -109,7 +109,6 @@ module.exports = {
         data.newest = created
         data.games = res.length
         io.emit('updateGames', data)
-        client.close()
       }
     })
   },
