@@ -45,7 +45,11 @@ export const store = new Vuex.Store({
       state.lastUpdated = payload;
     },
     updateProcesses: (state, payload) => {
-      state.processes = payload.sort(function(a, b) {
+      const processes = [], len = Object.keys(payload).length
+      for (let i = 0; i < len; i++) {
+        processes.push(payload[Object.keys(payload)[i]])
+      }
+      state.processes = processes.sort(function(a, b) {
         return a.order - b.order
       });
     },
