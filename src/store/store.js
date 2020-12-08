@@ -45,6 +45,7 @@ export const store = new Vuex.Store({
       state.lastUpdated = payload;
     },
     updateProcesses: (state, payload) => {
+      console.log(payload)
       state.processes = payload;
     },
     updateGames: (state, payload) => {
