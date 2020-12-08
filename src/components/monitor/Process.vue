@@ -17,8 +17,8 @@
           <span v-if="!app.running">FALSE</span>
         </td>
         <td :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].games }}</span></td>
-        <td :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].newest }} {{ games[app.name].newestRaw }}</span></td>
-        <td :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].lastaccess }} {{ games[app.name].lastaccessRaw }}</span></td>
+        <td :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].newest }}<br>{{ games[app.name].newestRaw }}</span></td>
+        <td :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].lastaccess }}<br>{{ games[app.name].lastaccessRaw }}</span></td>
       </tr>
     </tbody>
   </table>
