@@ -90,10 +90,10 @@ module.exports = {
       if (res.length) {
         let lastaccess = 0, created = 0
         for (let i = 0; i < res.length; i++) {
-          if (res[i].lastaccess && (res[i].lastaccess > lastaccess) {
+          if (res[i].lastaccess && res[i].lastaccess > lastaccess) {
             lastaccess = res[i].lastaccess
           }
-          if (res[i].created && (res[i].created > created) {
+          if (res[i].created && res[i].created > created) {
             created = res[i].created
           }
         }
