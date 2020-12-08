@@ -11,9 +11,8 @@
           <table class="logs">
             <thead>
               <tr>
-                <th>Process</th>
-                <th>Status</th>
-                <th>Connection</th>
+                <th>Apps</th>
+                <th>Other</th>
               </tr>
             </thead>
             <tbody>
@@ -26,8 +25,6 @@
               </tr>
             </tbody>
           </table>
-        </td>
-        <td class="outer logs">
           <h2>Logs</h2>
           <table v-if="!log" class="logs">
             <thead>

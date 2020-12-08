@@ -88,25 +88,31 @@ module.exports = {
     db.collection(data.collection).find().toArray(function(err, res) {
       if (err) throw err
       if (res.length) {
-        let lastaccess, created
+        let lastaccess, lastaccessGame, created, createdGame
         for (let i = 0; i < res.length; i++) {
           if (res[i].lastaccess) {
             if (!lastaccess) {
               lastaccess = res[i].lastaccess
+              lastaccessGame = res[i].gameName
             } else if (res[i].lastaccess > lastaccess) {
               lastaccess = res[i].lastaccess
+              lastaccessGame = res[i].gameName
             }
           }
           if (res[i].created) {
             if (!created) {
               created = res[i].created
+              createdGame = res[i].gameName
             } else if (res[i].created > created) {
-              lastaccess = res[i].created
+              created = res[i].created
+              createdGame = res[i].gameName
             }
           }
         }
         data.lastaccess = lastaccess
-        data.newest = created
+        data.lastaccessGame = lastaccessGame
+        data.created = created
+        data.createdGame = createdGame
         data.games = res.length
         io.emit('updateGames', data)
       }

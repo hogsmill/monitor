@@ -52,17 +52,21 @@ export const store = new Vuex.Store({
         state.games[payload.game] = {}
       }
       state.games[payload.game].games = payload.games
-      let newest = '', lastaccess = ''
-      if (payload.newest) {
-        newest = timeAgo.format(new Date(payload.newest))
-        state.games[payload.game].newestRaw = payload.newest
+      let created = '', createdGame = '', lastaccess = '', lastaccessGame = ''
+      if (payload.created) {
+        created = timeAgo.format(new Date(payload.created))
+        state.games[payload.game].createdRaw = payload.created
+        state.games[payload.game].createdGame = payload.createdGame
       }
       if (payload.lastaccess) {
         lastaccess = timeAgo.format(new Date(payload.lastaccess))
         state.games[payload.game].lastaccessRaw = payload.lastaccess
+        state.games[payload.game].lastaccessGame = payload.lastaccessGame
       }
-      state.games[payload.game].newest = newest
+      state.games[payload.game].created = created
+      state.games[payload.game].createdGame = createdGame
       state.games[payload.game].lastaccess = lastaccess
+      state.games[payload.game].lastaccessGame = lastaccessGame
     },
     updateMongo: (state, payload) => {
       state.mongo = !!payload;

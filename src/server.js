@@ -82,13 +82,13 @@ io.on("connection", (socket) => {
     connectDebugOff || console.log(`User with socket id ${socket.id} has disconnected. (${connections} connections)`)
   })
 
-  socket.on('load', () => { dbStore.saveData(debugOn, io) })
+  socket.on('load', () => { !prod || dbStore.saveData(debugOn, io) })
 
   socket.on('getGames', () => { getGames() })
 
   socket.on('getConnections', () => { getConnections() })
 
-  socket.on('getLog', (data) => { dbStore.getLog(debugOn, io, data) })
+  socket.on('getLog', (data) => { !prod || dbStore.getLog(debugOn, io, data) })
 
   socket.on('deleteLog', (data) => { dbStore.deleteLog(debugOn, io, data) })
 });
