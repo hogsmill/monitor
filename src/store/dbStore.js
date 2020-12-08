@@ -4,16 +4,17 @@ const fs = require('fs')
 
 function state() {
 
-  let apps = []
+  let apps = {}
   const data = fs.readFileSync('/usr/keep/apps.txt', 'utf8').split("\n")
   for (let i = 0; i < data.length; i++) {
     if (data[i].match(/^[0-9]{4}/)) {
       const fields = data[i].split(",")
-      apps.push({
+      apps[fields[0]] = {
+        order: i,
         port: fields[0],
         app: fields[1],
         name: fields[2]
-      })
+      }
     }
   }
   return apps
