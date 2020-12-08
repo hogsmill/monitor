@@ -51,13 +51,13 @@ function getGames() {
     {game: 'Planning Poker', collection: 'planningPokerOrganisations'},
     {game: 'Survival At Sea', collection: 'survival'}
   ]
-  for (let i = 0; i < games.length; i++) {
-    MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
+  MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
+    for (let i = 0; i < games.length; i++) {
       if (err) throw err
       const db = client.db('db')
       dbStore.getGames(err, client, db, io, games[i], debugOn)
-    })
-  }
+    }
+  })
 }
 
 function getConnections(fun, data) {
