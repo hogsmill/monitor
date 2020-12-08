@@ -48,7 +48,6 @@ export const store = new Vuex.Store({
       state.processes = payload;
     },
     updateGames: (state, payload) => {
-      console.log(payload)
       if (!state.games[payload.game]) {
         state.games[payload.game] = {}
       }
@@ -56,19 +55,18 @@ export const store = new Vuex.Store({
       let created = '', createdGame = '', lastaccess = '', lastaccessGame = ''
       if (payload.created) {
         created = timeAgo.format(new Date(payload.created))
+        createdGame = payload.createdGame
         state.games[payload.game].createdRaw = payload.created
-        state.games[payload.game].createdGame = payload.createdGame
       }
       if (payload.lastaccess) {
         lastaccess = timeAgo.format(new Date(payload.lastaccess))
+        lastaccessGame = payload.lastaccessGame
         state.games[payload.game].lastaccessRaw = payload.lastaccess
-        state.games[payload.game].lastaccessGame = payload.lastaccessGame
       }
       state.games[payload.game].created = created
       state.games[payload.game].createdGame = createdGame
       state.games[payload.game].lastaccess = lastaccess
       state.games[payload.game].lastaccessGame = lastaccessGame
-      console.log(payload.game, state.games[payload.game])
     },
     updateMongo: (state, payload) => {
       state.mongo = !!payload;
