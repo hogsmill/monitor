@@ -48,6 +48,7 @@ export const store = new Vuex.Store({
       state.processes = payload;
     },
     updateGames: (state, payload) => {
+      console.log(payload)
       if (!state.games[payload.game]) {
         state.games[payload.game] = {}
       }
@@ -67,7 +68,7 @@ export const store = new Vuex.Store({
       state.games[payload.game].createdGame = createdGame
       state.games[payload.game].lastaccess = lastaccess
       state.games[payload.game].lastaccessGame = lastaccessGame
-      console.log(state.games[payload.game])
+      console.log(payload.game, state.games[payload.game])
     },
     updateMongo: (state, payload) => {
       state.mongo = !!payload;
