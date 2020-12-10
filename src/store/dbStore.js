@@ -63,9 +63,9 @@ function gameName(res) {
   let name = ''
   if (res.gameName) {
     name = res.gameName
-  } else if (res.name) [
+  } else if (res.name) {
     name = resname
-  } else if (res.organisation) [
+  } else if (res.organisation) {
     name = res.organisation
   }
   return name
