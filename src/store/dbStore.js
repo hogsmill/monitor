@@ -59,6 +59,18 @@ function parseLogs(data) {
   return logs
 }
 
+function gameName(res) {
+  let name = ''
+  if (res.gameName) {
+    name = res.gameName
+  } else if (res.name) [
+    name = resname
+  } else if (res.organisation) [
+    name = res.organisation
+  }
+  return name
+}
+
 module.exports = {
 
   saveData: function(debugOn, io) {
@@ -94,19 +106,19 @@ module.exports = {
           if (res[i].lastaccess) {
             if (!lastaccess) {
               lastaccess = res[i].lastaccess
-              lastaccessGame = res[i].gameName
+              lastaccessGame = gameName(res[i])
             } else if (res[i].lastaccess > lastaccess) {
               lastaccess = res[i].lastaccess
-              lastaccessGame = res[i].gameName ? res[i].gameName : res[i].name
+              lastaccessGame = gameName(res[i])
             }
           }
           if (res[i].created) {
             if (!created) {
               created = res[i].created
-              createdGame = res[i].gameName
+              createdGame = gameName(res[i])
             } else if (res[i].created > created) {
               created = res[i].created
-              createdGame = res[i].gameName ? res[i].gameName : res[i].name
+              createdGame = gameName(res[i])
             }
           }
         }
