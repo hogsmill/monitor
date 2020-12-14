@@ -28,7 +28,7 @@ var dbStore = require('./store/dbStore.js')
 const MongoClient = require('mongodb').MongoClient
 
 const url = prod ?  'mongodb://127.0.0.1:27017/' : 'mongodb://localhost:27017/'
-
+const maxIdleTime = 6000
 const connectDebugOff = prod
 const debugOn = !prod
 
@@ -51,7 +51,7 @@ function getGames() {
     {game: 'Planning Poker', collection: 'planningPokerOrganisations'},
     {game: 'Survival At Sea', collection: 'survival'}
   ]
-  MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
+  MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime }, function (err, client) {
     for (let i = 0; i < games.length; i++) {
       if (err) throw err
       const db = client.db('db')
@@ -61,7 +61,7 @@ function getGames() {
 }
 
 function getConnections(fun, data) {
-  MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
+  MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime }, function (err, client) {
     if (err) throw err
     const db = client.db('db')
     dbStore.getConnections(err, client, db, io, data, debugOn)

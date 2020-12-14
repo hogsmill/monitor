@@ -128,6 +128,7 @@ module.exports = {
         data.createdGame = createdGame
         data.games = res.length
         io.emit('updateGames', data)
+        client.close()
       }
     })
   },
