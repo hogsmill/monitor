@@ -2,7 +2,11 @@
   <div id="app" class="mb-4">
     <appHeader></appHeader>
 
-    <h1>Monitor</h1>
+    <h1>
+      Monitor
+      <button v-if="running" @click="stop()">Stop</button>
+      <button v-if="!running" @click="start()">Start</button>
+    </h1>
     <div class="right">Last Updated: {{ lastUpdated }}</div>
     <div class="container">
       <div class="row">
@@ -35,9 +39,22 @@ export default {
     Monitor,
     Utils
   },
+  data() {
+    return {
+      running: true
+    }
+  },
   computed: {
     lastUpdated() {
       return this.$store.getters.getLastUpdated
+    }
+  },
+  methods: {
+    stop() {
+      this.running = false
+    },
+    start() {
+      this.running = true
     }
   },
   created() {
@@ -56,14 +73,16 @@ export default {
     }, 5000)
 
     setInterval(function() {
-      self.socket.emit('getGames')
+      if (this.running) {
+        self.socket.emit('getGames')
+      }
     }, 60000)
 
     setInterval(function() {
       self.socket.emit('getConnections')
     }, 60000)
 
-    self.socket.emit('load')
+    self.socket.emit('')
     self.socket.emit('getGames')
     self.socket.emit('getConnections')
 
