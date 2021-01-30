@@ -19,9 +19,16 @@ ON_DEATH(function(signal, err) {
   })
 })
 
-const app = require('express')()
+const express = require('express')
+const app = express()
 const http = require('http').createServer(app)
-const io = require('socket.io')(http)
+const io = require("socket.io")(http, {
+  cors: {
+    origins: ["http://localhost:*", "http://agilesimulations.co.uk"],
+    methods: ["GET", "POST"],
+    credentials: true
+  }
+})
 
 var dbStore = require('./store/dbStore.js')
 
