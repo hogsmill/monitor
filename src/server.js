@@ -71,7 +71,7 @@ function getConnections(fun, data) {
   MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime }, function (err, client) {
     if (err) throw err
     const db = client.db('db')
-    dbStore.getConnections(err, client, db, io, data, debugOn)
+    dbStore.getConnections(db, io, data, debugOn)
   })
 }
 

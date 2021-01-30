@@ -96,7 +96,7 @@ module.exports = {
     io.emit('updateLogs', logs)
   },
 
-  getGames: function(err, client, db, io, data, debugOn) {
+  getGames: function(db, io, data, debugOn) {
 
     db.collection(data.collection).find().toArray(function(err, res) {
       if (err) throw err
@@ -132,12 +132,11 @@ module.exports = {
     })
   },
 
-  getConnections: function(err, client, db, io, data, debugOn) {
+  getConnections: function(db, io, data, debugOn) {
 
     const admin = db.admin()
     const status = admin.serverStatus(function(err, res) {
       io.emit('updateMongoConnections', res.connections)
-      client.close()
     })
   },
 
