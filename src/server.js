@@ -62,7 +62,7 @@ function getGames() {
     for (let i = 0; i < games.length; i++) {
       if (err) throw err
       const db = client.db('db')
-      dbStore.getGames(err, client, db, io, games[i], debugOn)
+      dbStore.getGames(db, io, games[i], debugOn)
     }
   })
 }
