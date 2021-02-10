@@ -75,10 +75,13 @@ module.exports = {
 
   saveData: function(debugOn, io) {
 
-    let nodes = execSync(`ps -ef | grep node | grep -v grep`).toString()
-    let logs = execSync("ls -l /usr/apps/logs").toString()
-
-    let mongo
+    let nodes, logs, mongo
+    try {
+      nodes = execSync(`ps -ef | grep node | grep -v grep`).toString()
+    } catch(e) { }
+    try {
+      logs = execSync("ls -l /usr/apps/logs").toString()
+    } catch(e) {
     try {
       execSync(`ps -ef | grep mongo | grep -v grep`).toString()
       mongo = true
