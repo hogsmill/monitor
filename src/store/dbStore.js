@@ -81,7 +81,7 @@ module.exports = {
     } catch(e) { }
     try {
       logs = execSync("ls -l /usr/apps/logs").toString()
-    } catch(e) {
+    } catch(e) { }
     try {
       execSync(`ps -ef | grep mongo | grep -v grep`).toString()
       mongo = true
