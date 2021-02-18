@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light mb-4">
-    <a class="navbar-brand" href="http://agilesimulations.co.uk">
+    <a class="navbar-brand" href="https://agilesimulations.co.uk">
       <img src="/lego.png" class="ml-4" height="38px">
     </a>
     <button

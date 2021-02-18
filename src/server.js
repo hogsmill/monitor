@@ -19,16 +19,33 @@ ON_DEATH(function(signal, err) {
   })
 })
 
-const express = require('express')
-const app = express()
-const http = require('http').createServer(app)
-const io = require("socket.io")(http, {
-  cors: {
-    origins: ["http://localhost:*", "http://agilesimulations.co.uk"],
-    methods: ["GET", "POST"],
-    credentials: true
+let httpServer
+let io
+if (!prod) {
+  const express = require('express')
+  const app = express()
+  httpServer = require('http').createServer(app)
+  io = require('socket.io')(httpServer, {
+    cors: {
+      origins: ['http://localhost:*'],
+      methods: ['GET', 'POST'],
+      credentials: true
+    }
+  })
+} else {
+  const options = {
+    key: fs.readFileSync('/etc/ssl/private/agilesimulations.co.uk.key'),
+    cert: fs.readFileSync('/etc/ssl/certs/07DDA10F5A5AB75BD9E9508BC490D32C.cer')
   }
-})
+  httpServer = require('https').createServer(options)
+  io = require('socket.io')(httpServer, {
+    cors: {
+      origins: ['https://agilesimulations.co.uk'],
+      methods: ['GET', 'POST'],
+      credentials: true
+    }
+  })
+}
 
 var dbStore = require('./store/dbStore.js')
 
@@ -103,6 +120,6 @@ io.on("connection", (socket) => {
 
 var port = process.argv[2] || 3012
 
-http.listen(port, () => {
+httpServer.listen(port, () => {
   console.log("Listening on *:" + port);
 });
