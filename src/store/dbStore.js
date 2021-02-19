@@ -22,7 +22,7 @@ function state() {
 
 function parseProcesses(data) {
   let processes = state()
-  const splitData = data.split("\n")
+  const splitData = data ? data.split("\n") : []
   for (let i = 0; i < splitData.length; i++) {
 
     // Format: root      69680  67829  0 13:28 pts/1    00:00:00 node /usr/apps/coin-game/src/server.js 3000 Coin Game
@@ -42,7 +42,7 @@ function parseProcesses(data) {
 
 function parseLogs(data) {
   let logs = []
-  const splitData = data.split("\n")
+  const splitData = data ? data.split("\n") : []
   for (let i = 0; i < splitData.length; i++) {
     if (splitData[i].match(/root root/) && splitData[i].match(/.log/)) {
       let log = {}
