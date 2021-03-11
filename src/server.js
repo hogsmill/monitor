@@ -107,15 +107,15 @@ io.on("connection", (socket) => {
     connectDebugOff || console.log(`User with socket id ${socket.id} has disconnected. (${connections} connections)`)
   })
 
-  socket.on('load', () => { !prod || dbStore.saveData(debugOn, io) })
+  socket.on('sendLoad', () => { !prod || dbStore.saveData(debugOn, io) })
 
-  socket.on('getGames', () => { getGames() })
+  socket.on('sendGetGames', () => { getGames() })
 
-  socket.on('getConnections', () => { getConnections() })
+  socket.on('sendGetConnections', () => { getConnections() })
 
-  socket.on('getLog', (data) => { !prod || dbStore.getLog(debugOn, io, data) })
+  socket.on('sendGetLog', (data) => { !prod || dbStore.getLog(debugOn, io, data) })
 
-  socket.on('deleteLog', (data) => { dbStore.deleteLog(debugOn, io, data) })
+  socket.on('sendDeleteLog', (data) => { dbStore.deleteLog(debugOn, io, data) })
 });
 
 var port = process.argv[2] || 3012

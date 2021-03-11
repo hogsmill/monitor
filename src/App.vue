@@ -10,7 +10,7 @@
     <div class="right">Last Updated: {{ lastUpdated }}</div>
     <div class="container">
       <div class="row">
-        <Monitor v-bind:socket="socket" />
+        <Monitor />
       </div>
     </div>
 
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import io from "socket.io-client";
+import bus from './socket.js'
 
 import Header from "./components/Header.vue";
 
@@ -58,56 +58,47 @@ export default {
     }
   },
   created() {
-    let connStr
-    if (location.hostname == 'localhost') {
-      connStr = 'http://localhost:3012'
-    } else {
-      connStr = 'https://agilesimulations.co.uk:3012'
-    }
-    console.log("Connecting to: " + connStr)
-    this.socket = io(connStr)
 
     const self = this
     setInterval(function() {
-      self.socket.emit('load')
+      bus.$emit('load')
       self.$store.dispatch("updateLastUpdated", new Date().toGMTString())
     }, 5000)
 
     setInterval(function() {
       if (this.running) {
-        self.socket.emit('getGames')
+        bus.$emit('sendGetGames')
       }
     }, 60000)
 
     setInterval(function() {
-      self.socket.emit('getConnections')
+      bus.$emit('sendGetConnections')
     }, 60000)
 
-    self.socket.emit('')
-    self.socket.emit('getGames')
-    self.socket.emit('getConnections')
+    bus.$emit('sendGetGames')
+    bus.$.emit('sendGetConnections')
 
-    this.socket.on("updateProcesses", (data) => {
+    bus.$on("updateProcesses", (data) => {
       this.$store.dispatch("updateProcesses", data)
     })
 
-    this.socket.on("updateMongo", (data) => {
+    bus.$on("updateMongo", (data) => {
       this.$store.dispatch("updateMongo", data)
     })
 
-    this.socket.on("updateMongoConnections", (data) => {
+    bus.$on("updateMongoConnections", (data) => {
       this.$store.dispatch("updateMongoConnections", data)
     })
 
-    this.socket.on("updateGames", (data) => {
+    bus.$on("updateGames", (data) => {
       this.$store.dispatch("updateGames", data)
     })
 
-    this.socket.on("updateLogs", (data) => {
+    bus.$on("updateLogs", (data) => {
       this.$store.dispatch("updateLogs", data)
     })
 
-    this.socket.on("getLog", (data) => {
+    bus.$on("getLog", (data) => {
       this.$store.dispatch("updateLog", data)
     })
   }

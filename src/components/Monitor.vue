@@ -56,12 +56,11 @@
 </template>
 
 <script>
+import bus from '../socket.js'
+
 import Process from "./monitor/Process.vue";
 
 export default {
-  props: [
-    'socket'
-  ],
   components: {
     Process
   },
@@ -87,11 +86,11 @@ export default {
   },
   methods: {
     getLog(log) {
-      this.socket.emit('getLog', {app: log.app})
+      bus.$emit('sendGetLog', {app: log.app})
     },
     deleteLog(log) {
       if (confirm('Delete ' + log.app + '?')) {
-        this.socket.emit('deleteLog', {app: log.app})
+        bus.$emit('sendDeleteLog', {app: log.app})
       }
     },
     clearLog() {
