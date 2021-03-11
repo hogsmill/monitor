@@ -61,7 +61,7 @@ export default {
 
     const self = this
     setInterval(function() {
-      bus.$emit('load')
+      bus.$emit('sendLoad')
       self.$store.dispatch("updateLastUpdated", new Date().toGMTString())
     }, 5000)
 
