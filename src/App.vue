@@ -76,7 +76,7 @@ export default {
     }, 60000)
 
     bus.$emit('sendGetGames')
-    bus.$.emit('sendGetConnections')
+    bus.$emit('sendGetConnections')
 
     bus.$on("updateProcesses", (data) => {
       this.$store.dispatch("updateProcesses", data)

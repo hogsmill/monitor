@@ -54,17 +54,9 @@ const MongoClient = require('mongodb').MongoClient
 const url = prod ?  'mongodb://127.0.0.1:27017/' : 'mongodb://localhost:27017/'
 const maxIdleTime = 6000
 const connectDebugOff = prod
-const debugOn = !prod
 
 var connections = 0
 var maxConnections = 10
-
-function emit(event, data) {
-  if (debugOn) {
-    console.log(event, data);
-  }
-  io.emit(event, data)
-}
 
 function getGames() {
   let games = [
@@ -80,16 +72,16 @@ function getGames() {
     for (let i = 0; i < games.length; i++) {
       if (err) throw err
       const db = client.db('db')
-      dbStore.getGames(db, io, games[i], debugOn)
+      dbStore.getGames(db, io, games[i])
     }
   })
 }
 
-function getConnections(fun, data) {
+function getConnections() {
   MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime }, function (err, client) {
     if (err) throw err
     const db = client.db('db')
-    dbStore.getConnections(db, io, data, debugOn)
+    dbStore.getConnections(db, io)
   })
 }
 
@@ -107,15 +99,15 @@ io.on("connection", (socket) => {
     connectDebugOff || console.log(`User with socket id ${socket.id} has disconnected. (${connections} connections)`)
   })
 
-  socket.on('sendLoad', () => { !prod || dbStore.saveData(debugOn, io) })
+  socket.on('sendLoad', () => { !prod || dbStore.saveData(io) })
 
   socket.on('sendGetGames', () => { getGames() })
 
   socket.on('sendGetConnections', () => { getConnections() })
 
-  socket.on('sendGetLog', (data) => { !prod || dbStore.getLog(debugOn, io, data) })
+  socket.on('sendGetLog', (data) => { !prod || dbStore.getLog(io, data) })
 
-  socket.on('sendDeleteLog', (data) => { dbStore.deleteLog(debugOn, io, data) })
+  socket.on('sendDeleteLog', (data) => { dbStore.deleteLog(data) })
 });
 
 var port = process.argv[2] || 3012

@@ -73,23 +73,25 @@ function gameName(res) {
 
 module.exports = {
 
-  saveData: function(debugOn, io) {
+  saveData: function(io) {
 
     let nodes, logs, mongo
     try {
       nodes = execSync(`ps -ef | grep node | grep -v grep`).toString()
-    } catch(e) { }
+    } catch(e) {
+      nodes = ''
+    }
     try {
       logs = execSync("ls -l /usr/apps/logs").toString()
-    } catch(e) { }
+    } catch(e) {
+      logs = ''
+    }
     try {
       execSync(`ps -ef | grep mongo | grep -v grep`).toString()
       mongo = true
     } catch(e) {
       mongo = false
     }
-
-    if (debugOn) { console.log('saveData', nodes, logs, mongo) }
 
     nodes = parseProcesses(nodes)
     logs = parseLogs(logs)
@@ -99,7 +101,7 @@ module.exports = {
     io.emit('updateLogs', logs)
   },
 
-  getGames: function(db, io, data, debugOn) {
+  getGames: function(db, io, data) {
 
     db.collection(data.collection).find().toArray(function(err, res) {
       if (err) throw err
@@ -135,15 +137,15 @@ module.exports = {
     })
   },
 
-  getConnections: function(db, io, data, debugOn) {
+  getConnections: function(db, io) {
 
     const admin = db.admin()
-    const status = admin.serverStatus(function(err, res) {
+    admin.serverStatus(function(err, res) {
       io.emit('updateMongoConnections', res.connections)
     })
   },
 
-  getLog: function(debug, io, data) {
+  getLog: function(io, data) {
 
     fs.readFile('/usr/apps/logs/' + data.app, 'utf8', function(err, log) {
       if (err) throw err;
@@ -152,7 +154,7 @@ module.exports = {
     })
   },
 
-  deleteLog: function(debug, io, data) {
+  deleteLog: function(data) {
 
     execSync("rm /usr/apps/logs/" + data.app)
   }
