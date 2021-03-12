@@ -1,20 +1,18 @@
 <template>
   <div id="app" class="mb-4">
     <appHeader></appHeader>
-
-    <h1>
-      Monitor
+    <div class="right">
+      Last Updated: {{ lastUpdated }}
       <button v-if="running" @click="stop()">Stop</button>
       <button v-if="!running" @click="start()">Start</button>
-    </h1>
-    <div class="right">Last Updated: {{ lastUpdated }}</div>
+    </div>
     <div class="container">
       <div class="row">
         <Monitor />
       </div>
     </div>
 
-    <h1>Local Utils</h1>
+    <h2>Local Utils</h2>
     <div class="container">
       <div class="row">
         <Utils />
