@@ -1,10 +1,7 @@
 <template>
   <div id="app" class="mb-4">
-    <appHeader></appHeader>
+    <Header />
     <div class="right">
-      Last Updated: {{ lastUpdated }}
-      <button v-if="running" @click="stop()">Stop</button>
-      <button v-if="!running" @click="start()">Start</button>
     </div>
     <div class="container">
       <div class="row">
@@ -33,26 +30,13 @@ import Utils from "./components/Utils.vue";
 export default {
   name: 'App',
   components: {
-    appHeader: Header,
+    Header,
     Monitor,
     Utils
   },
   data() {
     return {
       running: true
-    }
-  },
-  computed: {
-    lastUpdated() {
-      return this.$store.getters.getLastUpdated
-    }
-  },
-  methods: {
-    stop() {
-      this.running = false
-    },
-    start() {
-      this.running = true
     }
   },
   created() {

@@ -17,6 +17,11 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <h1>Monitor</h1>
+      <div class="last-updated">
+        Last Updated: {{ lastUpdated }}
+        <button v-if="running" @click="stop()">Stop</button>
+        <button v-if="!running" @click="start()">Start</button>
+      </div>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" :class="{ active: !showFacilitator }">
           <a class="nav-link pointer" @click="updateShowFacilitator(false)">Game</a>
@@ -38,11 +43,20 @@ export default {
     showFacilitator() {
       return this.$store.getters.getShowFacilitator
     },
+    lastUpdated() {
+      return this.$store.getters.getLastUpdated
+    }
   },
   methods: {
     updateShowFacilitator(payload) {
       this.$store.dispatch('updateShowFacilitator', payload)
     },
+    stop() {
+      this.running = false
+    },
+    start() {
+      this.running = true
+    }
   },
 }
 </script>
@@ -55,5 +69,12 @@ h1 {
   text-shadow: 2px 2px 3px #444;
   font-size: xx-large;
   line-height: 1;
+}
+.last-updated {
+  letter-spacing: normal;
+  display: inline-block;
+  padding-right: 6px;
+  width: 100%;
+  text-align: right;
 }
 </style>

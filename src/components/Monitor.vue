@@ -3,11 +3,9 @@
     <table>
       <tr>
         <td class="outer">
-          <h2>Apps</h2>
           <Process :processes="processes" :scope="'app'" />
         </td>
         <td class="outer">
-          <h2>Procs</h2>
           <table class="logs">
             <thead>
               <tr>
