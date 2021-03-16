@@ -122,6 +122,7 @@ export default {
       td {
         background-color: #ccc;
         color: #000;
+        padding: 0;
       }
     }
   }
