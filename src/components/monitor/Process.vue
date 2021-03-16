@@ -1,5 +1,5 @@
 <template>
-  <table>
+  <table class="apps">
     <thead>
       <th>Port</th>
       <th>App</th>
@@ -50,6 +50,11 @@ export default {
 </script>
 
 <style lang="scss">
+  .apps {
+    td {
+     padding: 0;
+    }
+  }
   .app {
     a {
       color: #fff;

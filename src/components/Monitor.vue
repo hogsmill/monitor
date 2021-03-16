@@ -117,11 +117,6 @@ export default {
     color: #fff;
     padding: 6px;
   }
-  .apps {
-    td {
-     padding: 0;
-    }
-  }
   .logs {
     tbody {
       td {
