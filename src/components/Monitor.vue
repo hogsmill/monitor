@@ -24,7 +24,7 @@
             </tbody>
           </table>
           <h2>Logs</h2>
-          <table v-if="!log" class="logs">
+          <table v-if="!log" class="apps logs">
             <thead>
               <th>App</th>
               <th>Date</th>
@@ -117,12 +117,16 @@ export default {
     color: #fff;
     padding: 6px;
   }
+  .apps {
+    td {
+     padding: 0;
+    }
+  }
   .logs {
     tbody {
       td {
         background-color: #ccc;
         color: #000;
-        padding: 0;
       }
     }
   }
