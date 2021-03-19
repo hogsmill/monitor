@@ -6,7 +6,7 @@
       <th>Running</th>
       <th>Games/Orgs.</th>
       <th>Newest</th>
-      <th>Last Access</th>
+      <th>Latest</th>
     </thead>
     <tbody>
       <tr v-for="(app, index) in processes" :key="index">
