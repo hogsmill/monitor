@@ -12,6 +12,7 @@ export const store = new Vuex.Store({
     lastUpdated: '',
     processes: [],
     games: {},
+    outdated: {},
     mongo: false,
     mongoConnections: 0,
     logs: [],
@@ -26,6 +27,9 @@ export const store = new Vuex.Store({
     },
     getGames: (state) => {
       return state.games;
+    },
+    getOutdated: (state) => {
+      return state.outdated;
     },
     getMongo: (state) => {
       return state.mongo;
@@ -74,6 +78,9 @@ export const store = new Vuex.Store({
       state.games[payload.game].lastaccess = lastaccess
       state.games[payload.game].lastaccessGame = lastaccessGame
     },
+    updateOutdated: (state, payload) => {
+      state.outdated[payload.app] = payload.outdated
+    },
     updateMongo: (state, payload) => {
       state.mongo = !!payload;
     },
@@ -97,6 +104,9 @@ export const store = new Vuex.Store({
     },
     updateGames: ({ commit }, payload) => {
       commit("updateGames", payload);
+    },
+    updateOutdated: ({ commit }, payload) => {
+      commit("updateOutdated", payload);
     },
     updateMongo: ({ commit }, payload) => {
       commit("updateMongo", payload);

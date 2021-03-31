@@ -3,6 +3,7 @@
     <thead>
       <th>Port</th>
       <th>App</th>
+      <th>Outdated</th>
       <th>Running</th>
       <th>Games/Orgs.</th>
       <th>Newest</th>
@@ -12,6 +13,13 @@
       <tr v-for="(app, index) in processes" :key="index">
         <td :class="status(app)">{{ app.port }}</td>
         <td :class="status(app)" class="app"><a :href="'https://agilesimulations.co.uk/' + app.app" target="blank">{{ app.name }}</a></td>
+        <td :class="status(app)">
+          <div v-if="outdated.app">
+            <div v-for="(outdated, index) in outdated.app" :key="index">
+              {{ outdated }}
+            </div>
+          </div>
+        </td>
         <td :class="status(app)">
           <span v-if="app.running">{{ app.time }}</span>
           <span v-if="!app.running">FALSE</span>
@@ -33,6 +41,9 @@ export default {
   computed: {
     games() {
       return this.$store.getters.getGames
+    },
+    outdated() {
+      return this.$store.getters.getOutdated
     }
   },
   methods: {
