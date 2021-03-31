@@ -18,7 +18,7 @@ function _outdated(io) {
           }
         }
         if (packages.length) {
-          io.emit('updatePackages', {app: dir, outdated: outdatedPackages})
+          io.emit('updateOutdated', {app: dir, outdated: outdatedPackages})
         }
       }
     })

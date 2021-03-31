@@ -32,7 +32,7 @@ socket.on('updateMongoConnections', (data) => { bus.$emit('updateMongoConnection
 
 socket.on('updateGames', (data) => { bus.$emit('updateGames', data) })
 
-socket.on('updatePackages', (data) => { bus.$emit('updatePackages', data) })
+socket.on('updateOutdated', (data) => { bus.$emit('updateOutdated', data) })
 
 socket.on('updateLogs', (data) => { bus.$emit('updateLogs', data) })
 
