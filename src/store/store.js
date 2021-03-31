@@ -29,6 +29,7 @@ export const store = new Vuex.Store({
       return state.games;
     },
     getOutdated: (state) => {
+      console.log(state.outdated)
       return state.outdated;
     },
     getMongo: (state) => {
@@ -79,6 +80,7 @@ export const store = new Vuex.Store({
       state.games[payload.game].lastaccessGame = lastaccessGame
     },
     updateOutdated: (state, payload) => {
+      console.log(payload)
       state.outdated[payload.app] = payload.outdated
     },
     updateMongo: (state, payload) => {
