@@ -14,7 +14,7 @@ function _outdated(io) {
         const outdatedPackages = []
         for (let i = 1; i < outdated.length - 1; i++) {
           if (!outdated[i].match(/sass-loader/)) {
-            outdatedPackages.push(outdated[i]])
+            outdatedPackages.push(outdated[i])
           }
         }
         if (packages.length) {
