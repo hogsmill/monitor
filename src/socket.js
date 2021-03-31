@@ -16,6 +16,8 @@ bus.$on('sendLoad', (data) => { socket.emit('sendLoad', data) })
 
 bus.$on('sendGetGames', (data) => { socket.emit('sendGetGames', data) })
 
+bus.$on('sendGetOutdated', (data) => { socket.emit('sendGetOutdated', data) })
+
 bus.$on('sendGetConnections', (data) => { socket.emit('sendGetConnections', data) })
 
 bus.$on('sendGetLog', (data) => { socket.emit('sendGetLog', data) })
