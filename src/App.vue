@@ -58,6 +58,7 @@ export default {
     }, 60000)
 
     bus.$emit('sendGetGames')
+    bus.$emit('sendGetOutdated')
     bus.$emit('sendGetConnections')
 
     bus.$on("updateProcesses", (data) => {

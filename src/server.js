@@ -103,6 +103,8 @@ io.on("connection", (socket) => {
 
   socket.on('sendGetGames', () => { getGames() })
 
+  socket.on('sendGetOutdated', () => { dbStore.getOutdated() })
+
   socket.on('sendGetConnections', () => { getConnections() })
 
   socket.on('sendGetLog', (data) => { !prod || dbStore.getLog(io, data) })

@@ -3,7 +3,7 @@ const execSync = require('child_process').execSync;
 const fs = require('fs')
 const process = require('process');
 
-function _outdated(io) {
+function outdated(io) {
   fs.readdir('/usr/apps', (err, dirs) => {
     dirs.forEach(dir => {
       const dirPath = '/usr/apps/' + dir
@@ -159,8 +159,8 @@ module.exports = {
     })
   },
 
-  outdated: function(io) {
-    _outdated(io)
+  getOutdated: function(io) {
+    outdated(io)
   },
 
   getConnections: function(db, io) {
