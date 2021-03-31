@@ -13,7 +13,7 @@ function _outdated(io) {
         const outdated = execSync(cmd).toString().split('\n')
         const outdatedPackages = []
         for (let i = 1; i < outdated.length - 1; i++) {
-          if (!outdated[i].match(/sass-loader/) {
+          if (!outdated[i].match(/sass-loader/)) {
             outdatedPackages.push(outdated[i]])
           }
         }
