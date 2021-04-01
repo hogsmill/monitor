@@ -14,7 +14,7 @@
         <td :class="status(app)">{{ app.port }}</td>
         <td :class="status(app)" class="app"><a :href="'https://agilesimulations.co.uk/' + app.app" target="blank">{{ app.name }}</a></td>
         <td :class="status(app)">
-          <div v-if="outdated[app.app]">
+          <div v-if="outdated[app.app]" class="outdated">
             <div v-for="(outd, index) in outdated[app.app]" :key="index">
               {{ outd }}
             </div>
@@ -83,5 +83,8 @@ export default {
   }
   .not-running {
     background-color: red;
+  }
+  .outdated {
+    background-color: red
   }
 </style>
