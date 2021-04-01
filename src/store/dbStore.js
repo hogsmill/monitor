@@ -138,8 +138,8 @@ module.exports = {
   },
 
   getOutdated: function(io) {
-    const updated = execSync("php /usr/apps/monitor/src/lib/outdated.php").toString()
-    io.emit('updateOutdated', updated)
+    const updated = fs.readFileSync('/usr/apps/monitor/outdated.txt', 'utf8')
+    io.emit('updateOutdated', JSON.parse(updated))
   },
 
   getConnections: function(db, io) {
