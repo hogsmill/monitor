@@ -54,15 +54,12 @@ export default {
     }, 60000)
 
     setInterval(function() {
-      bus.$emit('sendGetOutdated')
-    }, 1000)
-
-    setInterval(function() {
       bus.$emit('sendGetConnections')
     }, 60000)
 
     bus.$emit('sendGetGames')
     bus.$emit('sendGetConnections')
+    bus.$emit('sendGetOutdated')
 
     bus.$on("updateProcesses", (data) => {
       this.$store.dispatch("updateProcesses", data)

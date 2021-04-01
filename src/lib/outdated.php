@@ -1,8 +1,6 @@
 #!/usr/bin/php
 <?php
 
-$outdated = array();
-
 $root = '/usr/apps/';
 $dirs = scandir($root);
 foreach ($dirs as $d) {
@@ -21,4 +19,6 @@ foreach ($dirs as $d) {
   }
 }
 
-print_r(json_encode($outdated));
+$f = fopen('/usr/apps/monitor/outdated.txt', 'w');
+fwrite($f, json_encode($outdated));
+fclose($f);
