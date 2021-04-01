@@ -81,7 +81,6 @@ export default {
     })
 
     bus.$on("updateOutdated", (data) => {
-      console.log(data)
       this.$store.dispatch("updateOutdated", data)
     })
 
