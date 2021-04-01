@@ -138,7 +138,7 @@ module.exports = {
   },
 
   getOutdated: function(io) {
-    const outdated = execSync(`php /usr/apps/monitor/outdated.php`).toString()
+    const outdated = execSync(`/usr/apps/monitor/src/lib/outdated.php`).toString()
     io.emit('updateOutdated', JSON.parse(outdated))
   },
 

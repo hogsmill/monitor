@@ -8,7 +8,6 @@ $dirs = scandir($root);
 foreach ($dirs as $d) {
   $dir = $root . $d;
   if (is_dir($dir) && file_exists("${dir}/package.json")) {
-    echo "----------------------------------\n${dir}\n";
     chdir($dir);
     $output = '';
     exec('npm outdated', $output, $retval);
@@ -16,7 +15,6 @@ foreach ($dirs as $d) {
     for ($i = 1; $i < count($output); $i++) {
       $fields = preg_split("/[\s]+/", $output[$i]);
       if ($fields[0] != '' && $fields[0] != 'sass-loader') {
-        echo "${fields[0]}\n";
         array_push($outdated[$d], $fields[0]);
       }
     }
