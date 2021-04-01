@@ -103,7 +103,7 @@ io.on("connection", (socket) => {
 
   socket.on('sendGetGames', () => { getGames() })
 
-  socket.on('sendGetOutdated', () => { dbStore.getOutdated() })
+  socket.on('sendGetOutdated', () => { dbStore.getOutdated(io) })
 
   socket.on('sendGetConnections', () => { getConnections() })
 
