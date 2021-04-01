@@ -15,8 +15,8 @@
         <td :class="status(app)" class="app"><a :href="'https://agilesimulations.co.uk/' + app.app" target="blank">{{ app.name }}</a></td>
         <td :class="status(app)">
           <div v-if="outdated[app.app]">
-            <div v-for="(outdated, index) in outdated[app.app]" :key="index">
-              {{ outdated }}
+            <div v-for="(outd, index) in outdated[app.app]" :key="index">
+              {{ outd }}
             </div>
           </div>
         </td>
