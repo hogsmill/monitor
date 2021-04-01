@@ -29,7 +29,6 @@ export const store = new Vuex.Store({
       return state.games;
     },
     getOutdated: (state) => {
-      console.log(state.outdated)
       return state.outdated;
     },
     getMongo: (state) => {

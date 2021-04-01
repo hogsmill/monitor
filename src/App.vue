@@ -77,6 +77,10 @@ export default {
       this.$store.dispatch("updateGames", data)
     })
 
+    bus.$on("updateOutdated", (data) => {
+      this.$store.dispatch("updateOutdated", data)
+    })
+
     bus.$on("updateLogs", (data) => {
       this.$store.dispatch("updateLogs", data)
     })
