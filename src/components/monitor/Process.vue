@@ -10,6 +10,11 @@
       <th>Latest</th>
     </thead>
     <tbody>
+      <tr>
+        <td colspan="7">
+          {{ outdated }}
+        </td>
+      </tr>
       <tr v-for="(app, index) in processes" :key="index">
         <td :class="status(app)">{{ app.port }}</td>
         <td :class="status(app)" class="app"><a :href="'https://agilesimulations.co.uk/' + app.app" target="blank">{{ app.name }}</a></td>
