@@ -40,7 +40,7 @@ export default {
     }
   },
   created() {
-
+    console.log('in created')
     const self = this
     setInterval(function() {
       bus.$emit('sendLoad')
