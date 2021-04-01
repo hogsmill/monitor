@@ -36,6 +36,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      running: true
+    }
+  },
   computed: {
     isHost() {
       return this.$store.getters.getHost

@@ -59,7 +59,7 @@ export default {
 
     bus.$emit('sendGetGames')
     bus.$emit('sendGetConnections')
-    bus.$emit('sendGetOutdated')
+    //bus.$emit('sendGetOutdated')
 
     bus.$on("updateProcesses", (data) => {
       this.$store.dispatch("updateProcesses", data)
@@ -78,7 +78,6 @@ export default {
     })
 
     bus.$on("updateOutdated", (data) => {
-      console.log(data)
       this.$store.dispatch("updateOutdated", data)
     })
 

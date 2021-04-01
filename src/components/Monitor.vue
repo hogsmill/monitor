@@ -24,7 +24,7 @@
             </tbody>
           </table>
           <h2>Logs</h2>
-          <table v-if="!log" class="apps logs">
+          <table class="apps logs">
             <thead>
               <th>App</th>
               <th>Date</th>
