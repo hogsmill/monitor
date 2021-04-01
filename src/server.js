@@ -103,7 +103,10 @@ io.on("connection", (socket) => {
 
   socket.on('sendGetGames', () => { getGames() })
 
-  socket.on('sendGetOutdated', () => { dbStore.getOutdated(io) })
+  socket.on('sendGetOutdated', () => {
+    fs.appendFile(logFile, "in sendGetOutdated")
+    dbStore.getOutdated(io, logFile)
+  })
 
   socket.on('sendGetConnections', () => { getConnections() })
 

@@ -137,8 +137,10 @@ module.exports = {
     })
   },
 
-  getOutdated: function(io) {
+  getOutdated: function(io, logFile) {
+    fs.appendFile(logFile, "in getOutdated")
     const outdated = execSync(`/usr/apps/monitor/src/lib/outdated.php`).toString()
+    fs.appendFile(logFile, outdated)
     io.emit('updateOutdated', JSON.parse(outdated))
   },
 
