@@ -53,6 +53,10 @@ export default {
     }, 60000)
 
     setInterval(function() {
+      bus.$emit('sendGetOutdated')
+    }, 5000)
+
+    setInterval(function() {
       bus.$emit('sendGetConnections')
     }, 60000)
 

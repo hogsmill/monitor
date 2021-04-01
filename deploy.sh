@@ -25,3 +25,5 @@ if [ -f "src/server.js" ]; then
     kill $SERVER
   fi
 fi
+
+php /usr/apps/monitor/src/lib/outdated.php &
