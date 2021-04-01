@@ -40,7 +40,6 @@ export default {
     }
   },
   created() {
-    console.log('in created')
     const self = this
     setInterval(function() {
       bus.$emit('sendLoad')
@@ -62,18 +61,22 @@ export default {
     //bus.$emit('sendGetOutdated')
 
     bus.$on("updateProcesses", (data) => {
+      console.log('updateMongoConnections', data)
       this.$store.dispatch("updateProcesses", data)
     })
 
     bus.$on("updateMongo", (data) => {
+      console.log('updateMongoConnections', data)
       this.$store.dispatch("updateMongo", data)
     })
 
     bus.$on("updateMongoConnections", (data) => {
+      console.log('updateMongoConnections', data)
       this.$store.dispatch("updateMongoConnections", data)
     })
 
     bus.$on("updateGames", (data) => {
+      console.log('updateGames', data)
       this.$store.dispatch("updateGames", data)
     })
 
