@@ -138,7 +138,8 @@ module.exports = {
   },
 
   getOutdated: function(io) {
-    io.emit('updateOutdated', {a: 1})
+    const updated = execSync("php /usr/apps/monitor/outdated.php").toString()
+    io.emit('updateOutdated', updated)
   },
 
   getConnections: function(db, io) {

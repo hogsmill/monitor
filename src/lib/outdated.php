@@ -19,6 +19,7 @@ foreach ($dirs as $d) {
   }
 }
 
-$f = fopen('/usr/apps/monitor/outdated.txt', 'w');
-fwrite($f, json_encode($outdated));
-fclose($f);
+echo json_encode($outdated); 
+//$f = fopen('/usr/apps/monitor/outdated.txt', 'w');
+//fwrite($f, json_encode($outdated));
+//fclose($f);
