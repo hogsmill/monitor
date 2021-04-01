@@ -79,7 +79,6 @@ export const store = new Vuex.Store({
       state.games[payload.game].lastaccessGame = lastaccessGame
     },
     updateOutdated: (state, payload) => {
-      console.log(payload)
       state.outdated = payload
     },
     updateMongo: (state, payload) => {
