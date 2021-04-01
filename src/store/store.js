@@ -80,7 +80,7 @@ export const store = new Vuex.Store({
     },
     updateOutdated: (state, payload) => {
       console.log(payload)
-      state.outdated[payload.app] = payload.outdated
+      state.outdated = payload
     },
     updateMongo: (state, payload) => {
       state.mongo = !!payload;

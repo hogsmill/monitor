@@ -55,6 +55,7 @@ export default {
 
     setInterval(function() {
       bus.$emit('sendGetConnections')
+      bus.$emit('sendGetOutdated')
     }, 60000)
 
     bus.$emit('sendGetGames')

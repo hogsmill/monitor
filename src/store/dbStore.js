@@ -3,28 +3,6 @@ const execSync = require('child_process').execSync;
 const fs = require('fs')
 const process = require('process');
 
-function outdated(io) {
-  fs.readdir('/usr/apps', (err, dirs) => {
-    dirs.forEach(dir => {
-      const dirPath = '/usr/apps/' + dir
-      const packageJson = dirPath + '/package.json'
-      if (fs.existsSync(packageJson)) {
-        const cmd = 'npm outdated --prefix=' + dirPath
-        const outdated = execSync(cmd).toString().split('\n')
-        const outdatedPackages = []
-        for (let i = 1; i < outdated.length - 1; i++) {
-          if (!outdated[i].match('sass-loader')) {
-            outdatedPackages.push(outdated[i])
-          }
-        }
-        if (packages.length) {
-          io.emit('updateOutdated', {app: dir, outdated: outdatedPackages})
-        }
-      }
-    })
-  })
-}
-
 function state() {
   let apps = {}
   const data = fs.readFileSync('/usr/keep/apps.txt', 'utf8').split("\n")
@@ -160,7 +138,8 @@ module.exports = {
   },
 
   getOutdated: function(io) {
-    outdated(io)
+    const outdated = execSync(`php /usr/apps/monitor/outdated.php`).toString()
+    io.emit('updateOutdated', JSON.parse(outdated))
   },
 
   getConnections: function(db, io) {
