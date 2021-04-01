@@ -137,7 +137,7 @@ module.exports = {
     })
   },
 
-  getOutdated: function(io, logFile) {
+  getOutdated: function(io) {
     io.emit('updateOutdated', {a: 1})
   },
 
