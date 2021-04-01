@@ -9,7 +9,7 @@ function outdated(io) {
       const dirPath = '/usr/apps/' + dir
       const packageJson = dirPath + '/package.json'
       if (fs.existsSync(packageJson)) {
-        const cmd = 'npm outdated --prefix=' + dir
+        const cmd = 'npm outdated --prefix=' + dirPath
         const outdated = execSync(cmd).toString().split('\n')
         const outdatedPackages = []
         for (let i = 1; i < outdated.length - 1; i++) {
