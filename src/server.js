@@ -65,6 +65,7 @@ function getGames() {
     {game: 'Kanban', collection: 'kanbanGames'},
     {game: 'L-EAF Test App', collection: 'leafTestOrganisations'},
     {game: 'No Estimates', collection: 'noEstimatesGames'},
+    {game: 'No Estimates New', collection: 'noEstimatesNewGames'},
     {game: 'Planning Poker', collection: 'planningPokerOrganisations'},
     {game: 'Survival At Sea', collection: 'survival'}
   ]

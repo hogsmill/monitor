@@ -26,4 +26,4 @@ if [ -f "src/server.js" ]; then
   fi
 fi
 
-php /usr/apps/monitor/src/lib/outdated.php &
+/usr/bin/php /usr/apps/monitor/src/lib/outdated.php &
