@@ -18,16 +18,16 @@ function checkServerStatus(server, processes) {
 }
 
 function checkServerOutdated(server, processes, outdated) {
+  console.log(processes, outdated)
   let outd = false
-  /*
   for (let i = 0; i < processes.length; i++) {
     if (processes[i].server == server.name) {
+      console.log(processes[i].app, outdated[processes[i].app])
       if (outdated[processes[i].app].length) {
         outd = false
       }
     }
   }
-  */
   return outd
 }
 
