@@ -68,7 +68,6 @@ export const store = new Vuex.Store({
         }
       }
       state.servers = servers
-      console.log(state.processes, state.servers)
     },
     updateGames: (state, payload) => {
       if (!state.games[payload.game]) {
