@@ -96,6 +96,7 @@ export const store = new Vuex.Store({
       }
       const serverKeys = Object.keys(servers)
       const serverArr = []
+      console.log(servers, serverKeys)
       for (i = 0; i < serverKeys.length; i++) {
         const ok = checkServerStatus(servers[serverKeys[i]], state.processes)
         const outdated = checkServerOutdated(servers[serverKeys[i]], state.processes, state.outdated)
