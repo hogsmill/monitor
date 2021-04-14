@@ -10,6 +10,7 @@
 
       <tr v-for="(server, index) in servers" :key="index">
         <td>
+          {{ server.name }} == {{ selectedServer }}
           <input type="checkbox" :checked="server.name == selectedServer">
         </td>
         <td :class="{ 'server-fail': !server.ok }">
