@@ -33,6 +33,7 @@ export default {
       return this.$store.getters.getServers
     },
     selectedServer() {
+      console.log('Selected Server', this.$store.getters.getSelectedServer)
       return this.$store.getters.getSelectedServer
     }
   },
