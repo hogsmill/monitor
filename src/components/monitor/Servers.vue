@@ -5,6 +5,9 @@
       <th>Status</th>
     </thead>
     <tbody>
+      <tr>
+        <td>{{ servers }}</td>
+      </tr>
       <tr v-for="(server, index) in servers" :key="index">
         <td>
           {{ server.name }}

@@ -24,7 +24,6 @@ export const store = new Vuex.Store({
       return state.lastUpdated;
     },
     getServers: (state) => {
-      console.log(state.servers)
       return state.servers;
     },
     getProcesses: (state) => {
@@ -67,7 +66,6 @@ export const store = new Vuex.Store({
           state.servers[server] = { name: server, ok: true }
         }
       }
-      console.log(state.servers)
     },
     updateGames: (state, payload) => {
       if (!state.games[payload.game]) {
