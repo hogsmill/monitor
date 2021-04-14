@@ -7,7 +7,7 @@ function state() {
   let apps = {}
   const data = fs.readFileSync('/usr/keep/apps.txt', 'utf8').split("\n")
   for (let i = 0; i < data.length; i++) {
-    if (data[i].match(/^[0-9]{4}/)) {
+    if (data[i].match(/^\w+,[0-9]{4},/)) {
       const fields = data[i].split(",")
       const port = fields[1]
       apps[port] = {
