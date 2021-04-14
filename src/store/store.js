@@ -22,12 +22,13 @@ function checkServerOutdated(server, processes, outdated) {
   let outd = false
   for (let i = 0; i < processes.length; i++) {
     if (processes[i].server == server.name) {
-      console.log(processes[i].app, outdated[processes[i].app])
+      console.log(processes[i].app, outdated[processes[i].app], outdated[processes[i].app].length)
       if (outdated[processes[i].app] && outdated[processes[i].app].length > 0) {
         outd = false
       }
     }
   }
+  console.log(outd)
   return outd
 }
 
