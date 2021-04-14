@@ -7,6 +7,28 @@ const timeAgo = new TimeAgo('en-GB')
 
 Vue.use(Vuex);
 
+function checkServerStatus(server, processes) {
+  let ok = true
+  for (let i = 0; i < processes.length; i++) {
+    if (processes[i].server == server.name && !processes[i].running) {
+      ok = false
+    }
+  }
+  return ok
+}
+
+function checkServerOutdated(server, processes, outdated) {
+  let outd = false
+  for (let i = 0; i < processes.length; i++) {
+    if (processes[i].server == server.name) {
+      if (outdated[processes[i].app].length) {
+        outd = false
+      }
+    }
+  }
+  return outd
+}
+
 export const store = new Vuex.Store({
   state: {
     lastUpdated: '',
@@ -57,18 +79,21 @@ export const store = new Vuex.Store({
       state.lastUpdated = payload;
     },
     updateProcesses: (state, payload) => {
+      let i = 0
       const processes = [], len = Object.keys(payload).length
-      for (let i = 0; i < len; i++) {
+      for (i = 0; i < len; i++) {
         processes.push(payload[Object.keys(payload)[i]])
       }
       state.processes = processes.sort(function(a, b) {
         return a.order - b.order
       })
       const servers = {}
-      for (let j = 0; j < state.processes.length; j++) {
-        const server = state.processes[j].server
+      for (i = 0; i < state.processes.length; i++) {
+        const server = state.processes[1].server
         if (!servers[server]) {
-          servers[server] = { name: server, ok: true }
+          const ok = checkServerStatus(server, state.processes)
+          const outdated = checkServerOutdated(server)
+          servers[server] = { name: server, ok: ok, outdated: outdated }
         }
       }
       state.servers = servers
