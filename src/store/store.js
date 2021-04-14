@@ -19,6 +19,7 @@ function checkServerStatus(server, processes) {
 
 function checkServerOutdated(server, processes, outdated) {
   let outd = false
+  /*
   for (let i = 0; i < processes.length; i++) {
     if (processes[i].server == server.name) {
       if (outdated[processes[i].app].length) {
@@ -26,6 +27,7 @@ function checkServerOutdated(server, processes, outdated) {
       }
     }
   }
+  */
   return outd
 }
 
