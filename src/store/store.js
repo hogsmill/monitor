@@ -18,7 +18,7 @@ function checkServerStatus(server, processes) {
 }
 
 function checkServerOutdated(server, processes, outdated) {
-  console.log(processes, outdated)
+  console.log(server.name, processes, outdated)
   let outd = false
   for (let i = 0; i < processes.length; i++) {
     if (processes[i].server == server.name) {
@@ -89,16 +89,19 @@ export const store = new Vuex.Store({
       state.processes = processes.sort(function(a, b) {
         return a.order - b.order
       })
-      const servers = {}
+      let servers = {}
       for (i = 0; i < state.processes.length; i++) {
         const server = state.processes[1].server
-        if (!servers[server]) {
-          const ok = checkServerStatus(server, state.processes)
-          const outdated = checkServerOutdated(server, state.processes, state.outdated)
-          servers[server] = { name: server, ok: ok, outdated: outdated }
-        }
+        servers[server] = {name: server}
       }
-      state.servers = servers
+      const serverKeys = Object.keys(servers)
+      const serverArr = []
+      for (i = 0; i < serverKeys.length; i++) {
+        const ok = checkServerStatus(servers[serverKeys[i]], state.processes)
+        const outdated = checkServerOutdated(servers[serverKeys[i]], state.processes, state.outdated)
+        servers.push({name: serverKeys[i], ok: ok, outdated: outdated})
+      }
+      state.servers = serverArr
     },
     updateGames: (state, payload) => {
       if (!state.games[payload.game]) {
