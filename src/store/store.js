@@ -7,6 +7,11 @@ const timeAgo = new TimeAgo('en-GB')
 
 Vue.use(Vuex);
 
+const ignoreOutdated = {
+  'sass-loader': true,
+  'chart.js': true
+}
+
 function checkServerStatus(server, processes) {
   let ok = true
   for (let i = 0; i < processes.length; i++) {
@@ -22,7 +27,12 @@ function checkServerOutdated(server, processes, outdated) {
   for (let i = 0; i < processes.length; i++) {
     if (processes[i].server == server.name) {
       if (outdated[processes[i].app] && outdated[processes[i].app].length > 0) {
-        outd = true
+        const appOutdated = outdated[processes[i].app]
+        for (let j = 0; j < appOutdated.length; j++) {
+          if (!ignoreOutdated[appOutdated[j]]) {
+            outd = true
+          }
+        }
       }
     }
   }

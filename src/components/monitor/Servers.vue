@@ -9,7 +9,7 @@
     </thead>
     <tbody>
       <tr v-for="(server, index) in servers" :key="index">
-        <td>
+        <td :class="{ 'server-fail': !server.ok || server.outdated }">
           <input type="checkbox" :checked="server.name == selectedServer">
         </td>
         <td :class="{ 'server-fail': !server.ok || server.outdated }">
