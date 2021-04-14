@@ -57,7 +57,7 @@
 <script>
 import bus from '../socket.js'
 
-import Server from "./monitor/Servers.vue";
+import Servers from "./monitor/Servers.vue";
 import Process from "./monitor/Process.vue";
 
 export default {
