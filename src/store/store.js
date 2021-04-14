@@ -105,7 +105,14 @@ export const store = new Vuex.Store({
     updateLog: (state, payload) => {
       state.log.app = payload.app
       state.log.log = payload.log;
-    }
+    },
+    updateSelectedServer: (state, payload) => {
+      if (payload.name == state.selectedServer) {
+        state.selectedServer = ''
+      } else {
+        state.selectedServer = payload.name
+      }
+    },
   },
   actions: {
     updateLastUpdated: ({ commit }, payload) => {
@@ -131,6 +138,9 @@ export const store = new Vuex.Store({
     },
     updateLog: ({ commit }, payload) => {
       commit("updateLog", payload);
+    },
+    updateSelectedServer: ({ commit }, payload) => {
+      commit("updateSelectedServer", payload);
     }
   }
 });
