@@ -63,7 +63,7 @@ export const store = new Vuex.Store({
       for (let j = 0; j < Object.keys(state.processes).length; j++) {
         const server = Object.keys(state.processes)[j].server
         if (!state.servers[server]) {
-          state.server[server] = { ok: true }
+          state.servers[server] = { ok: true }
         }
       }
     },
