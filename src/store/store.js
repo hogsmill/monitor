@@ -111,14 +111,12 @@ export const store = new Vuex.Store({
       state.log.log = payload.log;
     },
     updateSelectedServer: (state, payload) => {
-      console.log('updateSelectedServer', payload)
       if (payload.name == state.selectedServer) {
         state.selectedServer = ''
       } else {
         state.selectedServer = payload.name
       }
-      console.log('state.selectedServer', state.selectedServer)
-    },
+    }
   },
   actions: {
     updateLastUpdated: ({ commit }, payload) => {

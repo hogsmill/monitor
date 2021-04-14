@@ -9,7 +9,6 @@
     <tbody>
       <tr v-for="(server, index) in servers" :key="index">
         <td>
-          {{ server.name }} == {{ selectedServer }}
           <input type="checkbox" :checked="server.name == selectedServer">
         </td>
         <td :class="{ 'server-fail': !server.ok }">
@@ -33,7 +32,6 @@ export default {
       return this.$store.getters.getServers
     },
     selectedServer() {
-      console.log('Selected Server', this.$store.getters.getSelectedServer)
       return this.$store.getters.getSelectedServer
     }
   },
