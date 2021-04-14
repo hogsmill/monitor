@@ -1,5 +1,5 @@
 <template>
-  <table class="apps">
+  <table v-if="selectedServer" class="apps">
     <thead>
       <th>Port</th>
       <th>App</th>
@@ -13,22 +13,22 @@
     <tbody>
       <tr v-for="(app, index) in processes" :key="index">
         <td v-if="app.server == selectedServer" :class="status(app)">{{ app.port }}</td>
-        <td :class="status(app)" class="app"><a :href="'https://agilesimulations.co.uk/' + app.app" target="blank">{{ app.name }}</a></td>
-        <td :class="status(app)">{{ app.server }}</td>
-        <td :class="status(app)">
+        <td v-if="app.server == selectedServer" :class="status(app)" class="app"><a :href="'https://agilesimulations.co.uk/' + app.app" target="blank">{{ app.name }}</a></td>
+        <td v-if="app.server == selectedServer" :class="status(app)">{{ app.server }}</td>
+        <td v-if="app.server == selectedServer" :class="status(app)">
           <div v-if="outdated[app.app]" class="outdated">
             <div v-for="(outd, index) in outdated[app.app]" :key="index">
               {{ outd }}
             </div>
           </div>
         </td>
-        <td :class="status(app)">
+        <td v-if="app.server == selectedServer" :class="status(app)">
           <span v-if="app.running">{{ app.time }}</span>
           <span v-if="!app.running">FALSE</span>
         </td>
-        <td :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].games }}</span></td>
-        <td :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].created }}<br>{{ games[app.name].createdGame }}</span></td>
-        <td :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].lastaccess }}<br>{{ games[app.name].lastaccessGame }}</span></td>
+        <td v-if="app.server == selectedServer" :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].games }}</span></td>
+        <td v-if="app.server == selectedServer" :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].created }}<br>{{ games[app.name].createdGame }}</span></td>
+        <td v-if="app.server == selectedServer" :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].lastaccess }}<br>{{ games[app.name].lastaccessGame }}</span></td>
       </tr>
     </tbody>
   </table>
