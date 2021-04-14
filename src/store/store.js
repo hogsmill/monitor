@@ -18,17 +18,14 @@ function checkServerStatus(server, processes) {
 }
 
 function checkServerOutdated(server, processes, outdated) {
-  console.log(server.name, processes, outdated)
   let outd = false
   for (let i = 0; i < processes.length; i++) {
     if (processes[i].server == server.name) {
-      console.log(processes[i].app, outdated[processes[i].app], outdated[processes[i].app].length)
       if (outdated[processes[i].app] && outdated[processes[i].app].length > 0) {
-        outd = false
+        outd = true
       }
     }
   }
-  console.log(outd)
   return outd
 }
 
@@ -97,7 +94,6 @@ export const store = new Vuex.Store({
       }
       const serverKeys = Object.keys(servers)
       const serverArr = []
-      console.log(servers, serverKeys)
       for (i = 0; i < serverKeys.length; i++) {
         const ok = checkServerStatus(servers[serverKeys[i]], state.processes)
         const outdated = checkServerOutdated(servers[serverKeys[i]], state.processes, state.outdated)
