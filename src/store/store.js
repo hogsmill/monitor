@@ -92,7 +92,7 @@ export const store = new Vuex.Store({
         const server = state.processes[1].server
         if (!servers[server]) {
           const ok = checkServerStatus(server, state.processes)
-          const outdated = checkServerOutdated(server)
+          const outdated = checkServerOutdated(server, state.processes, state.outdated)
           servers[server] = { name: server, ok: ok, outdated: outdated }
         }
       }
