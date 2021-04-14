@@ -60,8 +60,8 @@ export const store = new Vuex.Store({
       state.processes = processes.sort(function(a, b) {
         return a.order - b.order
       })
-      for (let j = 0; j < Object.keys(state.processes).length; j++) {
-        const server = Object.keys(state.processes)[j].server
+      for (let j = 0; j < state.processes.length; j++) {
+        const server = state.processes[j].server
         if (!state.servers[server]) {
           state.servers[server] = { ok: true }
         }
