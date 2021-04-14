@@ -24,6 +24,7 @@ export const store = new Vuex.Store({
       return state.lastUpdated;
     },
     getServers: (state) => {
+      console.log(state.servers)
       return state.servers;
     },
     getProcesses: (state) => {
