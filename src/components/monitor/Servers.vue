@@ -3,7 +3,8 @@
     <thead>
       <th />
       <th>Server</th>
-      <th>Status</th>
+      <th>Apps</th>
+      <th>Outdated</th>
       <th />
     </thead>
     <tbody>
@@ -11,13 +12,16 @@
         <td>
           <input type="checkbox" :checked="server.name == selectedServer">
         </td>
-        <td :class="{ 'server-fail': !server.ok }">
+        <td :class="{ 'server-fail': !server.ok || server.outdated }">
           {{ server.name }}
         </td>
-        <td>
+        <td :class="{ 'server-fail': !server.ok || server.outdated }">
           {{ server.ok ? 'OK' : 'FAIL' }}
         </td>
-        <td>
+        <td :class="{ 'server-fail': !server.ok || server.outdated }">
+          {{ server.outdated ? 'FAIL' : 'OK' }}
+        </td>
+        <td :class="{ 'server-fail': !server.ok || server.outdated }">
           <button @click="toggleShowServer(server)">Show</button>
         </td>
       </tr>
