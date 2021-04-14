@@ -4,7 +4,7 @@
       <th />
       <th>Server</th>
       <th>Apps</th>
-      <th>Outdated</th>
+      <th>Outdated<br />(<i>ignores sass-loader and chatr.js</i>)</th>
       <th />
     </thead>
     <tbody>
@@ -49,6 +49,9 @@ export default {
 
 <style lang="scss">
   .server-table {
+    th {
+     vertical-align: bottom;
+    }
     td {
       background-color: green;
 
