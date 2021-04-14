@@ -37,12 +37,17 @@
 <script>
 export default {
   props: [
-    'processes',
     'scope'
   ],
   computed: {
+    processes() {
+      return this.$store.getters.getProcesses
+    },
     games() {
       return this.$store.getters.getGames
+    },
+    selectedServer() {
+      return this.$store.getters.getSelectedServer
     },
     outdated() {
       return this.$store.getters.getOutdated

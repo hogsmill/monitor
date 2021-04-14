@@ -3,7 +3,8 @@
     <table>
       <tr>
         <td class="outer">
-          <Process :processes="processes" :scope="'app'" />
+          <Servers />
+          <Process :scope="'app'" />
         </td>
         <td class="outer">
           <table class="logs">
@@ -56,16 +57,15 @@
 <script>
 import bus from '../socket.js'
 
+import Server from "./monitor/Servers.vue";
 import Process from "./monitor/Process.vue";
 
 export default {
   components: {
+    Servers,
     Process
   },
   computed: {
-    processes() {
-      return this.$store.getters.getProcesses
-    },
     keep() {
       return this.$store.getters.getKeep
     },
