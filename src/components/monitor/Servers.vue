@@ -7,7 +7,6 @@
       <th />
     </thead>
     <tbody>
-
       <tr v-for="(server, index) in servers" :key="index">
         <td>
           {{ server.name }} == {{ selectedServer }}
