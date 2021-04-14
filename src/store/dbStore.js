@@ -11,9 +11,10 @@ function state() {
       const fields = data[i].split(",")
       apps[fields[0]] = {
         order: i,
-        port: fields[0],
-        app: fields[1],
-        name: fields[2]
+        server: fields[0],
+        port: fields[1],
+        app: fields[2],
+        name: fields[3]
       }
     }
   }
