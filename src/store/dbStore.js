@@ -9,10 +9,11 @@ function state() {
   for (let i = 0; i < data.length; i++) {
     if (data[i].match(/^[0-9]{4}/)) {
       const fields = data[i].split(",")
-      apps[fields[0]] = {
+      const port = fields[1]
+      apps[port] = {
         order: i,
         server: fields[0],
-        port: fields[1],
+        port: port,
         app: fields[2],
         name: fields[3]
       }
