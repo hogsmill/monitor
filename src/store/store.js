@@ -91,7 +91,7 @@ export const store = new Vuex.Store({
       })
       let servers = {}
       for (i = 0; i < state.processes.length; i++) {
-        const server = state.processes[1].server
+        const server = state.processes[i].server
         servers[server] = {name: server}
       }
       const serverKeys = Object.keys(servers)
