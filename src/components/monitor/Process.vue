@@ -1,5 +1,5 @@
 <template>
-  <table v-if="selectedServer" class="apps">
+  <table class="apps">
     <thead>
       <th>Port</th>
       <th>App</th>
