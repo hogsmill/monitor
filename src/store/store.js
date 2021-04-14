@@ -10,6 +10,7 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     lastUpdated: '',
+    servers: {},
     processes: [],
     games: {},
     outdated: {},
@@ -21,6 +22,9 @@ export const store = new Vuex.Store({
   getters: {
     getLastUpdated: (state) => {
       return state.lastUpdated;
+    },
+    getServers: (state) => {
+      return state.servers;
     },
     getProcesses: (state) => {
       return state.processes;
@@ -55,7 +59,13 @@ export const store = new Vuex.Store({
       }
       state.processes = processes.sort(function(a, b) {
         return a.order - b.order
-      });
+      })
+      for (let j = 0; j < Object.keys(state.processes).length; j++) {
+        const server = Object.keys(state.processes)[j].server
+        if (!state.servers[server]) {
+          state.server[server] = { ok: true }
+        }
+      }
     },
     updateGames: (state, payload) => {
       if (!state.games[payload.game]) {
