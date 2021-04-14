@@ -11,6 +11,7 @@ export const store = new Vuex.Store({
   state: {
     lastUpdated: '',
     servers: {},
+    selectedServer: '',
     processes: [],
     games: {},
     outdated: {},
