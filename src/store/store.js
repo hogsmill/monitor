@@ -60,12 +60,14 @@ export const store = new Vuex.Store({
       state.processes = processes.sort(function(a, b) {
         return a.order - b.order
       })
+      const servers = {}
       for (let j = 0; j < state.processes.length; j++) {
         const server = state.processes[j].server
-        if (!state.servers[server]) {
-          state.servers[server] = { name: server, ok: true }
+        if (!servers[server]) {
+          servers[server] = { name: server, ok: true }
         }
       }
+      state.servers = servers
     },
     updateGames: (state, payload) => {
       if (!state.games[payload.game]) {
