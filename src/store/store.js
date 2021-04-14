@@ -24,6 +24,9 @@ export const store = new Vuex.Store({
     getLastUpdated: (state) => {
       return state.lastUpdated;
     },
+    getSelectedServer: (state) => {
+      return state.selectedServer;
+    },
     getServers: (state) => {
       return state.servers;
     },
