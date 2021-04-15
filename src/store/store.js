@@ -13,7 +13,7 @@ const ignoreOutdated = {
 }
 
 function serverStatus(server, servers) {
-  let status = false
+  let status = true
   for (let i = 0; i < servers.length; i++) {
     if (servers[i].name == server.name) {
       status = servers[i].ok
