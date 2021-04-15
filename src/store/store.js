@@ -12,8 +12,28 @@ const ignoreOutdated = {
   'chart.js': true
 }
 
-function checkServerStatus(server, processes) {
-  let ok = true
+function serverStatus(server, servers) {
+  let status = false
+  for (let i = 0; i < servers.length; i++) {
+    if (servers[i].name == server.name) {
+      status = servers[i].ok
+    }
+  }
+  return status
+}
+
+function serverOutdated(server, servers) {
+  let status = false
+  for (let i = 0; i < servers.length; i++) {
+    if (servers[i].name == server.name) {
+      status = servers[i].outdated
+    }
+  }
+  return status
+}
+
+function checkServerStatus(server, processes, servers) {
+  let ok = serverStatus(server, servers)
   for (let i = 0; i < processes.length; i++) {
     if (processes[i].server == server.name && !processes[i].running) {
       ok = false
@@ -22,8 +42,8 @@ function checkServerStatus(server, processes) {
   return ok
 }
 
-function checkServerOutdated(server, processes, outdated) {
-  let outd = false
+function checkServerOutdated(server, processes, outdated, servers) {
+  let outd = serverOutdated(server, servers)
   for (let i = 0; i < processes.length; i++) {
     if (processes[i].server == server.name) {
       if (outdated[processes[i].app] && outdated[processes[i].app].length > 0) {
@@ -105,8 +125,8 @@ export const store = new Vuex.Store({
       const serverKeys = Object.keys(servers)
       const serverArr = []
       for (i = 0; i < serverKeys.length; i++) {
-        const ok = checkServerStatus(servers[serverKeys[i]], state.processes)
-        const outdated = checkServerOutdated(servers[serverKeys[i]], state.processes, state.outdated)
+        const ok = checkServerStatus(servers[serverKeys[i]], state.processes, state.servers)
+        const outdated = checkServerOutdated(servers[serverKeys[i]], state.processes, state.outdated, state.servers)
         serverArr.push({name: serverKeys[i], ok: ok, outdated: outdated})
       }
       state.servers = serverArr
