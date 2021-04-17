@@ -12,7 +12,7 @@
     "death": "^1.1.0",
     "javascript-time-ago": "^2.3.4",
     "mongo": "^0.1.0",
-    "sass": "^1.32.8",
+    "sass": "^1.32.10",
     "socket.io": "^4.0.1",
     "socket.io-client": "^4.0.1",
     "vue": "^2.6.11",
