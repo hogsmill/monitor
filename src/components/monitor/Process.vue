@@ -3,7 +3,6 @@
     <thead>
       <th>Port</th>
       <th>App</th>
-      <th>Server</th>
       <th>Outdated</th>
       <th>Running</th>
       <th>Games/Orgs.</th>
@@ -14,7 +13,6 @@
       <tr v-for="(app, index) in processes" :key="index">
         <td v-if="app.server == selectedServer" :class="status(app)">{{ app.port }}</td>
         <td v-if="app.server == selectedServer" :class="status(app)" class="app"><a :href="'https://agilesimulations.co.uk/' + app.app" target="blank">{{ app.name }}</a></td>
-        <td v-if="app.server == selectedServer" :class="status(app)">{{ app.server }}</td>
         <td v-if="app.server == selectedServer" :class="status(app)">
           <div v-if="outdated[app.app]" class="outdated">
             <div v-for="(outd, index) in outdated[app.app]" :key="index">
