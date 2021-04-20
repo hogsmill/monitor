@@ -142,6 +142,7 @@ module.exports = {
   getOutdated: function(io) {
     const updated = fs.readFileSync('/usr/apps/monitor/outdated.txt', 'utf8')
     io.emit('updateOutdated', JSON.parse(updated))
+    this.saveData(io)
   },
 
   getConnections: function(db, io) {
