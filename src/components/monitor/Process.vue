@@ -43,7 +43,6 @@ export default {
   ],
   computed: {
     processes() {
-      console.log(this.$store.getters.getProcesses)
       return this.$store.getters.getProcesses
     },
     games() {
