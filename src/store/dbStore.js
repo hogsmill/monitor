@@ -7,8 +7,8 @@ const newDeploy = {
   'No Estimates': true,
   'No Estimates Mobile': true,
   'Coin Game': true ,
-  'Battlesships': true,
-  'Survival': true
+  'Agile Battleships': true,
+  'Survival At Sea': true
 }
 
 function state() {
