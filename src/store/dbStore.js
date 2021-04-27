@@ -6,7 +6,9 @@ const process = require('process');
 const newDeploy = {
   'No Estimates': true,
   'No Estimates Mobile': true,
-  'Coin Game': true ,
+  'Coin Game': true,
+  'Kanban': true,
+  'Pipeline Game': true,
   'Agile Battleships': true,
   'Survival At Sea': true
 }
