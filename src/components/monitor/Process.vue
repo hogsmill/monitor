@@ -14,6 +14,7 @@
       <tr v-for="(app, index) in processes" :key="index">
         <td v-if="app.server == selectedServer" :class="status(app)">
           <span v-if="app.newDeploy">&#10004;</span>
+          <span v-if="app.noNewDeploy">&#10008;</span>
         </td>
         <td v-if="app.server == selectedServer" :class="status(app)">{{ app.port }}</td>
         <td v-if="app.server == selectedServer" :class="status(app)" class="app"><a :href="'https://agilesimulations.co.uk/' + app.app" target="blank">{{ app.name }}</a></td>

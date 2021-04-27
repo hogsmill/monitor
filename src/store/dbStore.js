@@ -10,6 +10,10 @@ const newDeploy = {
   'Agile Battleships': true,
   'Survival At Sea': true
 }
+const noNewDeploy = {
+  'L-EAF Test App': true,
+  'Labs': true
+}
 
 function state() {
   let apps = {}
@@ -21,6 +25,7 @@ function state() {
       const name = fields[3]
       apps[port] = {
         newDeploy: newDeploy[name],
+        noNewDeploy: noNewDeploy[name],
         order: i,
         server: fields[0],
         port: port,
