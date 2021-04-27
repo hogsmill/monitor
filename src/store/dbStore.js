@@ -9,6 +9,7 @@ const newDeploy = {
   'Coin Game': true,
   'Kanban': true,
   'Pipeline Game': true,
+  'Planning Poker': true,
   'Agile Battleships': true,
   'Survival At Sea': true
 }
