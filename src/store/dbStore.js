@@ -18,13 +18,14 @@ function state() {
     if (data[i].match(/^\w+,[0-9]{4},/)) {
       const fields = data[i].split(",")
       const port = fields[1]
+      const name = fields[3]
       apps[port] = {
-        newDeploy: newDeploy[fields[2]],
+        newDeploy: newDeploy[name],
         order: i,
         server: fields[0],
         port: port,
         app: fields[2],
-        name: fields[3]
+        name: name
       }
     }
   }
