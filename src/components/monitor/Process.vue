@@ -1,7 +1,7 @@
 <template>
   <table class="apps">
     <thead>
-      <th>New Delpoy</th>
+      <th>New Deploy</th>
       <th>Port</th>
       <th>App</th>
       <th>Outdated</th>
@@ -41,6 +41,7 @@ export default {
   ],
   computed: {
     processes() {
+      console.log(this.$store.getters.getProcesses)
       return this.$store.getters.getProcesses
     },
     games() {

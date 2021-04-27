@@ -1,8 +1,17 @@
 #!/bin/bash
 
-if [ "$1" == "-f" ]; then
-  FORCE=true
-fi
+FORCE=false
+OUTDATED=true
+while [ $1 ]
+do
+  if [ "$1" == "-f" ]; then
+    FORCE=true
+  fi
+  if [ "$1" == "-o" ]; then
+    OUTDATED=false
+  fi
+  shift
+done
 
 PORT=3012
 PWD=`pwd`
@@ -26,4 +35,6 @@ if [ -f "src/server.js" ]; then
   fi
 fi
 
-/usr/bin/php /usr/apps/monitor/src/lib/outdated.php &
+if [ "$OUTDATED" == "true" ]; then
+  php /usr/apps/monitor/src/lib/outdated.php &
+fi
