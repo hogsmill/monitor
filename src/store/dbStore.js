@@ -3,6 +3,14 @@ const execSync = require('child_process').execSync;
 const fs = require('fs')
 const process = require('process');
 
+const newDeploy = {
+  'No Estimates': true,
+  'No Estimates Mobile': true,
+  'Coin Game': true ,
+  'Battlesships': true,
+  'Survival': true
+}
+
 function state() {
   let apps = {}
   const data = fs.readFileSync('/usr/keep/apps.txt', 'utf8').split("\n")
@@ -11,6 +19,7 @@ function state() {
       const fields = data[i].split(",")
       const port = fields[1]
       apps[port] = {
+        newDeploy: newDeploy[fields[2]],
         order: i,
         server: fields[0],
         port: port,
