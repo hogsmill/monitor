@@ -1,6 +1,11 @@
 #!/usr/bin/php
 <?php
 
+$ignore = array(
+  'sass-loader',
+  'eslint'
+);
+
 $root = '/usr/apps/';
 $dirs = scandir($root);
 foreach ($dirs as $d) {
@@ -12,7 +17,7 @@ foreach ($dirs as $d) {
     $outdated[$d] = array();
     for ($i = 1; $i < count($output); $i++) {
       $fields = preg_split("/[\s]+/", $output[$i]);
-      if ($fields[0] != '' && $fields[0] != 'sass-loader') {
+      if ($fields[0] != '' && !in_array($fields[0], $ignore)) {
         array_push($outdated[$d], $fields[0]);
       }
     }
