@@ -6,6 +6,8 @@ const process = require('process');
 const newDeploy = {
   'No Estimates': true,
   'No Estimates Mobile': true,
+  'Kanban Playground': true,
+  'Kanban Playground Mobile': true,
   'Coin Game': true,
   'Kanban': true,
   'Pipeline Game': true,
@@ -15,7 +17,8 @@ const newDeploy = {
 }
 const noNewDeploy = {
   'L-EAF Test App': true,
-  'Labs': true
+  'Labs': true,
+  'Monitor': true
 }
 
 function state() {
