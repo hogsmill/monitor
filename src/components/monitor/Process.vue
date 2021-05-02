@@ -1,7 +1,7 @@
 <template>
   <table class="apps">
     <thead>
-      <th>New Deploy</th>
+      <th v-if="selectedServer == 'default'">New Deploy</th>
       <th>Port</th>
       <th>App</th>
       <th>Outdated</th>
@@ -12,7 +12,7 @@
     </thead>
     <tbody>
       <tr v-for="(app, index) in processes" :key="index">
-        <td v-if="app.server == selectedServer" :class="status(app)">
+        <td v-if="app.server == selectedServer && selectedServer == 'default'" :class="status(app)">
           <span v-if="app.newDeploy">&#10004;</span>
           <span v-if="app.noNewDeploy">&#10008;</span>
           <span v-if="!app.noNewDeploy && !app.newDeploy">TBD</span>
