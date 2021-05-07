@@ -13,7 +13,8 @@ const newDeploy = {
   'Pipeline Game': true,
   'Planning Poker': true,
   'Agile Battleships': true,
-  'Survival At Sea': true
+  'Survival At Sea': true,
+  'Socket Test': true
 }
 const noNewDeploy = {
   'L-EAF Test App': true,
