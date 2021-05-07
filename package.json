@@ -13,8 +13,8 @@
     "javascript-time-ago": "^2.3.4",
     "mongo": "^0.1.0",
     "sass": "^1.32.12",
-    "socket.io": "^4.0.1",
-    "socket.io-client": "^4.0.1",
+    "socket.io": "^4.0.2",
+    "socket.io-client": "^4.0.2",
     "vue": "^2.6.11",
     "vue-js-modal": "^2.0.0-rc.6",
     "vuex": "^3.6.2"
