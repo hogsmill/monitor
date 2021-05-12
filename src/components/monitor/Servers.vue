@@ -4,7 +4,7 @@
       <th />
       <th>Server</th>
       <th>Apps</th>
-      <th>Outdated<br />(<i>ignores {{ ignoreStr() }}</i>)</th>
+      <th>Outdated<br />(<i>ignores {{ ignoreString() }}</i>)</th>
       <th />
     </thead>
     <tbody>
