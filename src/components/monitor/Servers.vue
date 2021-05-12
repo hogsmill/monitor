@@ -4,7 +4,7 @@
       <th />
       <th>Server</th>
       <th>Apps</th>
-      <th>Outdated<br />(<i>ignores sass-loader and chart.js</i>)</th>
+      <th>Outdated<br />(<i>ignores {{ ignoreStr() }}</i>)</th>
       <th />
     </thead>
     <tbody>
@@ -40,6 +40,14 @@ export default {
     }
   },
   methods: {
+    ignoreString() {
+      const ignore = [
+        'sass-loader',
+        'node-sass',
+        'chart.js'
+      ]
+      return ignore.slice(0, -1).join(', ') + ' and ' + ignore[ignore.length - 1]
+    },
     toggleShowServer(server) {
       this.$store.dispatch('updateSelectedServer', server)
     }

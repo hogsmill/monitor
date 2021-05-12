@@ -3,7 +3,8 @@
 
 $ignore = array(
   'sass-loader',
-  'eslint'
+  'node-sass',
+  'chart.js'
 );
 
 $root = '/usr/apps/';
