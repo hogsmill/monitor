@@ -5,7 +5,7 @@ const os = require('os')
 const prod = os.hostname() == 'agilesimulations' ? true : false
 const logFile = prod ? process.argv[4] : 'server.log'
 
-ON_DEATH(function(signal, err) {
+ON_DEATH((signal, err) => {
   let logStr = new Date()
   if (signal) {
     logStr = logStr + ' ' + signal + '\n'
@@ -13,7 +13,7 @@ ON_DEATH(function(signal, err) {
   if (err && err.stack) {
     logStr = logStr + '  ' + err.stack + '\n'
   }
-  fs.appendFile(logFile, logStr, function (err) {
+  fs.appendFile(logFile, logStr, (err) => {
     if (err) console.log(logStr)
     process.exit()
   })
@@ -58,7 +58,7 @@ const connectDebugOff = prod
 var connections = 0
 var maxConnections = 10
 
-function getGames() {
+const getGames = () => {
   let games = [
     {game: 'Agile Battleships', collection: 'battleships'},
     {game: 'Coin Game', collection: 'coinGame'},
@@ -69,7 +69,7 @@ function getGames() {
     {game: 'Planning Poker', collection: 'planningPokerOrganisations'},
     {game: 'Survival At Sea', collection: 'survival'}
   ]
-  MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime }, function (err, client) {
+  MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime }, (err, client) => {
     for (let i = 0; i < games.length; i++) {
       if (err) throw err
       const db = client.db('db')
@@ -78,8 +78,8 @@ function getGames() {
   })
 }
 
-function getConnections() {
-  MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime }, function (err, client) {
+const getConnections = () => {
+  MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime }, (err, client) => {
     if (err) throw err
     const db = client.db('db')
     dbStore.getConnections(db, io)

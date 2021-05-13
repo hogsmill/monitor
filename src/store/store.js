@@ -12,7 +12,7 @@ const ignoreOutdated = {
   'chart.js': true
 }
 
-function serverStatus(server, servers) {
+const serverStatus = (server, servers) => {
   let status = true
   for (let i = 0; i < servers.length; i++) {
     if (servers[i].name == server.name) {
@@ -22,7 +22,7 @@ function serverStatus(server, servers) {
   return status
 }
 
-function serverOutdated(server, servers) {
+const serverOutdated = (server, servers) => {
   let status = false
   for (let i = 0; i < servers.length; i++) {
     if (servers[i].name == server.name) {
@@ -32,7 +32,7 @@ function serverOutdated(server, servers) {
   return status
 }
 
-function checkServerStatus(server, processes, servers) {
+const checkServerStatus = (server, processes, servers) => {
   let ok = serverStatus(server, servers)
   for (let i = 0; i < processes.length; i++) {
     if (processes[i].server == server.name && !processes[i].running) {
@@ -42,7 +42,7 @@ function checkServerStatus(server, processes, servers) {
   return ok
 }
 
-function checkServerOutdated(server, processes, outdated, servers) {
+const checkServerOutdated = (server, processes, outdated, servers) => {
   let outd = serverOutdated(server, servers)
   for (let i = 0; i < processes.length; i++) {
     if (processes[i].server == server.name) {
@@ -114,7 +114,7 @@ export const store = new Vuex.Store({
       for (i = 0; i < len; i++) {
         processes.push(payload[Object.keys(payload)[i]])
       }
-      state.processes = processes.sort(function(a, b) {
+      state.processes = processes.sort((a, b) => {
         return a.order - b.order
       })
       let servers = {}

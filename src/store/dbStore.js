@@ -22,7 +22,7 @@ const noNewDeploy = {
   'Monitor': true
 }
 
-function state() {
+const state = () => {
   let apps = {}
   const data = fs.readFileSync('/usr/keep/apps.txt', 'utf8').split("\n")
   for (let i = 0; i < data.length; i++) {
@@ -44,7 +44,7 @@ function state() {
   return apps
 }
 
-function parseProcesses(data) {
+const parseProcesses = (data) => {
   let processes = state()
   const splitData = data ? data.split("\n") : []
   for (let i = 0; i < splitData.length; i++) {
@@ -64,7 +64,7 @@ function parseProcesses(data) {
   return processes
 }
 
-function parseLogs(data) {
+const parseLogs = (data) => {
   let logs = []
   const splitData = data ? data.split("\n") : []
   for (let i = 0; i < splitData.length; i++) {
@@ -83,7 +83,7 @@ function parseLogs(data) {
   return logs
 }
 
-function gameName(res) {
+const gameName = (res) => {
   let name = ''
   if (res.gameName) {
     name = res.gameName
@@ -127,7 +127,7 @@ module.exports = {
 
   getGames: function(db, io, data) {
 
-    db.collection(data.collection).find().toArray(function(err, res) {
+    db.collection(data.collection).find().toArray((err, res) => {
       if (err) throw err
       if (res.length) {
         let lastaccess, lastaccessGame, created, createdGame
@@ -170,14 +170,14 @@ module.exports = {
   getConnections: function(db, io) {
 
     const admin = db.admin()
-    admin.serverStatus(function(err, res) {
+    admin.serverStatus((err, res) => {
       io.emit('updateMongoConnections', res.connections)
     })
   },
 
   getLog: function(io, data) {
 
-    fs.readFile('/usr/apps/logs/' + data.app, 'utf8', function(err, log) {
+    fs.readFile('/usr/apps/logs/' + data.app, 'utf8', (err, log) => {
       if (err) throw err;
       data.log = log
       io.emit('getLog', data)

@@ -41,22 +41,22 @@ export default {
   },
   created() {
     const self = this
-    setInterval(function() {
+    setInterval(() => {
       bus.$emit('sendLoad')
       self.$store.dispatch("updateLastUpdated", new Date().toGMTString())
     }, 5000)
 
-    setInterval(function() {
+    setInterval(() => {
       if (this.running) {
         bus.$emit('sendGetGames')
       }
     }, 60000)
 
-    setInterval(function() {
+    setInterval(() => {
       bus.$emit('sendGetOutdated')
     }, 5000)
 
-    setInterval(function() {
+    setInterval(() => {
       bus.$emit('sendGetConnections')
     }, 60000)
 
