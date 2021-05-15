@@ -50,6 +50,11 @@
           </table>
         </td>
       </tr>
+      <tr>
+        <td colspan="2" class="outer">
+          <Process :scope="'app'" />
+        </td>
+      </tr>
     </table>
   </div>
 </template>
