@@ -22,7 +22,7 @@
           {{ server.outdated ? 'FAIL' : 'OK' }}
         </td>
         <td :class="{ 'server-fail': !server.ok || server.outdated }">
-          <button @click="toggleShowServer(server)">Show</button>
+          <button class="btn btn-sm btn-secondary smaller-font" @click="toggleShowServer(server)">Show</button>
         </td>
       </tr>
     </tbody>

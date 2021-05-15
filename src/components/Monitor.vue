@@ -118,7 +118,7 @@ export default {
   }
   td {
     color: #fff;
-    padding: 6px;
+    padding: 0 6px;
   }
   .logs {
     tbody {

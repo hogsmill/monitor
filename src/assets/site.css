@@ -16,7 +16,10 @@ div {
   border: 0px solid #000;
 }
 
-button { margin: 2px; }
+button {
+  margin: 2px;
+  padding: 2px 6px;
+}
 
 /* navbar css */
 
