@@ -4,7 +4,6 @@
       <tr>
         <td class="outer">
           <Servers />
-          <Process :scope="'app'" />
         </td>
         <td class="outer">
           <table class="logs">
