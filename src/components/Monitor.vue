@@ -23,7 +23,6 @@
               </tr>
             </tbody>
           </table>
-          <h2>Logs</h2>
           <table class="apps logs">
             <thead>
               <th>App</th>
