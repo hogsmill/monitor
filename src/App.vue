@@ -3,7 +3,7 @@
     <Header />
     <div class="right">
     </div>
-    <div class="container>
+    <div class="container">
       <div class="row">
         <Monitor />
       </div>
