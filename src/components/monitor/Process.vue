@@ -31,8 +31,8 @@
           <span v-if="!app.running">FALSE</span>
         </td>
         <td v-if="app.server == selectedServer" :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].games }}</span></td>
-        <td v-if="app.server == selectedServer" :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].created }}<br>{{ games[app.name].createdGame }}</span></td>
-        <td v-if="app.server == selectedServer" :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].lastaccess }}<br>{{ games[app.name].lastaccessGame }}</span></td>
+        <td v-if="app.server == selectedServer" :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].created }}, {{ games[app.name].createdGame }}</span></td>
+        <td v-if="app.server == selectedServer" :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].lastaccess }}, {{ games[app.name].lastaccessGame }}</span></td>
       </tr>
     </tbody>
   </table>
