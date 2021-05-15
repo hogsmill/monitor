@@ -3,7 +3,7 @@
     <Header />
     <div class="right">
     </div>
-    <div class="container">
+    <div class="container>
       <div class="row">
         <Monitor />
       </div>
@@ -98,5 +98,9 @@ export default {
 <style lang="scss">
   .right {
     text-align: right;
+  }
+  .container {
+    max-width: 100%;
+    margin 0 auto;
   }
 </style>
