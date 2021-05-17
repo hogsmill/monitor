@@ -75,8 +75,8 @@ export default {
   .apps {
     td {
      padding: 0;
-     border-top: 1px solid #fff;
-     border-bottom: 1px solid #fff;
+     border-top: 1px solid olive;
+     border-bottom: 1px solid olive;
     }
   }
   .app {
