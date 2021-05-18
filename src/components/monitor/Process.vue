@@ -74,7 +74,7 @@ export default {
 <style lang="scss">
   .apps {
     td {
-     padding: 0;
+     padding: 0 1px;
      border-top: 1px solid olive;
      border-bottom: 1px solid olive;
     }
