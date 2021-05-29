@@ -8,7 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "core-js": "^3.13.0",
+    "core-js": "^3.13.1",
     "death": "^1.1.0",
     "javascript-time-ago": "^2.3.6",
     "mongo": "^0.1.0",
@@ -25,7 +25,7 @@
     "@vue/cli-service": "^4.5.12",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.27.0",
-    "eslint-plugin-vue": "^7.9.0",
+    "eslint-plugin-vue": "^7.10.0",
     "node-sass": "^5.0.0",
     "sass-loader": "^10.1.1",
     "vue-template-compiler": "^2.6.12"
