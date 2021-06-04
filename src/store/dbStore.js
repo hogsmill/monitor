@@ -9,7 +9,6 @@ const newDeploy = {
   'Kanban Playground': true,
   'Kanban Playground Mobile': true,
   'Coin Game': true,
-  'Kanban': true,
   'Pipeline Game': true,
   'Planning Poker': true,
   'Agile Battleships': true,
