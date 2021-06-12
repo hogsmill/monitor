@@ -12,6 +12,7 @@ const newDeploy = {
   'Pipeline Game': true,
   'Planning Poker': true,
   'Agile Battleships': true,
+  'Context Switching': true,
   'Survival At Sea': true,
   'Socket Test': true
 }
