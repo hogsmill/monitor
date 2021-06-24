@@ -2,6 +2,7 @@
   <table class="apps">
     <thead>
       <th v-if="selectedServer == 'default'">New Deploy</th>
+      <th v-if="selectedServer == 'default'">Login</th>
       <th>Port</th>
       <th>App</th>
       <th>Outdated</th>
@@ -16,6 +17,10 @@
           <span v-if="app.newDeploy">&#10004;</span>
           <span v-if="app.noNewDeploy">&#10008;</span>
           <span v-if="!app.noNewDeploy && !app.newDeploy">TBD</span>
+        </td>
+        <td v-if="app.server == selectedServer && selectedServer == 'default'" :class="status(app)">
+          <span v-if="app.login">&#10004;</span>
+          <span v-if="!app.login">&#10008;</span>
         </td>
         <td v-if="app.server == selectedServer" :class="status(app)">{{ app.port }}</td>
         <td v-if="app.server == selectedServer" :class="status(app)" class="app"><a :href="'https://agilesimulations.co.uk/' + app.app" target="blank">{{ app.name }}</a></td>

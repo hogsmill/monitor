@@ -21,6 +21,10 @@ const noNewDeploy = {
   'Labs': true,
   'Monitor': true
 }
+const login = {
+  'Coin Game': true,
+  'Plannign Poker': true
+}
 
 const state = () => {
   let apps = {}
@@ -33,6 +37,7 @@ const state = () => {
       apps[port] = {
         newDeploy: newDeploy[name],
         noNewDeploy: noNewDeploy[name],
+        login: login[name],
         order: i,
         server: fields[0],
         port: port,
@@ -171,7 +176,7 @@ module.exports = {
 
     const admin = db.admin()
     admin.serverStatus((err, res) => {
-      if (err) throw err;      
+      if (err) throw err;
       io.emit('updateMongoConnections', res.connections)
     })
   },
