@@ -23,7 +23,7 @@ const noNewDeploy = {
 }
 const login = {
   'Coin Game': true,
-  'Plannign Poker': true
+  'Planning Poker': true
 }
 
 const state = () => {
