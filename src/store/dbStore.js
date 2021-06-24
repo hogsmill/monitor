@@ -17,13 +17,17 @@ const newDeploy = {
   'Socket Test': true
 }
 const noNewDeploy = {
+  'Agile Simulations': true,
   'L-EAF Test App': true,
   'Labs': true,
   'Monitor': true
 }
 const login = {
+  'Agile Simulations': true,
   'Coin Game': true,
-  'Planning Poker': true
+  'Planning Poker': true,
+  'No Estimates': true,
+  'Kanban Playground': true
 }
 
 const state = () => {
