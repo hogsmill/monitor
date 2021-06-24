@@ -171,6 +171,7 @@ module.exports = {
 
     const admin = db.admin()
     admin.serverStatus((err, res) => {
+      if (err) throw err;      
       io.emit('updateMongoConnections', res.connections)
     })
   },
