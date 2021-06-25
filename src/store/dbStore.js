@@ -31,7 +31,9 @@ const login = {
 }
 const clearLocalStorage = {
   'Coin Game': true,
-  'No Estimates': true
+  'No Estimates': true,
+  'Planning Poker': true,
+  'Agile Battleships': true
 }
 
 const state = () => {
