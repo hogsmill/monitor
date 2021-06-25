@@ -30,7 +30,8 @@ const login = {
   'Kanban Playground': true
 }
 const clearLocalStorage = {
-  'Coin Game': true
+  'Coin Game': true,
+  'No Estimates': true
 }
 
 const state = () => {
