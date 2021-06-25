@@ -29,6 +29,9 @@ const login = {
   'No Estimates': true,
   'Kanban Playground': true
 }
+const clearLocalStorage = {
+  'Coin Game': true
+}
 
 const state = () => {
   let apps = {}
@@ -42,6 +45,7 @@ const state = () => {
         newDeploy: newDeploy[name],
         noNewDeploy: noNewDeploy[name],
         login: login[name],
+        clearLocalStorage: clearLocalStorage[name],
         order: i,
         server: fields[0],
         port: port,
