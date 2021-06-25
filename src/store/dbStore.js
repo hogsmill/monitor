@@ -33,7 +33,9 @@ const clearLocalStorage = {
   'Coin Game': true,
   'No Estimates': true,
   'Planning Poker': true,
-  'Agile Battleships': true
+  'Agile Battleships': true,
+  'Context Switching': true,
+  'Survival At Sea': true,
 }
 
 const state = () => {
