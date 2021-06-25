@@ -13,6 +13,7 @@ const newDeploy = {
   'Planning Poker': true,
   'Agile Battleships': true,
   'Context Switching': true,
+  'BA Shouting': true,
   'Survival At Sea': true,
   'Socket Test': true
 }
@@ -32,9 +33,13 @@ const login = {
 const clearLocalStorage = {
   'Coin Game': true,
   'No Estimates': true,
+  'No Estimates Mobile': true,
+  'Kanban Playground': true,
+  'Kanban Playground Mobile': true,
   'Planning Poker': true,
   'Agile Battleships': true,
   'Context Switching': true,
+  'BA Shouting': true,
   'Survival At Sea': true,
 }
 
