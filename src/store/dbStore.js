@@ -28,7 +28,8 @@ const login = {
   'Coin Game': true,
   'Planning Poker': true,
   'No Estimates': true,
-  'Kanban Playground': true
+  'Kanban Playground': true,
+  'Agile Battleships': true
 }
 const clearLocalStorage = {
   'Coin Game': true,
