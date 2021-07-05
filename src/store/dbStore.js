@@ -15,6 +15,8 @@ const newDeploy = {
   'Context Switching': true,
   'BA Shouting': true,
   'Survival At Sea': true,
+  '5 Dysfunctions': true,
+  'Team Health Check': true,
   'Socket Test': true
 }
 const noNewDeploy = {
@@ -29,7 +31,9 @@ const login = {
   'Planning Poker': true,
   'No Estimates': true,
   'Kanban Playground': true,
-  'Agile Battleships': true
+  'Agile Battleships': true,
+  '5 Dysfunctions': true,
+  'Team Health Check': true
 }
 const clearLocalStorage = {
   'Coin Game': true,
@@ -42,6 +46,8 @@ const clearLocalStorage = {
   'Context Switching': true,
   'BA Shouting': true,
   'Survival At Sea': true,
+  '5 Dysfunctions': true,
+  'Team Health Check': true
 }
 
 const state = () => {
