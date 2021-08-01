@@ -56,7 +56,7 @@ const maxIdleTime = 6000
 const connectDebugOff = prod
 
 var connections = 0
-var maxConnections = 10
+var maxConnections = 100
 
 const getGames = () => {
   let games = [

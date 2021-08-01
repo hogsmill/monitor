@@ -4,6 +4,7 @@ const fs = require('fs')
 const process = require('process');
 
 const newDeploy = {
+  'Death Star Builder': true,
   'No Estimates': true,
   'No Estimates Mobile': true,
   'Kanban Playground': true,
