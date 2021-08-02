@@ -9,6 +9,13 @@
       </div>
     </div>
 
+    <h2>Assessments</h2>
+    <div class="container">
+      <div class="row">
+        <Assessments />
+      </div>
+    </div>
+
     <h2>Local Utils</h2>
     <div class="container">
       <div class="row">
@@ -25,6 +32,7 @@ import bus from './socket.js'
 import Header from "./components/Header.vue";
 
 import Monitor from "./components/Monitor.vue";
+import Assessments from "./components/Assessments.vue";
 import Utils from "./components/Utils.vue";
 
 export default {
@@ -32,6 +40,7 @@ export default {
   components: {
     Header,
     Monitor,
+    Assessments,
     Utils
   },
   data() {

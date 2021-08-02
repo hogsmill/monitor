@@ -219,6 +219,30 @@ module.exports = {
   deleteLog: function(data) {
 
     execSync("rm /usr/apps/logs/" + data.app)
+  },
+
+  loadAssessments: function(db, io) {
+    let i, j
+    const results = {}
+    db.collection('fiveDysfunctionsAssessments').find().toArray(function(err, fiveDysfunctions) {
+      if (err) throw err;
+      results.fiveDysfunctions = []
+      for (i = 0; i < fiveDysfunctions.length; i++) {
+        for (j = 0; j < fiveDysfunctions[i].resultsEmailled.length; j++) {
+          results.fiveDysfunctions.push(fiveDysfunctions[i].resultsEmailled[j])
+        }
+      }
+      db.collection('healthCheckAssessments').find().toArray(function(err, healthChecks) {
+        if (err) throw err;
+        results.fiveDysfunctions = []
+        for (i = 0; i < healthChecks.length; i++) {
+          for (j = 0; j < healthChecks[i].resultsEmailled.length; j++) {
+            results.fiveDysfunctions.push(healthChecks[i].resultsEmailled[j])
+          }
+        }
+        io.emit('loadAsessments', results)
+      })
+    })
   }
 
 }

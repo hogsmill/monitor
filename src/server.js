@@ -110,6 +110,8 @@ io.on("connection", (socket) => {
   socket.on('sendGetLog', (data) => { !prod || dbStore.getLog(io, data) })
 
   socket.on('sendDeleteLog', (data) => { dbStore.deleteLog(data) })
+
+  socket.on('sendLoadAssessments', () => { dbStore.loadAsessments(db, io) })
 });
 
 var port = process.argv[2] || 3012

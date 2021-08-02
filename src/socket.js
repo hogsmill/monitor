@@ -24,6 +24,8 @@ bus.$on('sendGetLog', (data) => { socket.emit('sendGetLog', data) })
 
 bus.$on('sendDeleteLog', (data) => { socket.emit('sendDeleteLog', data) })
 
+bus.$on('sendLoadAssessments', (data) => { socket.emit('sendLoadAssessments', data) })
+
 // Receive
 
 socket.on('updateProcesses', (data) => { bus.$emit('updateProcesses', data) })
@@ -39,5 +41,7 @@ socket.on('updateOutdated', (data) => { bus.$emit('updateOutdated', data) })
 socket.on('updateLogs', (data) => { bus.$emit('updateLogs', data) })
 
 socket.on('getLog', (data) => { bus.$emit('getLog', data) })
+
+socket.on('loadAsessments', (data) => { bus.$emit('loadAsessments', data) })
 
 export default bus
