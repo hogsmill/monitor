@@ -85,6 +85,14 @@ const getConnections = () => {
   })
 }
 
+const loadAssessments = (io) => {
+  MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime }, (err, client) => {
+    if (err) throw err
+    const db = client.db('db')
+    dbStore.loadAssessments(db, io)
+  })
+}
+
 io.on("connection", (socket) => {
   connections = connections + 1
   if (connections > maxConnections) {
@@ -111,7 +119,7 @@ io.on("connection", (socket) => {
 
   socket.on('sendDeleteLog', (data) => { dbStore.deleteLog(data) })
 
-  socket.on('sendLoadAssessments', () => { dbStore.loadAsessments(db, io) })
+  socket.on('sendLoadAssessments', () => { loadAssessments(io) })
 });
 
 var port = process.argv[2] || 3012
