@@ -225,7 +225,6 @@ module.exports = {
     let i, j
     const results = {}
     io.emit('loadAssessments', results)
-
     db.collection('fiveDysfunctionsAssessments').find().toArray(function(err, fiveDysfunctions) {
       if (err) throw err;
       results.fiveDysfunctions = []

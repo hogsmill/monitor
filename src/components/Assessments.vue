@@ -24,7 +24,7 @@ export default {
       storage: []
     }
   },
-  creeated() {
+  created() {
     bus.$emit('sendLoadAssessments')
 
     setInterval(() => {
