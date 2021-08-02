@@ -156,40 +156,53 @@ module.exports = {
     io.emit('updateLogs', logs)
   },
 
-  getGames: function(db, io, data) {
+  getGames: function(db, io) {
 
-    db.collection(data.collection).find().toArray((err, res) => {
-      if (err) throw err
-      if (res.length) {
-        let lastaccess, lastaccessGame, created, createdGame
-        for (let i = 0; i < res.length; i++) {
-          if (res[i].lastaccess) {
-            if (!lastaccess) {
-              lastaccess = res[i].lastaccess
-              lastaccessGame = gameName(res[i])
-            } else if (res[i].lastaccess > lastaccess) {
-              lastaccess = res[i].lastaccess
-              lastaccessGame = gameName(res[i])
+    const games = [
+      {game: 'Agile Battleships', collection: 'battleships'},
+      {game: 'Coin Game', collection: 'coinGame'},
+      {game: 'L-EAF Test App', collection: 'leafTestOrganisations'},
+      {game: 'No Estimates', collection: 'noEstimatesGames'},
+      {game: 'No Estimates New', collection: 'noEstimatesNewGames'},
+      {game: 'Planning Poker', collection: 'planningPokerOrganisations'},
+      {game: 'Survival At Sea', collection: 'survival'}
+    ]
+
+    for (let i = 0; i < games.length; i++) {
+      const game = games[i]
+      db.collection(game.collection).find().toArray((err, res) => {
+        if (err) throw err
+        if (res.length) {
+          let lastaccess, lastaccessGame, created, createdGame
+          for (let i = 0; i < res.length; i++) {
+            if (res[i].lastaccess) {
+              if (!lastaccess) {
+                lastaccess = res[i].lastaccess
+                lastaccessGame = gameName(res[i])
+              } else if (res[i].lastaccess > lastaccess) {
+                lastaccess = res[i].lastaccess
+                lastaccessGame = gameName(res[i])
+              }
+            }
+            if (res[i].created) {
+              if (!created) {
+                created = res[i].created
+                createdGame = gameName(res[i])
+              } else if (res[i].created > created) {
+                created = res[i].created
+                createdGame = gameName(res[i])
+              }
             }
           }
-          if (res[i].created) {
-            if (!created) {
-              created = res[i].created
-              createdGame = gameName(res[i])
-            } else if (res[i].created > created) {
-              created = res[i].created
-              createdGame = gameName(res[i])
-            }
-          }
+          game.lastaccess = lastaccess
+          game.lastaccessGame = lastaccessGame
+          game.created = created
+          game.createdGame = createdGame
+          game.games = res.length
+          io.emit('updateGames', game)
         }
-        data.lastaccess = lastaccess
-        data.lastaccessGame = lastaccessGame
-        data.created = created
-        data.createdGame = createdGame
-        data.games = res.length
-        io.emit('updateGames', data)
-      }
-    })
+      })
+    }
   },
 
   getOutdated: function(io) {
@@ -224,7 +237,6 @@ module.exports = {
   loadAssessments: function(db, io) {
     let i, j
     const results = {}
-    io.emit('loadAssessments', results)
     db.collection('fiveDysfunctionsAssessments').find().toArray(function(err, fiveDysfunctions) {
       if (err) throw err;
       results.fiveDysfunctions = []
@@ -235,10 +247,10 @@ module.exports = {
       }
       db.collection('healthCheckAssessments').find().toArray(function(err, healthChecks) {
         if (err) throw err;
-        results.fiveDysfunctions = []
+        results.healthCheck = []
         for (i = 0; i < healthChecks.length; i++) {
           for (j = 0; j < healthChecks[i].resultsEmailled.length; j++) {
-            results.fiveDysfunctions.push(healthChecks[i].resultsEmailled[j])
+            results.healthCheck.push(healthChecks[i].resultsEmailled[j])
           }
         }
         io.emit('loadAssessments', results)

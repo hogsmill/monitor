@@ -58,69 +58,38 @@ const connectDebugOff = prod
 var connections = 0
 var maxConnections = 100
 
-const getGames = () => {
-  let games = [
-    {game: 'Agile Battleships', collection: 'battleships'},
-    {game: 'Coin Game', collection: 'coinGame'},
-    {game: 'L-EAF Test App', collection: 'leafTestOrganisations'},
-    {game: 'No Estimates', collection: 'noEstimatesGames'},
-    {game: 'No Estimates New', collection: 'noEstimatesNewGames'},
-    {game: 'Planning Poker', collection: 'planningPokerOrganisations'},
-    {game: 'Survival At Sea', collection: 'survival'}
-  ]
-  MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime }, (err, client) => {
-    for (let i = 0; i < games.length; i++) {
-      if (err) throw err
-      const db = client.db('db')
-      dbStore.getGames(db, io, games[i])
+MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime }, (err, client) => {
+  const db = client.db('db')
+
+  io.on("connection", (socket) => {
+    connections = connections + 1
+    if (connections > maxConnections) {
+      console.log(`Too many connections. Socket ${socket.id} closed`)
+      socket.disconnect(0)
+    } else {
+      connectDebugOff || console.log(`A user connected with socket id ${socket.id}. (${connections} connections)`)
     }
+
+    socket.on("disconnect", () => {
+      connections = connections - 1
+      connectDebugOff || console.log(`User with socket id ${socket.id} has disconnected. (${connections} connections)`)
+    })
+
+    socket.on('sendLoad', () => { !prod || dbStore.saveData(io) })
+
+    socket.on('sendGetGames', () => { dbStore.getGames(db, io) })
+
+    socket.on('sendGetOutdated', () => { !prod || dbStore.getOutdated(io) })
+
+    socket.on('sendGetConnections', () => { dbStore.getConnections(db, io) })
+
+    socket.on('sendGetLog', (data) => { !prod || dbStore.getLog(io, data) })
+
+    socket.on('sendDeleteLog', (data) => { dbStore.deleteLog(data) })
+
+    socket.on('sendLoadAssessments', () => { dbStore.loadAssessments(db, io) })
   })
-}
-
-const getConnections = () => {
-  MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime }, (err, client) => {
-    if (err) throw err
-    const db = client.db('db')
-    dbStore.getConnections(db, io)
-  })
-}
-
-const loadAssessments = (io) => {
-  MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime }, (err, client) => {
-    if (err) throw err
-    const db = client.db('db')
-    dbStore.loadAssessments(db, io)
-  })
-}
-
-io.on("connection", (socket) => {
-  connections = connections + 1
-  if (connections > maxConnections) {
-    console.log(`Too many connections. Socket ${socket.id} closed`)
-    socket.disconnect(0)
-  } else {
-    connectDebugOff || console.log(`A user connected with socket id ${socket.id}. (${connections} connections)`)
-  }
-
-  socket.on("disconnect", () => {
-    connections = connections - 1
-    connectDebugOff || console.log(`User with socket id ${socket.id} has disconnected. (${connections} connections)`)
-  })
-
-  socket.on('sendLoad', () => { !prod || dbStore.saveData(io) })
-
-  socket.on('sendGetGames', () => { getGames() })
-
-  socket.on('sendGetOutdated', () => { !prod || dbStore.getOutdated(io) })
-
-  socket.on('sendGetConnections', () => { getConnections() })
-
-  socket.on('sendGetLog', (data) => { !prod || dbStore.getLog(io, data) })
-
-  socket.on('sendDeleteLog', (data) => { dbStore.deleteLog(data) })
-
-  socket.on('sendLoadAssessments', () => { loadAssessments(io) })
-});
+})
 
 var port = process.argv[2] || 3012
 
