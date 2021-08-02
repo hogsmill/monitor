@@ -42,6 +42,6 @@ socket.on('updateLogs', (data) => { bus.$emit('updateLogs', data) })
 
 socket.on('getLog', (data) => { bus.$emit('getLog', data) })
 
-socket.on('loadAsessments', (data) => { bus.$emit('loadAsessments', data) })
+socket.on('loadAssessments', (data) => { bus.$emit('loadAssessments', data) })
 
 export default bus

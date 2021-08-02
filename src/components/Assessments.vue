@@ -25,15 +25,16 @@ export default {
     }
   },
   creeated() {
-    bus.$on('loadAsessments', (data) => {
-    console.log(data)
+    bus.$emit('sendLoadAssessments')
+
+    setInterval(() => {
+      bus.$emit('sendLoadAssessments')
+    }, 60000)
+
+    bus.$on('loadAssessments', (data) => {
+      console.log(data)
       this.assessments = data
     })
-  },
-  methods: {
-    loadAssessments() {
-      bus.$emit('sendLoadAssessments')
-    }
   }
 }
 </script>

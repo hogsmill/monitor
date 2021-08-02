@@ -240,7 +240,7 @@ module.exports = {
             results.fiveDysfunctions.push(healthChecks[i].resultsEmailled[j])
           }
         }
-        io.emit('loadAsessments', results)
+        io.emit('loadAssessments', results)
       })
     })
   }
