@@ -1,14 +1,72 @@
 <template>
   <table class="assessments">
     <tr>
-      <td>Local Storage <button class="btn btn-sm btn-secondary smaller-font" @click="loadLocalStorage()">Load</button></td>
+      <td>
+        Team Health Check
+      </td>
       <td>
         <table>
-          <tr v-for="(item, index) in storage" :key="index">
-            <td>{{ item.key }}</td>
-            <td>{{ item.value }}</td>
-            <td><button class="btn btn-sm btn-secondary smaller-font" @click="deleteLocalStorage(item.key)">Delete</button></td>
-          </tr>
+          <thead>
+            <tr>
+              <th>
+                Date
+              </th>
+              <th>
+                Name
+              </th>
+              <th>
+                Email
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(healthCheck, tindex) in assessments.teamHealthCheck" :key="tindex">
+              <td>
+                {{ healthCheck.date }}
+              </td>
+              <td>
+                {{ healthCheck.assessment.name }}
+              </td>
+              <td>
+                {{ healthCheck.assessment.email }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Team Health Check
+      </td>
+      <td>
+        <table>
+          <thead>
+            <tr>
+              <th>
+                Date
+              </th>
+              <th>
+                Name
+              </th>
+              <th>
+                Email
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(dysfunctions, dindex) in assessments.fiveDysfunctions" :key="dindex">
+              <td>
+                {{ dysfunctions.date }}
+              </td>
+              <td>
+                {{ dysfunctions.assessment.name }}
+              </td>
+              <td>
+                {{ dysfunctions.assessment.email }}
+              </td>
+            </tr>
+          </tbody>
         </table>
       </td>
     </tr>
@@ -21,7 +79,7 @@ import bus from '../socket.js'
 export default {
   data() {
     return {
-      storage: []
+      assessments: {}
     }
   },
   created() {
@@ -32,12 +90,8 @@ export default {
     }, 60000)
 
     bus.$on('loadAssessments', (data) => {
-      console.log(data)
       this.assessments = data
     })
   }
 }
 </script>
-
-<style lang="scss">
-</style>
