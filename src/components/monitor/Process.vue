@@ -13,7 +13,7 @@
       <th>Latest</th>
     </thead>
     <tbody>
-      <tr v-for="(app, index) in processes" :class="not-running": app.notRunning" :key="index">
+      <tr v-for="(app, index) in processes" :class="{'not-running': app.notRunning}" :key="index">
         <td v-if="app.server == selectedServer && selectedServer == 'default'" :class="status(app)">
           <span v-if="app.newDeploy">&#10004;</span>
           <span v-if="app.noNewDeploy">&#10008;</span>
