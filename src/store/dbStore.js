@@ -18,14 +18,17 @@ const newDeploy = {
   'Survival At Sea': true,
   '5 Dysfunctions': true,
   'Team Health Check': true,
+  'Agile Maturity': true,
   'Socket Test': true
 }
+
 const noNewDeploy = {
   'Agile Simulations': true,
   'L-EAF Test App': true,
   'Labs': true,
   'Monitor': true
 }
+
 const login = {
   'Agile Simulations': true,
   'Coin Game': true,
@@ -36,6 +39,7 @@ const login = {
   '5 Dysfunctions': true,
   'Team Health Check': true
 }
+
 const clearLocalStorage = {
   'Coin Game': true,
   'No Estimates': true,
@@ -48,7 +52,12 @@ const clearLocalStorage = {
   'BA Shouting': true,
   'Survival At Sea': true,
   '5 Dysfunctions': true,
-  'Team Health Check': true
+  'Team Health Check': true,
+  'Agile Maturity': true
+}
+
+const notRunning = {
+  'Pig Racing': true
 }
 
 const state = () => {
@@ -60,6 +69,7 @@ const state = () => {
       const port = fields[1]
       const name = fields[3]
       apps[port] = {
+        notRunning: notRunning[name],
         newDeploy: newDeploy[name],
         noNewDeploy: noNewDeploy[name],
         login: login[name],
