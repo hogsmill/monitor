@@ -101,6 +101,10 @@ export default {
     td {
       color: #888;
       background-color: #ddd;
+
+      a {
+        color: #888;
+      }
     }
   }
   .today {
