@@ -117,9 +117,9 @@ export const store = new Vuex.Store({
       state.processes = processes.sort((a, b) => {
         return a.order - b.order
       })
-      console.log('processes', state.processes)
       let servers = {}
       for (i = 0; i < state.processes.length; i++) {
+        console.log('processe', state.processes[i].app, state.processes[i])
         if (state.processes[i].server) {
           const server = state.processes[i].server
           servers[server] = {name: server}
