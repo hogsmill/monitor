@@ -45,7 +45,7 @@ const checkServerStatus = (server, processes, servers) => {
 const checkServerOutdated = (server, processes, outdated, servers) => {
   let outd = serverOutdated(server, servers)
   for (let i = 0; i < processes.length; i++) {
-    if (processes[i].server == server.name) {
+    if (processes[i].server == server.name && !processes[i].notRunning) {
       if (outdated[processes[i].app] && outdated[processes[i].app].length > 0) {
         const appOutdated = outdated[processes[i].app]
         for (let j = 0; j < appOutdated.length; j++) {
