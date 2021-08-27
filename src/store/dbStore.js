@@ -57,8 +57,7 @@ const clearLocalStorage = {
 }
 
 const notRunning = {
-  'Pig Racing': true,
-  'Billy Bonkers': true
+  'Pig Racing': true
 }
 
 const state = () => {
