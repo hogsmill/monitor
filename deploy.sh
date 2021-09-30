@@ -8,6 +8,7 @@ do
   if [ "$1" == "-f" ]; then
     FORCE=true
   fi
+  shift
 done
 
 rm package-lock.json
