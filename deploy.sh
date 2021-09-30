@@ -8,17 +8,10 @@ do
   if [ "$1" == "-f" ]; then
     FORCE=true
   fi
-  if [ "$1" == "-n" ]; then
-    NEW=true
-  fi
-  shift
 done
 
-if [ "$NEW" == "true" ]
-then
-  rm $DIR/package-lock.json
-  rm -rf $DIR/node_modules
-fi
+rm package-lock.json
+rm -rf node_modules
 
 PORT=3012
 PWD=`pwd`
@@ -41,6 +34,9 @@ if [ -f "src/server.js" ]; then
     kill $SERVER
   fi
 fi
+
+rm -rf node_modules/.cache
+rm -rf dist
 
 ps -ef | grep php | grep outdated
 if [ $? -eq 1 ]; then
