@@ -64,7 +64,7 @@ const state = () => {
   let apps = {}
   const genericData = fs.readFileSync('/usr/keep/apps.txt', 'utf8').split("\n")
   const customerData = fs.readFileSync('/usr/keep/customerApps.txt', 'utf8').split("\n")
-  const data = genricData.concat(customerData)
+  const data = genericData.concat(customerData)
   for (let i = 0; i < data.length; i++) {
     if (data[i].match(/^\w+,[0-9]{4},/)) {
       const fields = data[i].split(",")
