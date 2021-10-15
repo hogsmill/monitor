@@ -74,6 +74,7 @@ export default {
     bus.$emit('sendGetOutdated')
 
     bus.$on("updateProcesses", (data) => {
+      console.log(data)
       this.$store.dispatch("updateProcesses", data)
     })
 
