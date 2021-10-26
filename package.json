@@ -8,11 +8,11 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "core-js": "^3.18.3",
+    "core-js": "^3.19.0",
     "death": "^1.1.0",
-    "javascript-time-ago": "^2.3.9",
+    "javascript-time-ago": "^2.3.10",
     "mongo": "^0.1.0",
-    "sass": "^1.43.2",
+    "sass": "^1.43.3",
     "socket.io": "^4.3.1",
     "socket.io-client": "^4.3.2",
     "vue": "^2.6.14",
