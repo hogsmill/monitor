@@ -79,7 +79,10 @@ import bus from '../socket.js'
 export default {
   data() {
     return {
-      assessments: {}
+      assessments: {
+        healthCheck: [],
+        fiveDysfunction: []
+      }
     }
   },
   created() {
