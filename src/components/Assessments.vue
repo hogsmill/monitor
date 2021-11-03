@@ -2,7 +2,7 @@
   <table class="assessments">
     <tr>
       <td>
-        Team Health Check
+        Team Health Check {{ assessments }}
       </td>
       <td>
         <table>
@@ -37,7 +37,7 @@
     </tr>
     <tr>
       <td>
-        Team Health Check
+        5 Dysfunctions
       </td>
       <td>
         <table>
@@ -96,3 +96,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.assessments {
+  td {
+    color: #444;
+  }
+}
+</style>
