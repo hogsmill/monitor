@@ -251,22 +251,23 @@ module.exports = {
     const results = {}
     db.collection('fiveDysfunctionsAssessments').find().toArray(function(err, fiveDysfunctions) {
       if (err) throw err;
-      results.fiveDysfunctions = []
+      const results = []
       for (i = 0; i < fiveDysfunctions.length; i++) {
         for (j = 0; j < fiveDysfunctions[i].resultsEmailled.length; j++) {
-          results.fiveDysfunctions.push(fiveDysfunctions[i].resultsEmailled[j])
+          results.push(fiveDysfunctions[i].resultsEmailled[j])
         }
       }
-      db.collection('healthCheckAssessments').find().toArray(function(err, healthChecks) {
-        if (err) throw err;
-        results.healthCheck = []
-        for (i = 0; i < healthChecks.length; i++) {
-          for (j = 0; j < healthChecks[i].resultsEmailled.length; j++) {
-            results.healthCheck.push(healthChecks[i].resultsEmailled[j])
-          }
+      io.emit('loadAssessments', {type: 'fiveDysfuntions', results: results})
+    })
+    db.collection('healthCheckAssessments').find().toArray(function(err, healthChecks) {
+      if (err) throw err;
+      const results = []
+      for (i = 0; i < healthChecks.length; i++) {
+        for (j = 0; j < healthChecks[i].resultsEmailled.length; j++) {
+          results.push(healthChecks[i].resultsEmailled[j])
         }
-        io.emit('loadAssessments', results)
-      })
+      }
+      io.emit('loadAssessments', {type: 'healthCheck', results: results})
     })
   }
 

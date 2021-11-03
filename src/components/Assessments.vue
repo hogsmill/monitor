@@ -20,7 +20,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(healthCheck, tindex) in assessments.teamHealthCheck" :key="tindex">
+            <tr v-for="(healthCheck, tindex) in assessments.healthCheck" :key="tindex">
               <td>
                 {{ healthCheck.date }}
               </td>
@@ -91,7 +91,7 @@ export default {
 
     bus.$on('loadAssessments', (data) => {
       console.log('assessment', data)
-      this.assessments = data
+      this.assessments[data.type] = data.results
     })
   }
 }
