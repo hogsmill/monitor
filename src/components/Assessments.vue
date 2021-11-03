@@ -90,7 +90,7 @@ export default {
     }, 60000)
 
     bus.$on('loadAssessments', (data) => {
-      console.log(data)
+      console.log('assessment', data)
       this.assessments = data
     })
   }
