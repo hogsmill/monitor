@@ -2,7 +2,7 @@
   <table class="assessments">
     <tr>
       <td>
-        Team Health Check {{ assessments }}
+        Team Health Check
       </td>
       <td>
         <table>
@@ -93,9 +93,7 @@ export default {
     }, 60000)
 
     bus.$on('loadAssessments', (data) => {
-      console.log('assessment', data)
       this.assessments[data.type] = data.results
-      console.log(this.assessments)
     })
   }
 }
