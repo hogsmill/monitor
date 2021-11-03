@@ -92,6 +92,7 @@ export default {
     bus.$on('loadAssessments', (data) => {
       console.log('assessment', data)
       this.assessments[data.type] = data.results
+      console.log(this.assessments)
     })
   }
 }
