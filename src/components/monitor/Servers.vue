@@ -33,7 +33,6 @@
 export default {
   computed: {
     servers() {
-      console.log(this.$store.getters.getServers)
       return this.$store.getters.getServers
     },
     selectedServer() {
