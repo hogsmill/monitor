@@ -109,6 +109,7 @@ export const store = new Vuex.Store({
       state.lastUpdated = payload;
     },
     updateProcesses: (state, payload) => {
+      console.log(payload)
       let i = 0
       const processes = [], len = Object.keys(payload).length
       for (i = 0; i < len; i++) {
