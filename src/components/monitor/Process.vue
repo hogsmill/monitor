@@ -69,7 +69,7 @@ export default {
     status(app) {
       if (! app.running) {
         return 'not-running'
-      } else if (app.time.match(/^[0-9]/)) {
+      } else if (app.time.match(/^[0-9]+:/)) {
         return 'today'
       } else {
         return 'running'
