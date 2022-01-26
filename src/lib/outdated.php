@@ -1,8 +1,13 @@
 #!/usr/bin/php
 <?php
 
+$ignore = array(
+  'sass-loader' => true
+);
+
 $root = '/usr/apps/';
 $dirs = scandir($root);
+
 foreach ($dirs as $d) {
   $dir = $root . $d;
   if (is_dir($dir) && file_exists("${dir}/package.json")) {
@@ -15,7 +20,7 @@ foreach ($dirs as $d) {
       $package = $fields[0];
       $current = $fields[1];
       $wanted = $fields[2];
-      if ($package != '' && $current != $wanted) {
+      if ($package != '' && $current != $wanted && !array_key_exists($package, $ignore)) {
         array_push($outdated[$d], $fields[0]);
       }
     }
