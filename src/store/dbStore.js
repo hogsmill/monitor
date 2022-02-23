@@ -4,7 +4,8 @@ const fs = require('fs')
 const process = require('process');
 
 const v3 = {
-  'Agile Simulations': true
+  'Agile Simulations': true,
+  'Poker': true
 }
 
 const login = {
