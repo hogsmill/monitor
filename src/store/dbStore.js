@@ -3,30 +3,8 @@ const execSync = require('child_process').execSync;
 const fs = require('fs')
 const process = require('process');
 
-const newDeploy = {
-  'Death Star Builder': true,
-  'No Estimates': true,
-  'No Estimates Mobile': true,
-  'Kanban Playground': true,
-  'Kanban Playground Mobile': true,
-  'Coin Game': true,
-  'Pipeline Game': true,
-  'Planning Poker': true,
-  'Agile Battleships': true,
-  'Context Switching': true,
-  'BA Shouting': true,
-  'Survival At Sea': true,
-  '5 Dysfunctions': true,
-  'Team Health Check': true,
-  'Agile Maturity': true,
-  'Socket Test': true
-}
-
-const noNewDeploy = {
-  'Agile Simulations': true,
-  'L-EAF Test App': true,
-  'Labs': true,
-  'Monitor': true
+const v3 = {
+  'Agile Simulations': true
 }
 
 const login = {
@@ -72,8 +50,7 @@ const state = () => {
       const name = fields[3]
       apps[port] = {
         notRunning: notRunning[name],
-        newDeploy: newDeploy[name],
-        noNewDeploy: noNewDeploy[name],
+        v3: v3[name],
         login: login[name],
         clearLocalStorage: clearLocalStorage[name],
         order: i,

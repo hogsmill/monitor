@@ -1,7 +1,7 @@
 <template>
   <table class="apps">
     <thead>
-      <th v-if="selectedServer == 'default'">New Deploy</th>
+      <th v-if="selectedServer == 'default'">V3</th>
       <th v-if="selectedServer == 'default'">Login</th>
       <th v-if="selectedServer == 'default'">Clear LS</th>
       <th>Port</th>
@@ -15,7 +15,7 @@
     <tbody>
       <tr v-for="(app, index) in processes" :class="{'not-running': app.notRunning}" :key="index">
         <td v-if="app.server == selectedServer && selectedServer == 'default'" :class="status(app)">
-          <span v-if="app.newDeploy">&#10004;</span>
+          <span v-if="app.v3">&#10004;</span>
           <span v-if="app.noNewDeploy">&#10008;</span>
           <span v-if="!app.noNewDeploy && !app.newDeploy">TBD</span>
         </td>
