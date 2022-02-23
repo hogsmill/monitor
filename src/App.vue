@@ -1,8 +1,7 @@
 <template>
   <div id="app" class="mb-4">
     <Header />
-    <div class="right">
-    </div>
+    <div class="right" />
     <div class="container">
       <div class="row">
         <Monitor />
@@ -22,18 +21,17 @@
         <Utils />
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
 import bus from './socket.js'
 
-import Header from "./components/Header.vue";
+import Header from './components/Header.vue'
 
-import Monitor from "./components/Monitor.vue";
-import Assessments from "./components/Assessments.vue";
-import Utils from "./components/Utils.vue";
+import Monitor from './components/Monitor.vue'
+import Assessments from './components/Assessments.vue'
+import Utils from './components/Utils.vue'
 
 export default {
   name: 'App',
@@ -51,60 +49,60 @@ export default {
   created() {
     const self = this
     setInterval(() => {
-      bus.$emit('sendLoad')
-      self.$store.dispatch("updateLastUpdated", new Date().toGMTString())
+      bus.emit('sendLoad')
+      self.$store.dispatch('updateLastUpdated', new Date().toGMTString())
     }, 5000)
 
     setInterval(() => {
       if (this.running) {
-        bus.$emit('sendGetGames')
+        bus.emit('sendGetGames')
       }
     }, 60000)
 
     setInterval(() => {
-      bus.$emit('sendGetOutdated')
+      bus.emit('sendGetOutdated')
     }, 5000)
 
     setInterval(() => {
-      bus.$emit('sendGetConnections')
+      bus.emit('sendGetConnections')
     }, 60000)
 
-    bus.$emit('sendGetGames')
-    bus.$emit('sendGetConnections')
-    bus.$emit('sendGetOutdated')
+    bus.emit('sendGetGames')
+    bus.emit('sendGetConnections')
+    bus.emit('sendGetOutdated')
 
-    bus.$on("updateProcesses", (data) => {
-      this.$store.dispatch("updateProcesses", data)
+    bus.on('updateProcesses', (data) => {
+      this.$store.dispatch('updateProcesses', data)
     })
 
-    bus.$on("updateMongo", (data) => {
-      this.$store.dispatch("updateMongo", data)
+    bus.on('updateMongo', (data) => {
+      this.$store.dispatch('updateMongo', data)
     })
 
-    bus.$on("updateMongoConnections", (data) => {
-      this.$store.dispatch("updateMongoConnections", data)
+    bus.on('updateMongoConnections', (data) => {
+      this.$store.dispatch('updateMongoConnections', data)
     })
 
-    bus.$on("updateGames", (data) => {
-      this.$store.dispatch("updateGames", data)
+    bus.on('updateGames', (data) => {
+      this.$store.dispatch('updateGames', data)
     })
 
-    bus.$on("updateOutdated", (data) => {
-      this.$store.dispatch("updateOutdated", data)
+    bus.on('updateOutdated', (data) => {
+      this.$store.dispatch('updateOutdated', data)
     })
 
-    bus.$on("updateLogs", (data) => {
-      this.$store.dispatch("updateLogs", data)
+    bus.on('updateLogs', (data) => {
+      this.$store.dispatch('updateLogs', data)
     })
 
-    bus.$on("getLog", (data) => {
-      this.$store.dispatch("updateLog", data)
+    bus.on('getLog', (data) => {
+      this.$store.dispatch('updateLog', data)
     })
   }
 }
 </script>
 
-<style lang="scss">
+<style lang='scss'>
   .right {
     text-align: right;
   }

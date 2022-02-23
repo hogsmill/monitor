@@ -86,13 +86,13 @@ export default {
     }
   },
   created() {
-    bus.$emit('sendLoadAssessments')
+    bus.emit('sendLoadAssessments')
 
     setInterval(() => {
-      bus.$emit('sendLoadAssessments')
+      bus.emit('sendLoadAssessments')
     }, 60000)
 
-    bus.$on('loadAssessments', (data) => {
+    bus.on('loadAssessments', (data) => {
       this.assessments[data.type] = data.results
     })
   }

@@ -1,9 +1,15 @@
 <template>
   <table class="apps">
     <thead>
-      <th v-if="selectedServer == 'default'">V3</th>
-      <th v-if="selectedServer == 'default'">Login</th>
-      <th v-if="selectedServer == 'default'">Clear LS</th>
+      <th v-if="selectedServer == 'default'">
+        V3
+      </th>
+      <th v-if="selectedServer == 'default'">
+        Login
+      </th>
+      <th v-if="selectedServer == 'default'">
+        Clear LS
+      </th>
       <th>Port</th>
       <th>App</th>
       <th>Outdated</th>
@@ -23,11 +29,15 @@
         <td v-if="app.server == selectedServer && selectedServer == 'default'" :class="status(app)">
           <span v-if="app.clearLocalStorage">&#10004;</span>
         </td>
-        <td v-if="app.server == selectedServer" :class="status(app)">{{ app.port }}</td>
-        <td v-if="app.server == selectedServer" :class="status(app)" class="app"><a :href="'https://agilesimulations.co.uk/' + app.app" target="blank">{{ app.name }}</a></td>
+        <td v-if="app.server == selectedServer" :class="status(app)">
+          {{ app.port }}
+        </td>
+        <td v-if="app.server == selectedServer" :class="status(app)" class="app">
+          <a :href="'https://agilesimulations.co.uk/' + app.app" target="blank">{{ app.name }}</a>
+        </td>
         <td v-if="app.server == selectedServer" :class="status(app)">
           <div v-if="outdated[app.app]" class="outdated">
-            <div v-for="(outd, index) in outdated[app.app]" :key="index">
+            <div v-for="(outd, oindex) in outdated[app.app]" :key="oindex">
               {{ outd }}
             </div>
           </div>
@@ -36,9 +46,15 @@
           <span v-if="app.running">{{ app.time }}</span>
           <span v-if="!app.running">FALSE</span>
         </td>
-        <td v-if="app.server == selectedServer" :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].games }}</span></td>
-        <td v-if="app.server == selectedServer" :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].created }}, {{ games[app.name].createdGame }}</span></td>
-        <td v-if="app.server == selectedServer" :class="status(app)"><span v-if="games[app.name]">{{ games[app.name].lastaccess }}, {{ games[app.name].lastaccessGame }}</span></td>
+        <td v-if="app.server == selectedServer" :class="status(app)">
+          <span v-if="games[app.name]">{{ games[app.name].games }}</span>
+        </td>
+        <td v-if="app.server == selectedServer" :class="status(app)">
+          <span v-if="games[app.name]">{{ games[app.name].created }}, {{ games[app.name].createdGame }}</span>
+        </td>
+        <td v-if="app.server == selectedServer" :class="status(app)">
+          <span v-if="games[app.name]">{{ games[app.name].lastaccess }}, {{ games[app.name].lastaccessGame }}</span>
+        </td>
       </tr>
     </tbody>
   </table>

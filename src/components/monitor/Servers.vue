@@ -4,7 +4,7 @@
       <th />
       <th>Server</th>
       <th>Apps</th>
-      <th>Outdated<br />(<i>ignores {{ ignoreString() }}</i>)</th>
+      <th>Outdated<br>(<i>ignores {{ ignoreString() }}</i>)</th>
       <th />
     </thead>
     <tbody>
@@ -22,7 +22,9 @@
           {{ server.outdated ? 'FAIL' : 'OK' }}
         </td>
         <td :class="{ 'server-fail': !server.ok || server.outdated }">
-          <button class="btn btn-sm btn-info smaller-font" @click="toggleShowServer(server)">Show</button>
+          <button class="btn btn-sm btn-info smaller-font" @click="toggleShowServer(server)">
+            Show
+          </button>
         </td>
       </tr>
     </tbody>

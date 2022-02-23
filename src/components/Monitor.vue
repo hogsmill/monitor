@@ -17,7 +17,7 @@
               <tr>
                 <td>Mongo</td>
                 <td>
-                  <input type="checkbox" :checked="mongo" />
+                  <input type="checkbox" :checked="mongo">
                 </td>
                 <td><span v-if="mongoConnections">{{ mongoConnections.current }} / {{ mongoConnections.available }}</span></td>
               </tr>
@@ -31,13 +31,25 @@
             </thead>
             <tbody>
               <tr v-for="(log, index) in logs" :key="index">
-                <td v-if="log.app != currentLog.app" class="link" @click="getLog(log)">{{ log.app }}</td>
-                <td v-if="log.app != currentLog.app">{{ log.date }}</td>
-                <td v-if="log.app != currentLog.app">{{ log.size }}</td>
-                <td v-if="log.app != currentLog.app"><button class="btn btn-sm btn-secondary smaller-font" @click="deleteLog(log)">Delete</button></td>
+                <td v-if="log.app != currentLog.app" class="link" @click="getLog(log)">
+                  {{ log.app }}
+                </td>
+                <td v-if="log.app != currentLog.app">
+                  {{ log.date }}
+                </td>
+                <td v-if="log.app != currentLog.app">
+                  {{ log.size }}
+                </td>
+                <td v-if="log.app != currentLog.app">
+                  <button class="btn btn-sm btn-secondary smaller-font" @click="deleteLog(log)">
+                    Delete
+                  </button>
+                </td>
                 <td v-if="log.app == currentLog.app" colspan="4" class="log-div">
                   <div>
-                    <button class="btn btn-sm btn-secondary smaller-font" @click="clearLog()">Done</button> {{ log.app}}
+                    <button class="btn btn-sm btn-secondary smaller-font" @click="clearLog()">
+                      Done
+                    </button> {{ log.app }}
                   </div>
                   <div>
                     <pre>{{ currentLog.log }}</pre>
@@ -60,8 +72,8 @@
 <script>
 import bus from '../socket.js'
 
-import Servers from "./monitor/Servers.vue";
-import Process from "./monitor/Process.vue";
+import Servers from './monitor/Servers.vue'
+import Process from './monitor/Process.vue'
 
 export default {
   components: {
@@ -87,15 +99,15 @@ export default {
   },
   methods: {
     getLog(log) {
-      bus.$emit('sendGetLog', {app: log.app})
+      bus.emit('sendGetLog', {app: log.app})
     },
     deleteLog(log) {
       if (confirm('Delete ' + log.app + '?')) {
-        bus.$emit('sendDeleteLog', {app: log.app})
+        bus.emit('sendDeleteLog', {app: log.app})
       }
     },
     clearLog() {
-      this.$store.dispatch("updateLog", {app: '', log: ''})
+      this.$store.dispatch('updateLog', {app: '', log: ''})
     }
   }
 }

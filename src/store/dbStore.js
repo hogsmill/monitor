@@ -1,7 +1,7 @@
 
-const execSync = require('child_process').execSync;
+const execSync = require('child_process').execSync
 const fs = require('fs')
-const process = require('process');
+const process = require('process')
 
 const v3 = {
   'Agile Simulations': true,
@@ -40,13 +40,13 @@ const notRunning = {
 }
 
 const state = () => {
-  let apps = {}
-  const genericData = fs.readFileSync('/usr/keep/apps.txt', 'utf8').split("\n")
-  const customerData = fs.readFileSync('/usr/keep/customerApps.txt', 'utf8').split("\n")
+  const apps = {}
+  const genericData = fs.readFileSync('/usr/keep/apps.txt', 'utf8').split('\n')
+  const customerData = fs.readFileSync('/usr/keep/customerApps.txt', 'utf8').split('\n')
   const data = genericData.concat(customerData)
   for (let i = 0; i < data.length; i++) {
     if (data[i].match(/^\w+,[0-9]{4},/)) {
-      const fields = data[i].split(",")
+      const fields = data[i].split(',')
       const port = fields[1]
       const name = fields[3]
       apps[port] = {
@@ -66,8 +66,8 @@ const state = () => {
 }
 
 const parseProcesses = (data) => {
-  let processes = state()
-  const splitData = data ? data.split("\n") : []
+  const processes = state()
+  const splitData = data ? data.split('\n') : []
   for (let i = 0; i < splitData.length; i++) {
 
     // Format: root      69680  67829  0 13:28 pts/1    00:00:00 node /usr/apps/coin-game/src/server.js 3000 Coin Game
@@ -86,11 +86,11 @@ const parseProcesses = (data) => {
 }
 
 const parseLogs = (data) => {
-  let logs = []
-  const splitData = data ? data.split("\n") : []
+  const logs = []
+  const splitData = data ? data.split('\n') : []
   for (let i = 0; i < splitData.length; i++) {
     if (splitData[i].match(/root root/) && splitData[i].match(/.log/)) {
-      let log = {}
+      const log = {}
 
       // Format: -rw-r--r-- 1 root root 71 Oct 24 10:12 monitor.log
 
@@ -122,17 +122,17 @@ module.exports = {
 
     let nodes, logs, mongo
     try {
-      nodes = execSync(`ps -ef | grep node | grep -v grep`).toString()
+      nodes = execSync('ps -ef | grep node | grep -v grep').toString()
     } catch(e) {
       nodes = ''
     }
     try {
-      logs = execSync("ls -l /usr/apps/logs").toString()
+      logs = execSync('ls -l /usr/apps/logs').toString()
     } catch(e) {
       logs = ''
     }
     try {
-      execSync(`ps -ef | grep mongo | grep -v grep`).toString()
+      execSync('ps -ef | grep mongo | grep -v grep').toString()
       mongo = true
     } catch(e) {
       mongo = false
@@ -205,7 +205,7 @@ module.exports = {
 
     const admin = db.admin()
     admin.serverStatus((err, res) => {
-      if (err) throw err;
+      if (err) throw err
       io.emit('updateMongoConnections', res.connections)
     })
   },
@@ -213,7 +213,7 @@ module.exports = {
   getLog: function(io, data) {
 
     fs.readFile('/usr/apps/logs/' + data.app, 'utf8', (err, log) => {
-      if (err) throw err;
+      if (err) throw err
       data.log = log
       io.emit('getLog', data)
     })
@@ -221,14 +221,14 @@ module.exports = {
 
   deleteLog: function(data) {
 
-    execSync("rm /usr/apps/logs/" + data.app)
+    execSync('rm /usr/apps/logs/' + data.app)
   },
 
   loadAssessments: function(db, io) {
     let i, j
     const results = {}
     db.collection('fiveDysfunctionsAssessments').find().toArray(function(err, fiveDysfunctions) {
-      if (err) throw err;
+      if (err) throw err
       const results = []
       for (i = 0; i < fiveDysfunctions.length; i++) {
         for (j = 0; j < fiveDysfunctions[i].resultsEmailled.length; j++) {
@@ -238,7 +238,7 @@ module.exports = {
       io.emit('loadAssessments', {type: 'fiveDysfuntions', results: results})
     })
     db.collection('healthCheckAssessments').find().toArray(function(err, healthChecks) {
-      if (err) throw err;
+      if (err) throw err
       const results = []
       for (i = 0; i < healthChecks.length; i++) {
         for (j = 0; j < healthChecks[i].resultsEmailled.length; j++) {

@@ -19,8 +19,12 @@
       <h1>Monitor</h1>
       <div class="last-updated">
         Last Updated: {{ lastUpdated }}
-        <button v-if="running" @click="stop()">Stop</button>
-        <button v-if="!running" @click="start()">Start</button>
+        <button v-if="running" @click="stop()">
+          Stop
+        </button>
+        <button v-if="!running" @click="start()">
+          Start
+        </button>
       </div>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" :class="{ active: !showFacilitator }">

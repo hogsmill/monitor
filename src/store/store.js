@@ -1,11 +1,9 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import TimeAgo from "javascript-time-ago"
-import en from "javascript-time-ago/locale/en"
+import { createStore } from 'vuex'
+
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
 TimeAgo.addDefaultLocale(en)
 const timeAgo = new TimeAgo('en-GB')
-
-Vue.use(Vuex);
 
 const ignoreOutdated = {
   'sass-loader': true,
@@ -59,7 +57,7 @@ const checkServerOutdated = (server, processes, outdated, servers) => {
   return outd
 }
 
-export const store = new Vuex.Store({
+export const store = createStore({
   state: {
     lastUpdated: '',
     servers: {},
@@ -74,39 +72,39 @@ export const store = new Vuex.Store({
   },
   getters: {
     getLastUpdated: (state) => {
-      return state.lastUpdated;
+      return state.lastUpdated
     },
     getSelectedServer: (state) => {
-      return state.selectedServer;
+      return state.selectedServer
     },
     getServers: (state) => {
-      return state.servers;
+      return state.servers
     },
     getProcesses: (state) => {
-      return state.processes;
+      return state.processes
     },
     getGames: (state) => {
-      return state.games;
+      return state.games
     },
     getOutdated: (state) => {
-      return state.outdated;
+      return state.outdated
     },
     getMongo: (state) => {
-      return state.mongo;
+      return state.mongo
     },
     getMongoConnections: (state) => {
-      return state.mongoConnections;
+      return state.mongoConnections
     },
     getLogs: (state) => {
-      return state.logs;
+      return state.logs
     },
     getLog: (state) => {
-      return state.log;
+      return state.log
     }
   },
   mutations: {
     updateLastUpdated: (state, payload) => {
-      state.lastUpdated = payload;
+      state.lastUpdated = payload
     },
     updateProcesses: (state, payload) => {
       let i = 0
@@ -117,7 +115,7 @@ export const store = new Vuex.Store({
       state.processes = processes.sort((a, b) => {
         return a.order - b.order
       })
-      let servers = {}
+      const servers = {}
       for (i = 0; i < state.processes.length; i++) {
         if (state.processes[i].server) {
           const server = state.processes[i].server
@@ -158,17 +156,17 @@ export const store = new Vuex.Store({
       state.outdated = payload
     },
     updateMongo: (state, payload) => {
-      state.mongo = !!payload;
+      state.mongo = !!payload
     },
     updateMongoConnections: (state, payload) => {
-      state.mongoConnections = payload;
+      state.mongoConnections = payload
     },
     updateLogs: (state, payload) => {
-      state.logs = payload;
+      state.logs = payload
     },
     updateLog: (state, payload) => {
       state.log.app = payload.app
-      state.log.log = payload.log;
+      state.log.log = payload.log
     },
     updateSelectedServer: (state, payload) => {
       if (payload.name == state.selectedServer) {
@@ -180,31 +178,31 @@ export const store = new Vuex.Store({
   },
   actions: {
     updateLastUpdated: ({ commit }, payload) => {
-      commit("updateLastUpdated", payload);
+      commit('updateLastUpdated', payload)
     },
     updateProcesses: ({ commit }, payload) => {
-      commit("updateProcesses", payload);
+      commit('updateProcesses', payload)
     },
     updateGames: ({ commit }, payload) => {
-      commit("updateGames", payload);
+      commit('updateGames', payload)
     },
     updateOutdated: ({ commit }, payload) => {
-      commit("updateOutdated", payload);
+      commit('updateOutdated', payload)
     },
     updateMongo: ({ commit }, payload) => {
-      commit("updateMongo", payload);
+      commit('updateMongo', payload)
     },
     updateMongoConnections: ({ commit }, payload) => {
-      commit("updateMongoConnections", payload);
+      commit('updateMongoConnections', payload)
     },
     updateLogs: ({ commit }, payload) => {
-      commit("updateLogs", payload);
+      commit('updateLogs', payload)
     },
     updateLog: ({ commit }, payload) => {
-      commit("updateLog", payload);
+      commit('updateLog', payload)
     },
     updateSelectedServer: ({ commit }, payload) => {
-      commit("updateSelectedServer", payload);
+      commit('updateSelectedServer', payload)
     }
   }
-});
+})

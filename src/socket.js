@@ -12,36 +12,36 @@ const socket = io(connStr)
 
 // Send
 
-bus.$on('sendLoad', (data) => { socket.emit('sendLoad', data) })
+bus.on('sendLoad', (data) => { socket.emit('sendLoad', data) })
 
-bus.$on('sendGetGames', (data) => { socket.emit('sendGetGames', data) })
+bus.on('sendGetGames', (data) => { socket.emit('sendGetGames', data) })
 
-bus.$on('sendGetOutdated', (data) => { socket.emit('sendGetOutdated', data) })
+bus.on('sendGetOutdated', (data) => { socket.emit('sendGetOutdated', data) })
 
-bus.$on('sendGetConnections', (data) => { socket.emit('sendGetConnections', data) })
+bus.on('sendGetConnections', (data) => { socket.emit('sendGetConnections', data) })
 
-bus.$on('sendGetLog', (data) => { socket.emit('sendGetLog', data) })
+bus.on('sendGetLog', (data) => { socket.emit('sendGetLog', data) })
 
-bus.$on('sendDeleteLog', (data) => { socket.emit('sendDeleteLog', data) })
+bus.on('sendDeleteLog', (data) => { socket.emit('sendDeleteLog', data) })
 
-bus.$on('sendLoadAssessments', (data) => { socket.emit('sendLoadAssessments', data) })
+bus.on('sendLoadAssessments', (data) => { socket.emit('sendLoadAssessments', data) })
 
 // Receive
 
-socket.on('updateProcesses', (data) => { bus.$emit('updateProcesses', data) })
+socket.on('updateProcesses', (data) => { bus.emit('updateProcesses', data) })
 
-socket.on('updateMongo', (data) => { bus.$emit('updateMongo', data) })
+socket.on('updateMongo', (data) => { bus.emit('updateMongo', data) })
 
-socket.on('updateMongoConnections', (data) => { bus.$emit('updateMongoConnections', data) })
+socket.on('updateMongoConnections', (data) => { bus.emit('updateMongoConnections', data) })
 
-socket.on('updateGames', (data) => { bus.$emit('updateGames', data) })
+socket.on('updateGames', (data) => { bus.emit('updateGames', data) })
 
-socket.on('updateOutdated', (data) => { bus.$emit('updateOutdated', data) })
+socket.on('updateOutdated', (data) => { bus.emit('updateOutdated', data) })
 
-socket.on('updateLogs', (data) => { bus.$emit('updateLogs', data) })
+socket.on('updateLogs', (data) => { bus.emit('updateLogs', data) })
 
-socket.on('getLog', (data) => { bus.$emit('getLog', data) })
+socket.on('getLog', (data) => { bus.emit('getLog', data) })
 
-socket.on('loadAssessments', (data) => { bus.$emit('loadAssessments', data) })
+socket.on('loadAssessments', (data) => { bus.emit('loadAssessments', data) })
 
 export default bus

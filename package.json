@@ -16,20 +16,21 @@
     "sass": "^1.49.8",
     "socket.io": "^4.4.1",
     "socket.io-client": "^4.4.1",
-    "vue": "^2.6.14",
-    "vue-js-modal": "^2.0.1",
-    "vuex": "^3.6.2"
+    "tiny-emitter": "^2.1.0",
+    "vue": "^3.1.0-0",
+    "vue-final-modal": "^3.4.3",
+    "vuex": "^4.0.0"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.17.0",
     "@vue/cli-plugin-babel": "~5.0.1",
     "@vue/cli-plugin-eslint": "~5.0.1",
     "@vue/cli-service": "~5.0.1",
-    "babel-eslint": "^10.1.0",
+    "@vue/compiler-sfc": "^3.1.0-0",
     "eslint": "^8.9.0",
     "eslint-plugin-vue": "^8.5.0",
-    "node-sass": "^5.0.0",
-    "sass-loader": "^10.1.1",
-    "vue-template-compiler": "^2.6.14"
+    "node-sass": "^7.0.1",
+    "sass-loader": "^12.6.0"
   },
   "eslintConfig": {
     "root": true,
@@ -41,7 +42,9 @@
       "eslint:recommended"
     ],
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "@babel/eslint-parser",
+      "ecmaVersion": "latest",
+      "requireConfigFile": false
     },
     "rules": {}
   },

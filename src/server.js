@@ -19,8 +19,8 @@ ON_DEATH((signal, err) => {
   })
 })
 
-global.TextEncoder = require("util").TextEncoder
-global.TextDecoder = require("util").TextDecoder
+global.TextEncoder = require('util').TextEncoder
+global.TextDecoder = require('util').TextDecoder
 
 let httpServer
 let io
@@ -50,7 +50,7 @@ if (!prod) {
   })
 }
 
-var dbStore = require('./store/dbStore.js')
+const dbStore = require('./store/dbStore.js')
 
 const MongoClient = require('mongodb').MongoClient
 
@@ -58,13 +58,13 @@ const url = prod ?  'mongodb://127.0.0.1:27017/' : 'mongodb://localhost:27017/'
 const maxIdleTime = 6000
 const connectDebugOff = prod
 
-var connections = 0
-var maxConnections = 100
+let connections = 0
+const maxConnections = 100
 
 MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime }, (err, client) => {
   const db = client.db('db')
 
-  io.on("connection", (socket) => {
+  io.on('connection', (socket) => {
     connections = connections + 1
     if (connections > maxConnections) {
       console.log(`Too many connections. Socket ${socket.id} closed`)
@@ -73,7 +73,7 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
       connectDebugOff || console.log(`A user connected with socket id ${socket.id}. (${connections} connections)`)
     }
 
-    socket.on("disconnect", () => {
+    socket.on('disconnect', () => {
       connections = connections - 1
       connectDebugOff || console.log(`User with socket id ${socket.id} has disconnected. (${connections} connections)`)
     })
@@ -94,8 +94,8 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
   })
 })
 
-var port = process.argv[2] || 3012
+const port = process.argv[2] || 3012
 
 httpServer.listen(port, () => {
-  console.log("Listening on *:" + port);
-});
+  console.log('Listening on *:' + port)
+})
