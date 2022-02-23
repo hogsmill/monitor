@@ -62,6 +62,7 @@ let connections = 0
 const maxConnections = 100
 
 MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime }, (err, client) => {
+  if (err) throw err
   const db = client.db('db')
 
   io.on('connection', (socket) => {
