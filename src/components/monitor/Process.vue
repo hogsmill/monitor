@@ -16,8 +16,6 @@
       <tr v-for="(app, index) in processes" :class="{'not-running': app.notRunning}" :key="index">
         <td v-if="app.server == selectedServer && selectedServer == 'default'" :class="status(app)">
           <span v-if="app.v3">&#10004;</span>
-          <span v-if="app.noNewDeploy">&#10008;</span>
-          <span v-if="!app.noNewDeploy && !app.newDeploy">TBD</span>
         </td>
         <td v-if="app.server == selectedServer && selectedServer == 'default'" :class="status(app)">
           <span v-if="app.login">&#10004;</span>
