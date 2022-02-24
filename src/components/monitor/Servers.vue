@@ -44,8 +44,7 @@ export default {
   methods: {
     ignoreString() {
       const ignore = [
-        'sass-loader',
-        'node-sass',
+        'mongodb',
         'chart.js'
       ]
       return ignore.slice(0, -1).join(', ') + ' and ' + ignore[ignore.length - 1]

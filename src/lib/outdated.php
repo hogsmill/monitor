@@ -2,7 +2,7 @@
 <?php
 
 $ignore = array(
-  'sass-loader' => true
+  'mongodb' => true
 );
 
 $root = '/usr/apps/';
