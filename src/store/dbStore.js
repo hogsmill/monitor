@@ -6,6 +6,7 @@ const process = require('process')
 const v3 = {
   'Agile Simulations': true,
   'Coin Game': true,
+  'Interdependent Teams': true,
   'Labs': true,
   'Monitor': true,
   'Poker': true,
