@@ -10,7 +10,7 @@ const v3 = {
   'Labs': true,
   'Mastermind': true,
   'Monitor': true,
-  'Pairing Simulation': true,
+  'Pairing': true,
   'Poker': true,
   'Survival': true,
   'To Do': true,
