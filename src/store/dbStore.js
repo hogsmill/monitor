@@ -12,7 +12,7 @@ const v3 = {
   'Monitor': true,
   'Pairing': true,
   'Poker': true,
-  'Survival': true,
+  'Survival At Sea': true,
   'To Do': true,
   'To Do Personal': true
 }
