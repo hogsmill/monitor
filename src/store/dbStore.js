@@ -9,7 +9,9 @@ const v3 = {
   'Labs': true,
   'Monitor': true,
   'Poker': true,
-  'To Do': true
+  'Survival': true
+  'To Do': true,
+  'To Do Personal': true
 }
 
 const login = {
