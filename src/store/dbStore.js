@@ -11,6 +11,7 @@ const v3 = {
   'Mastermind': true,
   'Monitor': true,
   'Pairing': true,
+  'Planning Poker': true,
   'Poker': true,
   'Survival At Sea': true,
   'To Do': true,
