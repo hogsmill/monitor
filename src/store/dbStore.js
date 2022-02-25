@@ -11,7 +11,7 @@ const v3 = {
   'Monitor': true,
   'Pairing Simulation': true,
   'Poker': true,
-  'Survival': true
+  'Survival': true,
   'To Do': true,
   'To Do Personal': true
 }
