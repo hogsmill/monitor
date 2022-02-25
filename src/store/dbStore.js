@@ -8,7 +8,8 @@ const v3 = {
   'Coin Game': true,
   'Labs': true,
   'Monitor': true,
-  'Poker': true
+  'Poker': true,
+  'To Do': true
 }
 
 const login = {
