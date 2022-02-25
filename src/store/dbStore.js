@@ -8,6 +8,7 @@ const v3 = {
   'Coin Game': true,
   'Interdependent Teams': true,
   'Labs': true,
+  'Mastermind': true,
   'Monitor': true,
   'Pairing Simulation': true,
   'Poker': true,
