@@ -9,6 +9,7 @@ const v3 = {
   'Interdependent Teams': true,
   'Labs': true,
   'Monitor': true,
+  'Pairing Simulation': true,
   'Poker': true,
   'Survival': true
   'To Do': true,
