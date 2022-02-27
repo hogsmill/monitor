@@ -7,6 +7,7 @@ const v3 = {
   'Agile Simulations': true,
   'Coin Game': true,
   'Context Switching': true,
+  'Google Meet': true,
   'Interdependent Teams': true,
   'Labs': true,
   'Mastermind': true,
