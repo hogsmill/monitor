@@ -4,6 +4,7 @@ const fs = require('fs')
 const process = require('process')
 
 const v3 = {
+  'Agile Battleships': true,
   'Agile Simulations': true,
   'Coin Game': true,
   'Context Switching': true,
