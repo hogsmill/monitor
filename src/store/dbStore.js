@@ -9,7 +9,7 @@ const v3 = {
   'Coin Game': true,
   'Context Switching': true,
   'Google Meet': true,
-  'Team Dependency Simulation': true,
+  'Interdependent Teams': true,
   'Labs': true,
   'Mastermind': true,
   'Monitor': true,
@@ -19,6 +19,7 @@ const v3 = {
   'Poker': true,
   'Socket Test': true,
   'Survival At Sea': true,
+  'Team Dependency Simulation': true,
   'To Do': true,
   'To Do Personal': true
 }
