@@ -13,6 +13,7 @@ const v3 = {
   'Labs': true,
   'Mastermind': true,
   'Monitor': true,
+  'Organisation Model': true,
   'Pairing': true,
   'Planning Poker': true,
   'Poker': true,
