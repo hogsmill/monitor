@@ -6,8 +6,8 @@ TimeAgo.addDefaultLocale(en)
 const timeAgo = new TimeAgo('en-GB')
 
 const ignoreOutdated = {
-  'sass-loader': true,
-  'chart.js': true
+  'mongodb': true,
+  'vue-final-modal': true
 }
 
 const serverStatus = (server, servers) => {
