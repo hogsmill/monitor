@@ -10,7 +10,6 @@
             <thead>
               <tr>
                 <th>Apps</th>
-                <th>Other</th>
               </tr>
             </thead>
             <tbody>
@@ -58,6 +57,11 @@
               </tr>
             </tbody>
           </table>
+          <div>
+            <button @click="restartServers()">
+              Restart Servers
+            </button>
+          </div>
         </td>
       </tr>
       <tr>
@@ -108,6 +112,11 @@ export default {
     },
     clearLog() {
       this.$store.dispatch('updateLog', {app: '', log: ''})
+    },
+    restartServers() {
+      if (confirm('Restart all servers?')) {
+        bus.emit('sendRestartServers')
+      }
     }
   }
 }

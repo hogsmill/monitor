@@ -24,6 +24,8 @@ bus.on('sendGetLog', (data) => { socket.emit('sendGetLog', data) })
 
 bus.on('sendDeleteLog', (data) => { socket.emit('sendDeleteLog', data) })
 
+bus.on('sendRestartServers', (data) => { socket.emit('sendRestartServers', data) })
+
 bus.on('sendLoadAssessments', (data) => { socket.emit('sendLoadAssessments', data) })
 
 // Receive

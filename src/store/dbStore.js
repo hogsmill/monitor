@@ -246,6 +246,11 @@ module.exports = {
     execSync('rm /usr/apps/logs/' + data.app)
   },
 
+  restartServers: function() {
+
+    execSync('/usr/apps/monitor/src/lib/restartServers.sh')
+  },
+
   loadAssessments: function(db, io) {
     let i, j
     const results = {}

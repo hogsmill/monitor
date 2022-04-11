@@ -2,7 +2,8 @@
 <?php
 
 $ignore = array(
-  'mongodb' => true
+  'mongodb' => true,
+  'vue-final-modal' => true
 );
 
 $root = '/usr/apps/';
