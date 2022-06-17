@@ -91,6 +91,8 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
 
     socket.on('sendDeleteLog', (data) => { dbStore.deleteLog(data) })
 
+    socket.on('sendRestartServers', () => { dbStore.restartServers() })
+
     socket.on('sendLoadAssessments', () => { dbStore.loadAssessments(db, io) })
   })
 })
