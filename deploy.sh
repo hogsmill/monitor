@@ -26,7 +26,7 @@ fi
 
 npm install
 npm run build
-f [ ! -d /var/www/html/agilesimulations/$APP/ ]; then
+if [ ! -d /var/www/html/agilesimulations/$APP/ ]; then
   mkdir /var/www/html/agilesimulations/$APP
 fi
 if [ -d /var/www/html/agilesimulations/$APP/css ]; then
