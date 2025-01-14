@@ -26,9 +26,9 @@ fi
 
 npm install
 npm run build
-rm /var/www/html/$APP/css/*
-rm /var/www/html/$APP/js/*
-cp -R dist/* /var/www/html/$APP
+rm /var/www/html/agilesimulations/$APP/css/*
+rm /var/www/html/agilesimulations/$APP/js/*
+cp -R dist/* /var/www/html/agilesimulations/$APP
 if [ -f "src/server.js" ]; then
   SERVER=`ps -ef | grep server.js | grep $PORT | awk {'print $2'}`
   if [ "$SERVER" != "" ]; then
@@ -41,7 +41,7 @@ rm -rf dist
 
 ps -ef | grep php | grep outdated
 if [ $? -eq 1 ]; then
-  php /usr/apps/monitor/src/lib/outdated.php &
+  php /usr/apps/agilesimulations/monitor/src/lib/outdated.php &
 fi
 
 exit 0
